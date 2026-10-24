@@ -1,0 +1,21 @@
+{
+  "name": "lanka-agent",
+  "version": "1.0.0",
+  "description": "LankaAgent: Autonomous Tourism Logistics & Micro-Economy Broker Multi-Agent System",
+  "main": "backend/app/main.py",
+  "scripts": {
+    "start": ".\\venv\\Scripts\\python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000",
+    "dev": ".\\venv\\Scripts\\python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload",
+    "test": ".\\venv\\Scripts\\python backend/test_agent.py"
+  },
+  "keywords": [
+    "agentic-ai",
+    "langgraph",
+    "fastapi",
+    "sri-lanka",
+    "tourism-logistics",
+    "multi-agent"
+  ],
+  "author": "Salman Ahamed",
+  "license": "MIT"
+}

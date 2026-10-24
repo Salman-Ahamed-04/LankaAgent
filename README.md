@@ -62,16 +62,28 @@ Tourism is Sri Lanka's fastest driver of foreign currency (Forex) recovery. Howe
 
 ## 💻 How to Run
 
-### 1. From Desktop
+### Option 1: Using NPM (Recommended)
+You can run the full backend and frontend with standard npm scripts:
+```bash
+# Start development server with hot-reload:
+npm run dev
+
+# Or start standard server:
+npm start
+
+# Run the LangGraph agent pipeline test:
+npm test
+```
+
+### Option 2: From Desktop
 Open the **`LankaAgent-Project`** folder on your Desktop and double-click:
 ```bash
 run.bat
 ```
 
-### 2. Manual Command Line
+### Option 3: Manual Python Command Line
 ```powershell
-# From the project root:
-.\venv\Scripts\python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+.\venv\Scripts\python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload
 ```
 Then visit: **`http://127.0.0.1:8000`** in your browser.
 
