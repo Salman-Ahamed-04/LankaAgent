@@ -1,0 +1,117 @@
+{
+  "nodes": {
+    "colombo": {
+      "name": "Colombo",
+      "region": "Western Province",
+      "terrain": "coastal_flat",
+      "elevation_m": 10,
+      "coords": [6.9271, 79.8612],
+      "highlights": ["Fort Railway Station", "Galle Face Green", "National Museum"],
+      "connections": {
+        "kandy": { "distance_km": 115, "train_hrs": 3.0, "road_hrs": 3.5 },
+        "galle": { "distance_km": 125, "expressway_hrs": 1.5, "train_hrs": 2.2 },
+        "sigiriya": { "distance_km": 175, "road_hrs": 4.0 }
+      }
+    },
+    "kandy": {
+      "name": "Kandy",
+      "region": "Central Highlands",
+      "terrain": "mid_elevation",
+      "elevation_m": 500,
+      "coords": [7.2906, 80.6337],
+      "highlights": ["Temple of the Sacred Tooth Relic", "Peradeniya Botanical Gardens", "Kandy Lake"],
+      "connections": {
+        "colombo": { "distance_km": 115, "train_hrs": 3.0, "road_hrs": 3.5 },
+        "nuwara_eliya": { "distance_km": 75, "road_hrs": 2.5, "train_hrs": 3.8 },
+        "sigiriya": { "distance_km": 90, "road_hrs": 2.5 },
+        "meemure": { "distance_km": 65, "rural_road_hrs": 3.5 }
+      }
+    },
+    "nuwara_eliya": {
+      "name": "Nuwara Eliya",
+      "region": "Central Highlands (Tea Country)",
+      "terrain": "high_mountain_steep",
+      "elevation_m": 1868,
+      "coords": [6.9497, 80.7891],
+      "highlights": ["Pedro Tea Estate", "Gregory Lake", "Horton Plains / World's End"],
+      "connections": {
+        "kandy": { "distance_km": 75, "road_hrs": 2.5 },
+        "ella": { "distance_km": 55, "train_hrs": 2.5, "road_hrs": 2.0 }
+      }
+    },
+    "ella": {
+      "name": "Ella",
+      "region": "Uva Province",
+      "terrain": "high_mountain_steep",
+      "elevation_m": 1041,
+      "coords": [6.8667, 81.0466],
+      "highlights": ["Nine Arches Bridge", "Little Adam's Peak", "Ravana Falls"],
+      "connections": {
+        "nuwara_eliya": { "distance_km": 55, "train_hrs": 2.5, "road_hrs": 2.0 },
+        "yala": { "distance_km": 95, "road_hrs": 2.8 },
+        "mirissa": { "distance_km": 175, "road_hrs": 4.0 },
+        "belihuloya": { "distance_km": 60, "road_hrs": 2.0 }
+      }
+    },
+    "sigiriya": {
+      "name": "Sigiriya & Dambulla",
+      "region": "Cultural Triangle",
+      "terrain": "dry_zone_flat",
+      "elevation_m": 180,
+      "coords": [7.9570, 80.7603],
+      "highlights": ["Sigiriya Lion Rock", "Pidurangala Rock", "Dambulla Cave Temple"],
+      "connections": {
+        "kandy": { "distance_km": 90, "road_hrs": 2.5 },
+        "colombo": { "distance_km": 175, "road_hrs": 4.0 }
+      }
+    },
+    "mirissa": {
+      "name": "Mirissa",
+      "region": "Southern Coast",
+      "terrain": "coastal_flat",
+      "elevation_m": 5,
+      "coords": [5.9483, 80.4578],
+      "highlights": ["Whale Watching", "Coconut Tree Hill", "Secret Beach"],
+      "connections": {
+        "galle": { "distance_km": 35, "road_hrs": 0.8 },
+        "ella": { "distance_km": 175, "road_hrs": 4.0 },
+        "colombo": { "distance_km": 150, "expressway_hrs": 2.0 }
+      }
+    },
+    "galle": {
+      "name": "Galle",
+      "region": "Southern Coast",
+      "terrain": "coastal_flat",
+      "elevation_m": 12,
+      "coords": [6.0535, 80.2210],
+      "highlights": ["Galle Dutch Fort (UNESCO)", "Lighthouse", "Maritime Museum"],
+      "connections": {
+        "colombo": { "distance_km": 125, "expressway_hrs": 1.5, "train_hrs": 2.2 },
+        "mirissa": { "distance_km": 35, "road_hrs": 0.8 }
+      }
+    },
+    "belihuloya": {
+      "name": "Belihuloya",
+      "region": "Sabaragamuwa (Eco-Village)",
+      "terrain": "mid_elevation",
+      "elevation_m": 600,
+      "coords": [6.7116, 80.7694],
+      "highlights": ["Bakers Bend Trek", "Pahanthudawa Fall", "Organic Agro Homestays"],
+      "connections": {
+        "ella": { "distance_km": 60, "road_hrs": 2.0 },
+        "colombo": { "distance_km": 150, "road_hrs": 4.2 }
+      }
+    },
+    "meemure": {
+      "name": "Meemure",
+      "region": "Knuckles Mountain Range",
+      "terrain": "rugged_remote",
+      "elevation_m": 420,
+      "coords": [7.4333, 80.8500],
+      "highlights": ["Lakegala Peak", "Traditional Paddy Farming", "Ancient Waterfalls"],
+      "connections": {
+        "kandy": { "distance_km": 65, "rural_road_hrs": 3.5 }
+      }
+    }
+  }
+}

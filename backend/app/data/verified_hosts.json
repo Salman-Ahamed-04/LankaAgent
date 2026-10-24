@@ -1,0 +1,75 @@
+{
+  "hosts": [
+    {
+      "id": "HOST-ELLA-01",
+      "name": "Nimal & Sunethra Bandara",
+      "business_name": "Ella Mist Organic Farmstead & Homestay",
+      "location": "Ella (Passara Road)",
+      "type": "homestay",
+      "spoken_languages": ["si", "en_basic"],
+      "phone": "+94 77 123 4567",
+      "rate_lkr_per_night": 6500,
+      "rate_usd_approx": 21,
+      "offerings": [
+        "Authentic wood-fire clay pot dinner (Rice & 6 curries)",
+        "Guaranteed clean private room with tea valley view",
+        "Free pickup from Ella railway station"
+      ],
+      "bio_sinhala": "ඇල්ල නගරයට ආසන්න නිස්කලංක පරිසරයක පිහිටි අපගේ නිවසෙහි දේශීය රසවත් ආහාර සහ සුවපහසු නවාතැන් පහසුකම් ලබා ගත හැක.",
+      "bio_english": "Peaceful family home perched above tea gardens with home-cooked traditional meals and mountain vistas."
+    },
+    {
+      "id": "HOST-BELI-02",
+      "name": "Upali Wijesinghe",
+      "business_name": "Belihuloya Riverstone Eco Retreat",
+      "location": "Belihuloya",
+      "type": "eco_cottage",
+      "spoken_languages": ["si"],
+      "phone": "+94 71 987 6543",
+      "rate_lkr_per_night": 5800,
+      "rate_usd_approx": 19,
+      "offerings": [
+        "Natural river bathing pool in private garden",
+        "Guided hike to Pahanthudawa hidden waterfall",
+        "Fresh kithul treacle & buffalo curd tasting"
+      ],
+      "bio_sinhala": "බෙලිහුල්ඔය ගං ඉවුර අසල පිහිටි ස්වභාවික නිවාඩු නිකේතනය. දිය නෑමට සහ දේශීය ආහාර රස විඳීමට සුදුසුයි.",
+      "bio_english": "Riverside eco-retreat nestled on natural mountain stream with waterfall trek guides and pure kithul tasting."
+    },
+    {
+      "id": "HOST-SIGI-03",
+      "name": "Dinesh Priyashantha",
+      "business_name": "Sigiriya Green Tuk-Tuk Drivers Association",
+      "location": "Sigiriya & Dambulla",
+      "type": "driver_coop",
+      "spoken_languages": ["si", "en"],
+      "phone": "+94 76 555 8899",
+      "rate_lkr_per_km": 115,
+      "offerings": [
+        "Official metered cooperative pricing (no tourist markups)",
+        "Sunrise Pidurangala Rock transfer with headlamps provided",
+        "Secret elephant corridor observation spots"
+      ],
+      "bio_sinhala": "සීගිරිය ලියාපදිංචි ත්‍රිරෝද රථ සංගමය. සාධාරණ මිල ගණන් යටතේ විශ්වාසවන්ත ප්‍රවාහන සේවාව.",
+      "bio_english": "Official registered tuk-tuk cooperative providing transparent meter rates and local wilderness insights."
+    },
+    {
+      "id": "HOST-MEEM-04",
+      "name": "Wasantha Kumara",
+      "business_name": "Meemure Traditional Village Experience",
+      "location": "Meemure (Knuckles)",
+      "type": "village_guide",
+      "spoken_languages": ["si"],
+      "phone": "+94 70 333 2211",
+      "rate_lkr_per_day": 7500,
+      "rate_usd_approx": 24,
+      "offerings": [
+        "Guided trek to base of sacred Lakegala Rock",
+        "Stream crossing and traditional paddy field harvest experience",
+        "Authentic village lunch served on lotus leaves"
+      ],
+      "bio_sinhala": "මීමුරේ පාරම්පරික ගම්මානය සහ ලකේගල ගවේෂණය සඳහා පළපුරුදු මගපෙන්වීම.",
+      "bio_english": "Authentic Knuckles biodiversity expedition with lifelong village elder and wilderness tracker."
+    }
+  ]
+}

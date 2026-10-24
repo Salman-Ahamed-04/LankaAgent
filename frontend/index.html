@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LankaAgent | Autonomous Tourism Logistics & Micro-Economy Broker</title>
+  <meta name="description" content="Stateful multi-agent system for real-time Sri Lankan travel logistics, anti-gouging fare calculation, disruption recovery, and rural community empowerment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="brand-logo">
+        <span class="logo-icon">🇱🇰</span>
+        <span class="logo-pulse"></span>
+      </div>
+      <div class="brand-text">
+        <h1>LankaAgent</h1>
+        <p class="tagline">Autonomous Travel Logistics & Micro-Economy Broker</p>
+      </div>
+    </div>
+
+    <!-- Active Sentinel Pill -->
+    <div class="header-status">
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span class="status-label">Sentinel Active</span>
+      </div>
+      <div class="exchange-rate-pill">
+        <span class="currency-label">1 USD ≈</span>
+        <span class="currency-val">310 LKR</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Scenario Presets -->
+  <section class="scenario-bar">
+    <span class="preset-title">Test Scenarios:</span>
+    <button class="preset-btn" data-query="I am in Kandy planning to take the train to Ella tomorrow, but a tuk-tuk driver quoted 12,000 LKR. Is that a scam and are the trains running?">
+      ⚠️ Kandy ➔ Ella (Train Slip & Fare Audit)
+    </button>
+    <button class="preset-btn" data-query="Going to Mirissa for whale watching tomorrow morning. Any weather warnings? What is the fair taxi fare from Galle?">
+      🌊 Mirissa Marine Swell & Galle Taxi
+    </button>
+    <button class="preset-btn" data-query="I want to escape tourists and stay in a traditional village homestay in Belihuloya with local food and river bath.">
+      🏡 Belihuloya Eco-Homestay Direct Bridge
+    </button>
+  </section>
+
+  <!-- Main Grid Layout -->
+  <main class="main-container">
+    
+    <!-- Left Column: Conversational Agent Terminal -->
+    <section class="chat-section">
+      <div class="card-header">
+        <div class="header-title">
+          <span class="icon">💬</span>
+          <h2>Traveler Autonomous Concierge</h2>
+        </div>
+        <span class="badge badge-primary">LangGraph Stateful</span>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="message agent-message initial-message">
+          <div class="agent-avatar">🇱🇰</div>
+          <div class="message-content">
+            <p><strong>Ayubowan & Welcome to Sri Lanka!</strong></p>
+            <p>I am <strong>LankaAgent</strong>, your autonomous logistics broker. Unlike basic chatbots, I continuously scan live Sri Lanka Railways bulletins, Department of Meteorology marine alerts, and calculate transparent <strong>CPC-fuel indexed fair fares</strong> so you are never overcharged.</p>
+            <p>Ask me about travel routes, driver fare quotes, or booking directly with verified village homestays!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input Form -->
+      <form class="chat-input-area" id="chatForm">
+        <input 
+          type="text" 
+          id="chatInput" 
+          placeholder="Ask about a route, driver fare quote (e.g., 'Driver quoted 8000 LKR'), or rural stay..." 
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="sendBtn" class="send-btn">
+          <span class="send-text">Send</span>
+          <span class="send-icon">➔</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- Right Column: Agent Execution Trace & Intelligence Sentinel -->
+    <section class="intelligence-section">
+      
+      <!-- Tab Controls -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="trace">
+          <span>⚡</span> Live Agent Trace
+        </button>
+        <button class="tab-btn" data-tab="disruptions">
+          <span>🚨</span> Live Disruptions (<span id="disruptionCount">3</span>)
+        </button>
+        <button class="tab-btn" data-tab="fare">
+          <span>🏷️</span> Fair-Fare Sentinel
+        </button>
+        <button class="tab-btn" data-tab="hosts">
+          <span>🏡</span> Village Hosts
+        </button>
+      </div>
+
+      <!-- Tab Content 1: Live Agent Reasoning Trace -->
+      <div class="tab-panel active" id="tab-trace">
+        <div class="panel-header">
+          <h3>StateGraph Multi-Agent Execution</h3>
+          <span class="sub-text">Deterministic Planning & Tool Verification</span>
+        </div>
+        <div class="trace-timeline" id="traceTimeline">
+          <div class="trace-empty">
+            <span class="empty-icon">⚙️</span>
+            <p>Submit a query or click a scenario above to observe the multi-agent graph reasoning and tool invocations in real-time.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: Active Disruptions Radar -->
+      <div class="tab-panel" id="tab-disruptions">
+        <div class="panel-header">
+          <h3>Sri Lanka Transit & Weather Radar</h3>
+          <span class="sub-text">Continuous Rail & Swell Alert Monitoring</span>
+        </div>
+        <div class="disruptions-list" id="disruptionsList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Tab Content 3: Fair Fare Calculator & Anti-Gouging -->
+      <div class="tab-panel" id="tab-fare">
+        <div class="panel-header">
+          <h3>Official Meter & Terrain Indexer</h3>
+          <span class="sub-text">Fuel Formula: Petrol 92 + Mountain Torque Multiplier</span>
+        </div>
+        <div class="fare-display-area" id="fareDisplay">
+          <div class="trace-empty">
+            <span class="empty-icon">🛺</span>
+            <p>Fare cards and bilingual driver scripts will populate automatically when a route or quote is analyzed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 4: Rural Community Hosts -->
+      <div class="tab-panel" id="tab-hosts">
+        <div class="panel-header">
+          <h3>Direct-to-Community Dispatch Bridge</h3>
+          <span class="sub-text">Zero Commission | Trilingual WhatsApp Audio Integration</span>
+        </div>
+        <div class="hosts-list" id="hostsList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <span>Built as an Advanced Agentic AI System for Sri Lankan Economic Recovery & Inclusive Tourism</span>
+      <span class="tech-pill">LangGraph • FastAPI • Google Gemini • MCP Tool Calling</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

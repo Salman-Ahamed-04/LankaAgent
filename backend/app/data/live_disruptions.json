@@ -1,0 +1,32 @@
+{
+  "active_disruptions": [
+    {
+      "id": "DISR-2026-081",
+      "category": "railway",
+      "severity": "CRITICAL",
+      "location": "Nanu Oya - Ella Section (Main Line)",
+      "affected_trains": ["Train 1005 (Podi Menike)", "Train 1007 (Tikiri Menike)", "Ella Odyssey"],
+      "event": "Minor earth slip and track ballast stabilization following overnight rain between Idalgashinna and Ohiya.",
+      "status": "Suspended for 4 hours. Trains terminating at Nanu Oya / Hatton.",
+      "agent_recommendation": "Transfer passengers from Nanu Oya to Ella via vetted scenic hill-country minivan/tuk-tuk cooperative via Haputale Pass."
+    },
+    {
+      "id": "DISR-2026-082",
+      "category": "weather_marine",
+      "severity": "WARNING",
+      "location": "Mirissa / Weligama Coast",
+      "event": "Department of Meteorology issued high swell advisory (>2.5m waves) until 13:00.",
+      "status": "Harbour Master suspended small craft whale watching boat charters until afternoon review.",
+      "agent_recommendation": "Reschedule morning ocean tour to afternoon; reroute morning itinerary to Coconut Tree Hill walk and local cinnamon plantation experience in nearby Weligama."
+    },
+    {
+      "id": "DISR-2026-083",
+      "category": "road_traffic",
+      "severity": "MODERATE",
+      "location": "A5 Peradeniya - Gampola Road",
+      "event": "Culvert repair work causing alternating single-lane traffic delays (~35 min delay).",
+      "status": "Slow moving traffic.",
+      "agent_recommendation": "Use alternate Daulagala - Gelioya bypass for Kandy departures."
+    }
+  ]
+}
