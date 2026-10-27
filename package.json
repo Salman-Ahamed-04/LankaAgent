@@ -17,5 +17,12 @@
     "multi-agent"
   ],
   "author": "Salman Ahamed",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "axios": "^1.21.0",
+    "pino": "^10.4.0",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0"
+  }
 }

@@ -14,4 +14,6 @@ ENV/
 .idea/
 *.swp
 .DS_Store
-Thumbs.db
+# Node modules & WhatsApp session
+node_modules/
+whatsapp_session/
