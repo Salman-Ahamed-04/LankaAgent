@@ -200,7 +200,7 @@ def synthesizer_node(state: LankaAgentState) -> Dict[str, Any]:
     # Check if Google Gemini API is connected
     client = get_gemini_client()
     if client:
-        add_log(state, "Gemini2.5Flash", "Neural Reasoning Active", "Invoking Google Gemini 2.5 Flash to enrich travel brief with verified tool parameters...")
+        add_log(state, "Gemini3.5Flash", "Neural Reasoning Active", "Invoking Google Gemini 3.5 Flash to enrich travel brief with verified tool parameters...")
         prompt = (
             f"You are LankaAgent, an elite Sri Lankan tourism logistics and anti-scam AI broker.\n"
             f"The traveler asked: \"{state.get('user_query')}\"\n\n"
@@ -211,17 +211,20 @@ def synthesizer_node(state: LankaAgentState) -> Dict[str, Any]:
             f"- Warmly welcome the tourist (Ayubowan!) and guide them clearly on how to avoid price gouging.\n"
             f"- Use clean markdown formatting."
         )
-        try:
-            gemini_resp = client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=prompt
-            )
-            if gemini_resp and gemini_resp.text:
-                state["final_response"] = gemini_resp.text.strip()
-                add_log(state, "Gemini2.5Flash", "Synthesis Complete", "Generated personalized neural briefing with 100% verified tool facts.")
-                return state
-        except Exception as e:
-            add_log(state, "Gemini2.5Flash", "Fallback Engaged", f"Using verified deterministic brief ({str(e)[:60]}).")
+        for model_candidate in ["gemini-3.5-flash", "gemini-3.5-flash-lite"]:
+            try:
+                gemini_resp = client.models.generate_content(
+                    model=model_candidate,
+                    contents=prompt
+                )
+                if gemini_resp and gemini_resp.text:
+                    state["final_response"] = gemini_resp.text.strip()
+                    add_log(state, "Gemini3.5Flash", "Synthesis Complete", f"Generated personalized neural briefing with 100% verified tool facts via {model_candidate}.")
+                    return state
+            except Exception as e:
+                print(f"Gemini {model_candidate} error: {e}")
+                continue
+        add_log(state, "Gemini3.5Flash", "Fallback Engaged", "Using verified deterministic brief.")
 
     state["final_response"] = base_brief
     add_log(state, "Synthesizer", "Completed", "Successfully finalized autonomous dispatch payload.")

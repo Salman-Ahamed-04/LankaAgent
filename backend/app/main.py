@@ -86,8 +86,8 @@ def get_gemini_status():
     key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if key and len(key.strip()) > 6:
         masked = key[:6] + "..." + key[-4:]
-        return { "connected": True, "masked_key": masked, "model": "gemini-2.5-flash" }
-    return { "connected": False, "masked_key": None, "model": "gemini-2.5-flash" }
+        return { "connected": True, "masked_key": masked, "model": "gemini-3.5-flash" }
+    return { "connected": False, "masked_key": None, "model": "gemini-3.5-flash" }
 
 @app.post("/api/config/gemini")
 def set_gemini_key(req: GeminiKeyRequest):
