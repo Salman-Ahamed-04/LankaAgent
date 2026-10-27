@@ -251,27 +251,6 @@ body {
   font-weight: 600;
 }
 
-.github-link-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.35rem 0.85rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  color: var(--text-secondary);
-  font-size: 0.78rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.github-link-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--text-primary);
-  border-color: var(--border-medium);
-}
-
 /* ==========================================================================
    Scenario Ribbon (Interactive Presets)
    ========================================================================== */
