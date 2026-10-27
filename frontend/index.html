@@ -12,15 +12,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- High-Definition Sri Lanka Nature Video Background -->
-  <div class="video-bg-container">
-    <video id="bgVideo" autoplay muted loop playsinline>
-      <source id="videoSource" src="/assets/srilanka_nature.mp4" type="video/mp4">
-      <source src="https://videos.pexels.com/video-files/2169880/2169880-hd_1920_1080_30fps.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-  </div>
-
   <!-- Top Navigation -->
   <header class="app-header">
     <div class="header-brand">
@@ -34,20 +25,8 @@
       </div>
     </div>
 
-    <!-- Active Sentinel & Video Controls -->
+    <!-- Active Sentinel Pill -->
     <div class="header-status">
-      <!-- Video Scene Selector -->
-      <div class="video-switcher">
-        <span class="switcher-icon">🎬</span>
-        <select id="videoSelect" class="video-select" aria-label="Select Nature Video Scene">
-          <option value="/assets/srilanka_nature.mp4">🍃 Central Highlands (Tea Hills)</option>
-          <option value="https://videos.pexels.com/video-files/855029/855029-hd_1920_1080_30fps.mp4">⛰️ Misty Mountain Peaks</option>
-          <option value="https://cdn.coverr.co/videos/coverr-aerial-view-of-waves-beating-against-the-shore-5264/1080p.mp4">🌊 Mirissa & Southern Waves</option>
-          <option value="https://videos.pexels.com/video-files/3015485/3015485-hd_1920_1080_24fps.mp4">🌿 Tropical Rainforest Stream</option>
-        </select>
-        <button id="toggleVideoBtn" class="video-toggle-btn" title="Pause / Play Video" type="button">⏸️</button>
-      </div>
-
       <div class="status-indicator">
         <span class="pulse-dot"></span>
         <span class="status-label">Sentinel Active</span>
