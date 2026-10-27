@@ -3,171 +3,270 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LankaAgent | Autonomous Tourism Logistics & Micro-Economy Broker</title>
-  <meta name="description" content="Stateful multi-agent system for real-time Sri Lankan travel logistics, anti-gouging fare calculation, disruption recovery, and rural community empowerment.">
+  <title>LankaAgent | Autonomous Tourism Logistics & Micro-Economy Engine</title>
+  <meta name="description" content="Enterprise-grade stateful multi-agent system for real-time Sri Lankan travel logistics, anti-gouging fare calculation, disruption recovery, and rural economic inclusion.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Top Navigation -->
+
+  <!-- Top Executive Navigation Bar -->
   <header class="app-header">
-    <div class="header-brand">
-      <div class="brand-logo">
-        <span class="logo-icon">🇱🇰</span>
-        <span class="logo-pulse"></span>
-      </div>
-      <div class="brand-text">
-        <h1>LankaAgent</h1>
-        <p class="tagline">Autonomous Travel Logistics & Micro-Economy Broker</p>
+    <div class="header-left">
+      <div class="brand-container">
+        <div class="brand-emblem">
+          <svg class="emblem-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="9" fill="url(#brandGrad)" />
+            <path d="M16 6L23 16L16 26L9 16L16 6Z" fill="#10B981" fill-opacity="0.25" stroke="#34D399" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="16" cy="16" r="3" fill="#10B981"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0F172A"/>
+                <stop offset="1" stop-color="#022C22"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="emblem-glow"></span>
+        </div>
+        <div class="brand-titles">
+          <div class="brand-title-row">
+            <h1 class="brand-name">LankaAgent</h1>
+            <span class="system-chip">v1.0 AI Engine</span>
+          </div>
+          <p class="brand-caption">Autonomous Tourism Logistics & Micro-Economy Broker</p>
+        </div>
       </div>
     </div>
 
-    <!-- Active Sentinel Pill -->
-    <div class="header-status">
-      <div class="status-indicator">
-        <span class="pulse-dot"></span>
-        <span class="status-label">Sentinel Active</span>
+    <!-- Live Telemetry & Quick Indicators -->
+    <div class="header-right">
+      <div class="telemetry-pill">
+        <span class="telemetry-dot live"></span>
+        <span class="telemetry-label">LangGraph StateGraph</span>
+        <span class="telemetry-badge">Active</span>
       </div>
-      <div class="exchange-rate-pill">
-        <span class="currency-label">1 USD ≈</span>
-        <span class="currency-val">310 LKR</span>
+
+      <div class="exchange-rate-card">
+        <span class="cur-flag">🇱🇰</span>
+        <span class="cur-label">CBSL Index:</span>
+        <span class="cur-rate">1 USD ≈ <strong>310 LKR</strong></span>
       </div>
+
+      <a href="https://github.com/Salman-Ahamed-04/LankaAgent" target="_blank" rel="noopener" class="github-link-btn" title="View Source on GitHub">
+        <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        <span>GitHub</span>
+      </a>
     </div>
   </header>
 
-  <!-- Quick Scenario Presets -->
-  <section class="scenario-bar">
-    <span class="preset-title">Test Scenarios:</span>
-    <button class="preset-btn" data-query="I am in Kandy planning to take the train to Ella tomorrow, but a tuk-tuk driver quoted 12,000 LKR. Is that a scam and are the trains running?">
-      ⚠️ Kandy ➔ Ella (Train Slip & Fare Audit)
-    </button>
-    <button class="preset-btn" data-query="Going to Mirissa for whale watching tomorrow morning. Any weather warnings? What is the fair taxi fare from Galle?">
-      🌊 Mirissa Marine Swell & Galle Taxi
-    </button>
-    <button class="preset-btn" data-query="I want to escape tourists and stay in a traditional village homestay in Belihuloya with local food and river bath.">
-      🏡 Belihuloya Eco-Homestay Direct Bridge
-    </button>
+  <!-- Interactive Scenario Launcher Bar -->
+  <section class="scenario-ribbon">
+    <div class="ribbon-inner">
+      <div class="ribbon-tag">
+        <span class="spark-icon">⚡</span>
+        <span>Curated Scenarios:</span>
+      </div>
+      <div class="preset-chips">
+        <button class="chip-btn" data-query="I am in Kandy planning to take the train to Ella tomorrow, but a tuk-tuk driver quoted 12,000 LKR. Is that a scam and are the trains running?">
+          <span class="chip-icon">🚂</span>
+          <span class="chip-text">Kandy ➔ Ella: Rail Landslide & Fare Audit</span>
+        </button>
+        <button class="chip-btn" data-query="Going to Mirissa for whale watching tomorrow morning. Any weather warnings? What is the fair taxi fare from Galle?">
+          <span class="chip-icon">🌊</span>
+          <span class="chip-text">Mirissa: Marine Swell & Galle Taxi Meter</span>
+        </button>
+        <button class="chip-btn" data-query="I want to escape tourist crowds and stay in a traditional village homestay in Belihuloya with local food and river bath.">
+          <span class="chip-icon">🏡</span>
+          <span class="chip-text">Belihuloya: Rural Agro-Homestay Direct Bridge</span>
+        </button>
+      </div>
+    </div>
   </section>
 
-  <!-- Main Grid Layout -->
-  <main class="main-container">
+  <!-- Main Designer Workspace Layout -->
+  <main class="workspace-grid">
     
-    <!-- Left Column: Conversational Agent Terminal -->
-    <section class="chat-section">
-      <div class="card-header">
-        <div class="header-title">
-          <span class="icon">💬</span>
-          <h2>Traveler Autonomous Concierge</h2>
+    <!-- LEFT PANEL: Autonomous Conversational Concierge -->
+    <section class="panel-card chat-panel">
+      <div class="panel-header">
+        <div class="panel-header-title">
+          <span class="panel-icon">💬</span>
+          <div>
+            <h2>Autonomous Travel Concierge</h2>
+            <p class="panel-subtitle">Stateful Intent Binding & Dynamic Multi-Tool Execution</p>
+          </div>
         </div>
-        <span class="badge badge-primary">LangGraph Stateful</span>
+        <div class="panel-badge">
+          <span class="dot-beacon"></span>
+          <span>Cyclic Agent Active</span>
+        </div>
       </div>
 
-      <div class="chat-messages" id="chatMessages">
-        <div class="message agent-message initial-message">
-          <div class="agent-avatar">🇱🇰</div>
-          <div class="message-content">
-            <p><strong>Ayubowan & Welcome to Sri Lanka!</strong></p>
-            <p>I am <strong>LankaAgent</strong>, your autonomous logistics broker. Unlike basic chatbots, I continuously scan live Sri Lanka Railways bulletins, Department of Meteorology marine alerts, and calculate transparent <strong>CPC-fuel indexed fair fares</strong> so you are never overcharged.</p>
-            <p>Ask me about travel routes, driver fare quotes, or booking directly with verified village homestays!</p>
+      <!-- Scrollable Message Feed -->
+      <div class="chat-viewport" id="chatMessages">
+        <div class="chat-msg agent-msg initial-greeting">
+          <div class="avatar-box">
+            <span class="avatar-icon">🇱🇰</span>
+          </div>
+          <div class="msg-bubble">
+            <div class="msg-header">
+              <span class="msg-sender">LankaAgent Engine</span>
+              <span class="msg-time">Just now</span>
+            </div>
+            <div class="msg-body">
+              <p><strong>Ayubowan & Welcome to Sri Lanka!</strong></p>
+              <p>I am your autonomous logistics & fair-pricing broker. Unlike basic chatbots, I continuously scan live Sri Lanka Railways notices, marine swell advisories, and calculate transparent <strong>CPC-fuel indexed fair fares</strong> so you are never overcharged.</p>
+              <p>Ask me about travel routes, driver fare quotes (e.g. <em>"Driver asked for 8,000 LKR"</em>), or connecting with verified village homestays!</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Chat Input Form -->
-      <form class="chat-input-area" id="chatForm">
-        <input 
-          type="text" 
-          id="chatInput" 
-          placeholder="Ask about a route, driver fare quote (e.g., 'Driver quoted 8000 LKR'), or rural stay..." 
-          autocomplete="off"
-          required
-        />
-        <button type="submit" id="sendBtn" class="send-btn">
-          <span class="send-text">Send</span>
-          <span class="send-icon">➔</span>
-        </button>
-      </form>
+      <!-- Designer Floating Input Bar -->
+      <div class="chat-input-wrapper">
+        <form class="chat-input-box" id="chatForm">
+          <div class="input-icon-prefix">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="chatInput" 
+            placeholder="Type your Sri Lanka travel query, driver price quote, or destination..." 
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="sendBtn" class="primary-send-btn" title="Execute Query (Enter)">
+            <span>Plan Route</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
     </section>
 
-    <!-- Right Column: Agent Execution Trace & Intelligence Sentinel -->
-    <section class="intelligence-section">
+    <!-- RIGHT PANEL: Mission Control & Sentinel Operations -->
+    <section class="panel-card operations-panel">
       
-      <!-- Tab Controls -->
-      <div class="tabs-nav">
-        <button class="tab-btn active" data-tab="trace">
-          <span>⚡</span> Live Agent Trace
+      <!-- Segmented Tab Navigation -->
+      <div class="segmented-tabs">
+        <button class="seg-tab active" data-tab="trace">
+          <span class="tab-emoji">⚡</span>
+          <span class="tab-text">Agent Reasoning</span>
         </button>
-        <button class="tab-btn" data-tab="disruptions">
-          <span>🚨</span> Live Disruptions (<span id="disruptionCount">3</span>)
+        <button class="seg-tab" data-tab="disruptions">
+          <span class="tab-emoji">🚨</span>
+          <span class="tab-text">Disruptions</span>
+          <span class="counter-badge" id="disruptionCount">3</span>
         </button>
-        <button class="tab-btn" data-tab="fare">
-          <span>🏷️</span> Fair-Fare Sentinel
+        <button class="seg-tab" data-tab="fare">
+          <span class="tab-emoji">🏷️</span>
+          <span class="tab-text">Fair-Fare Sentinel</span>
         </button>
-        <button class="tab-btn" data-tab="hosts">
-          <span>🏡</span> Village Hosts
+        <button class="seg-tab" data-tab="hosts">
+          <span class="tab-emoji">🏡</span>
+          <span class="tab-text">Rural Homestays</span>
         </button>
       </div>
 
-      <!-- Tab Content 1: Live Agent Reasoning Trace -->
-      <div class="tab-panel active" id="tab-trace">
-        <div class="panel-header">
-          <h3>StateGraph Multi-Agent Execution</h3>
-          <span class="sub-text">Deterministic Planning & Tool Verification</span>
-        </div>
-        <div class="trace-timeline" id="traceTimeline">
-          <div class="trace-empty">
-            <span class="empty-icon">⚙️</span>
-            <p>Submit a query or click a scenario above to observe the multi-agent graph reasoning and tool invocations in real-time.</p>
+      <!-- Tab Content Area -->
+      <div class="tab-stage">
+        
+        <!-- View 1: Live Agent Reasoning Trace -->
+        <div class="tab-view active" id="tab-trace">
+          <div class="view-intro">
+            <div>
+              <h3>LangGraph State Machine Trace</h3>
+              <p>Real-time execution log of agent intent binding, tools, and constraints.</p>
+            </div>
+            <span class="tech-tag">Stateful Pregel</span>
+          </div>
+          <div class="trace-deck" id="traceTimeline">
+            <div class="deck-placeholder">
+              <div class="radar-scan-box">
+                <div class="radar-pulse"></div>
+                <span class="radar-center">⚙️</span>
+              </div>
+              <h4>Awaiting Traveler Request</h4>
+              <p>Type a message or click any scenario above to watch the multi-agent graph reason and call tools in real-time.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Tab Content 2: Active Disruptions Radar -->
-      <div class="tab-panel" id="tab-disruptions">
-        <div class="panel-header">
-          <h3>Sri Lanka Transit & Weather Radar</h3>
-          <span class="sub-text">Continuous Rail & Swell Alert Monitoring</span>
-        </div>
-        <div class="disruptions-list" id="disruptionsList">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
-      <!-- Tab Content 3: Fair Fare Calculator & Anti-Gouging -->
-      <div class="tab-panel" id="tab-fare">
-        <div class="panel-header">
-          <h3>Official Meter & Terrain Indexer</h3>
-          <span class="sub-text">Fuel Formula: Petrol 92 + Mountain Torque Multiplier</span>
-        </div>
-        <div class="fare-display-area" id="fareDisplay">
-          <div class="trace-empty">
-            <span class="empty-icon">🛺</span>
-            <p>Fare cards and bilingual driver scripts will populate automatically when a route or quote is analyzed.</p>
+        <!-- View 2: Live Disruption Radar -->
+        <div class="tab-view" id="tab-disruptions">
+          <div class="view-intro">
+            <div>
+              <h3>Sri Lanka Transit & Weather Radar</h3>
+              <p>Continuous monitoring of Sri Lanka Railways Main Line & coastal weather.</p>
+            </div>
+            <span class="tech-tag live-tag">Live Feed</span>
+          </div>
+          <div class="disruptions-deck" id="disruptionsList">
+            <!-- Populated dynamically -->
           </div>
         </div>
-      </div>
 
-      <!-- Tab Content 4: Rural Community Hosts -->
-      <div class="tab-panel" id="tab-hosts">
-        <div class="panel-header">
-          <h3>Direct-to-Community Dispatch Bridge</h3>
-          <span class="sub-text">Zero Commission | Trilingual WhatsApp Audio Integration</span>
+        <!-- View 3: Fair-Fare Sentinel -->
+        <div class="tab-view" id="tab-fare">
+          <div class="view-intro">
+            <div>
+              <h3>Official Meter & Terrain Indexer</h3>
+              <p>Ceylon Petroleum Corporation (CPC) fuel index + mountain elevation torque formula.</p>
+            </div>
+            <span class="tech-tag">Anti-Gouging</span>
+          </div>
+          <div class="fare-deck" id="fareDisplay">
+            <div class="deck-placeholder">
+              <span class="empty-glyph">🛺</span>
+              <h4>No Route Analyzed Yet</h4>
+              <p>Enter a destination or driver quote (e.g., <em>"Driver asked 9,000 LKR"</em>) to calculate the official fair meter rate.</p>
+            </div>
+          </div>
         </div>
-        <div class="hosts-list" id="hostsList">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
 
+        <!-- View 4: Rural Community Hosts -->
+        <div class="tab-view" id="tab-hosts">
+          <div class="view-intro">
+            <div>
+              <h3>Direct-to-Community Micro-Economy Bridge</h3>
+              <p>Zero platform commission • Pre-translated Sinhala/Tamil dispatch.</p>
+            </div>
+            <span class="tech-tag">Inclusive Tourism</span>
+          </div>
+          <div class="hosts-deck" id="hostsList">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+      </div>
     </section>
   </main>
 
+  <!-- Clean Bottom Attribution -->
   <footer class="app-footer">
-    <div class="footer-content">
-      <span>Built as an Advanced Agentic AI System for Sri Lankan Economic Recovery & Inclusive Tourism</span>
-      <span class="tech-pill">LangGraph • FastAPI • Google Gemini • MCP Tool Calling</span>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <span class="status-indicator-dot"></span>
+        <span>LankaAgent Multi-Agent Engine • Designed for Sri Lankan Economic Recovery & Inclusive Tourism</span>
+      </div>
+      <div class="footer-right">
+        <span class="badge-tech">Python 3.11</span>
+        <span class="badge-tech">LangGraph</span>
+        <span class="badge-tech">FastAPI</span>
+        <span class="badge-tech">Google Gemini</span>
+      </div>
     </div>
   </footer>
 
