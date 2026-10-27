@@ -56,6 +56,12 @@
         <span class="cur-label">CBSL Index:</span>
         <span class="cur-rate">1 USD ≈ <strong>310 LKR</strong></span>
       </div>
+
+      <!-- Google Gemini API Status Pill -->
+      <button class="gemini-status-btn" id="geminiBtn" type="button" title="Google Gemini API Configuration">
+        <span class="sparkle-icon">✨</span>
+        <span id="geminiStatusText">Checking Gemini...</span>
+      </button>
     </div>
   </header>
 
@@ -261,7 +267,34 @@
         <span class="badge-tech">Google Gemini</span>
       </div>
     </div>
-  </footer>
+  <!-- Gemini API Key Modal -->
+  <div class="api-modal-backdrop" id="apiModal">
+    <div class="api-modal-card">
+      <div class="api-modal-header">
+        <div class="api-modal-title">
+          <span>✨</span>
+          <h3>Connect Google Gemini API</h3>
+        </div>
+        <button class="modal-close-btn" id="closeModalBtn" type="button">&times;</button>
+      </div>
+      <p class="api-modal-desc">
+        Power LankaAgent's neural intent parsing & travel synthesis with <strong>Gemini 2.5 Flash</strong>. 
+        You can get a free API key instantly from <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a>.
+      </p>
+      <form id="geminiKeyForm" class="api-modal-form">
+        <input 
+          type="password" 
+          id="apiKeyInput" 
+          placeholder="Paste your Gemini API key (AIzaSy...)" 
+          required 
+        />
+        <button type="submit" class="save-key-btn">Save & Activate</button>
+      </form>
+      <div class="api-modal-footer">
+        <span class="safe-tag">🔒 Saved securely to local .env</span>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

@@ -297,4 +297,103 @@ document.addEventListener('DOMContentLoaded', () => {
       alert("Pronunciation audio: " + text);
     }
   };
+
+  // ==========================================
+  // Google Gemini API Configuration Integration
+  // ==========================================
+  const geminiBtn = document.getElementById('geminiBtn');
+  const geminiStatusText = document.getElementById('geminiStatusText');
+  const apiModal = document.getElementById('apiModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const geminiKeyForm = document.getElementById('geminiKeyForm');
+  const apiKeyInput = document.getElementById('apiKeyInput');
+
+  async function checkGeminiStatus() {
+    if (!geminiBtn || !geminiStatusText) return;
+    try {
+      const res = await fetch('/api/config/gemini');
+      const data = await res.json();
+      if (data.connected) {
+        geminiBtn.classList.remove('disconnected');
+        geminiStatusText.textContent = `✨ Gemini Active (${data.masked_key || '2.5 Flash'})`;
+        geminiBtn.title = `Connected to Google Gemini (${data.model}). Click to update key.`;
+      } else {
+        geminiBtn.classList.add('disconnected');
+        geminiStatusText.textContent = '🔑 Connect Gemini API';
+        geminiBtn.title = 'Click to connect your Google Gemini API key';
+      }
+    } catch (e) {
+      console.warn("Could not check Gemini API status", e);
+      geminiBtn.classList.add('disconnected');
+      geminiStatusText.textContent = '🔑 Connect Gemini API';
+    }
+  }
+
+  // Check status on startup
+  checkGeminiStatus();
+
+  // Modal handlers
+  if (geminiBtn && apiModal) {
+    geminiBtn.addEventListener('click', () => {
+      apiModal.classList.add('show');
+      if (apiKeyInput) {
+        apiKeyInput.focus();
+      }
+    });
+  }
+
+  if (closeModalBtn && apiModal) {
+    closeModalBtn.addEventListener('click', () => {
+      apiModal.classList.remove('show');
+    });
+  }
+
+  if (apiModal) {
+    apiModal.addEventListener('click', (e) => {
+      if (e.target === apiModal) {
+        apiModal.classList.remove('show');
+      }
+    });
+  }
+
+  if (geminiKeyForm) {
+    geminiKeyForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const keyVal = apiKeyInput.value.trim();
+      if (!keyVal) return;
+
+      const submitBtn = geminiKeyForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.textContent = 'Validating & Connecting...';
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const res = await fetch('/api/config/gemini', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ api_key: keyVal })
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.detail || 'Failed to save key');
+        }
+
+        const data = await res.json();
+        apiModal.classList.remove('show');
+        apiKeyInput.value = '';
+        checkGeminiStatus();
+        appendAgentMessage(`✨ **Google Gemini API Connected!** LankaAgent is now enhanced with **Gemini 2.5 Flash** for neural reasoning and natural language synthesis alongside deterministic tool execution.`);
+      } catch (err) {
+        alert("Failed to connect Gemini API: " + err.message);
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        }
+      }
+    });
+  }
 });

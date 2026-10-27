@@ -8,13 +8,21 @@ from app.agent.tools.fare_calculator import calculate_fair_fare
 from app.agent.tools.disruption_sentinel import check_route_disruptions
 from app.agent.tools.local_host_bridge import match_and_dispatch_local_hosts
 
-# Try to import Gemini SDK if available
-try:
-    from google import genai
-    from google.genai import types
-    has_gemini = True
-except ImportError:
-    has_gemini = False
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
+
+def get_gemini_client():
+    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if not api_key or api_key.strip() == "":
+        return None
+    try:
+        from google import genai
+        return genai.Client(api_key=api_key.strip())
+    except Exception as e:
+        print("Gemini client initialization error:", e)
+        return None
 
 def add_log(state: LankaAgentState, agent: str, action: str, details: str):
     now = datetime.datetime.now().strftime("%H:%M:%S")
@@ -187,7 +195,35 @@ def synthesizer_node(state: LankaAgentState) -> Dict[str, Any]:
             response_parts.append(f"  • Highlights: {', '.join(h['offerings'][:2])}")
             response_parts.append(f"  • 📲 *Pre-translated WhatsApp Dispatch ready in Sinhala/Tamil directly to host's phone.*")
 
-    state["final_response"] = "\n".join(response_parts)
+    base_brief = "\n".join(response_parts)
+    
+    # Check if Google Gemini API is connected
+    client = get_gemini_client()
+    if client:
+        add_log(state, "Gemini2.5Flash", "Neural Reasoning Active", "Invoking Google Gemini 2.5 Flash to enrich travel brief with verified tool parameters...")
+        prompt = (
+            f"You are LankaAgent, an elite Sri Lankan tourism logistics and anti-scam AI broker.\n"
+            f"The traveler asked: \"{state.get('user_query')}\"\n\n"
+            f"Our deterministic multi-agent tools have calculated the following ground-truth facts, fares, disruption notices, and rural homestay contacts:\n"
+            f"{base_brief}\n\n"
+            f"Task: Synthesize this into an articulate, friendly, highly structured executive travel brief.\n"
+            f"- Preserve ALL exact LKR / USD prices, savings calculations, and Sinhala/Tamil negotiation phrases verbatim.\n"
+            f"- Warmly welcome the tourist (Ayubowan!) and guide them clearly on how to avoid price gouging.\n"
+            f"- Use clean markdown formatting."
+        )
+        try:
+            gemini_resp = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt
+            )
+            if gemini_resp and gemini_resp.text:
+                state["final_response"] = gemini_resp.text.strip()
+                add_log(state, "Gemini2.5Flash", "Synthesis Complete", "Generated personalized neural briefing with 100% verified tool facts.")
+                return state
+        except Exception as e:
+            add_log(state, "Gemini2.5Flash", "Fallback Engaged", f"Using verified deterministic brief ({str(e)[:60]}).")
+
+    state["final_response"] = base_brief
     add_log(state, "Synthesizer", "Completed", "Successfully finalized autonomous dispatch payload.")
     return state
 

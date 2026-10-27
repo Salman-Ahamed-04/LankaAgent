@@ -75,6 +75,37 @@ def nodes_endpoint():
 def hosts_endpoint(location: str = "ella"):
     return match_and_dispatch_local_hosts(location)
 
+# ==========================================
+# Google Gemini API Configuration Endpoints
+# ==========================================
+class GeminiKeyRequest(BaseModel):
+    api_key: str
+
+@app.get("/api/config/gemini")
+def get_gemini_status():
+    key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if key and len(key.strip()) > 6:
+        masked = key[:6] + "..." + key[-4:]
+        return { "connected": True, "masked_key": masked, "model": "gemini-2.5-flash" }
+    return { "connected": False, "masked_key": None, "model": "gemini-2.5-flash" }
+
+@app.post("/api/config/gemini")
+def set_gemini_key(req: GeminiKeyRequest):
+    new_key = req.api_key.strip()
+    if not new_key:
+        raise HTTPException(status_code=400, detail="API Key cannot be empty.")
+    
+    os.environ["GEMINI_API_KEY"] = new_key
+    
+    env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".env")
+    try:
+        with open(env_path, "w", encoding="utf-8") as f:
+            f.write(f"GEMINI_API_KEY={new_key}\n")
+    except Exception as e:
+        print("Could not write to .env:", e)
+
+    return { "status": "success", "connected": True, "masked_key": new_key[:6] + "..." + new_key[-4:] }
+
 # Mount frontend directory
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "frontend")
 
