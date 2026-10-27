@@ -10,6 +10,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const hostsList = document.getElementById('hostsList');
   const disruptionCount = document.getElementById('disruptionCount');
 
+  // Video Background Controls
+  const bgVideo = document.getElementById('bgVideo');
+  const videoSelect = document.getElementById('videoSelect');
+  const toggleVideoBtn = document.getElementById('toggleVideoBtn');
+
+  if (videoSelect && bgVideo) {
+    videoSelect.addEventListener('change', (e) => {
+      bgVideo.src = e.target.value;
+      bgVideo.load();
+      bgVideo.play().catch(err => console.log('Autoplay policy prevented audio/play', err));
+      if (toggleVideoBtn) toggleVideoBtn.textContent = '⏸️';
+    });
+  }
+
+  if (toggleVideoBtn && bgVideo) {
+    toggleVideoBtn.addEventListener('click', () => {
+      if (bgVideo.paused) {
+        bgVideo.play().catch(() => {});
+        toggleVideoBtn.textContent = '⏸️';
+      } else {
+        bgVideo.pause();
+        toggleVideoBtn.textContent = '▶️';
+      }
+    });
+  }
+
   // Load initial disruptions
   fetchDisruptions();
 
