@@ -77,5 +77,14 @@ def hosts_endpoint(location: str = "ella"):
 
 # Mount frontend directory
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "frontend")
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    from fastapi.responses import FileResponse
+    fav_path = os.path.join(FRONTEND_DIR, "favicon.svg")
+    if os.path.exists(fav_path):
+        return FileResponse(fav_path, media_type="image/svg+xml")
+    return {"status": "ok"}
+
 if os.path.exists(FRONTEND_DIR):
     app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
