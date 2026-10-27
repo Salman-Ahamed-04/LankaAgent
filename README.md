@@ -89,6 +89,29 @@ Then visit: **`http://127.0.0.1:8000`** in your browser.
 
 ---
 
+## 📲 How to Connect to Real WhatsApp (Live Demo)
+
+LankaAgent includes a pre-built webhook endpoint: `/api/whatsapp/webhook` compatible with **Twilio WhatsApp Sandbox** and **Meta WhatsApp Cloud API**.
+
+### 3-Step Setup with Free Twilio Sandbox:
+1. **Expose your local server to the internet using ngrok:**
+   ```bash
+   ngrok http 8000
+   ```
+   *(Copy your public https URL, e.g., `https://xxxx-xx.ngrok-free.app`)*
+
+2. **Configure Twilio WhatsApp Sandbox:**
+   - Log into your free [Twilio Console](https://console.twilio.com/) ➔ Messaging ➔ Try it out ➔ Send a WhatsApp Message.
+   - Under **Sandbox Settings**, set **"When a message comes in"** to:
+     `https://xxxx-xx.ngrok-free.app/api/whatsapp/webhook` (HTTP POST).
+
+3. **Message LankaAgent from your Phone:**
+   - Send the sandbox join code from your personal WhatsApp.
+   - Message any travel query (e.g. *"I am in Kandy going to Ella, is 9000 LKR fair for a tuk-tuk?"*).
+   - LankaAgent's LangGraph system will process the inquiry and message you back directly with fair fare calculations, disruption alerts, and community host contacts!
+
+---
+
 ## 📄 How to Put This on Your CV / Resume
 
 ### **Project Title:**

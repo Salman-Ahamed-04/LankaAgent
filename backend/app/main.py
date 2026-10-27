@@ -1,7 +1,7 @@
 import os
 import sys
 from typing import Optional
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -74,6 +74,70 @@ def nodes_endpoint():
 @app.get("/api/hosts")
 def hosts_endpoint(location: str = "ella"):
     return match_and_dispatch_local_hosts(location)
+
+# ==========================================
+# WhatsApp Webhook Integration
+# ==========================================
+@app.post("/api/whatsapp/webhook")
+async def whatsapp_webhook(request: Request):
+    """
+    Receives incoming WhatsApp messages from Twilio or Meta WhatsApp Cloud API,
+    runs the LangGraph multi-agent pipeline, and responds directly back on WhatsApp.
+    """
+    incoming_text = ""
+    sender_phone = ""
+
+    # 1. Try reading form data (Twilio WhatsApp)
+    try:
+        form_data = await request.form()
+        incoming_text = form_data.get("Body", "")
+        sender_phone = form_data.get("From", "")
+    except Exception:
+        pass
+
+    # 2. Try reading JSON payload (Meta WhatsApp Cloud API)
+    if not incoming_text:
+        try:
+            body_json = await request.json()
+            entry = body_json.get("entry", [{}])[0]
+            changes = entry.get("changes", [{}])[0]
+            value = changes.get("value", {})
+            messages = value.get("messages", [{}])
+            if messages:
+                incoming_text = messages[0].get("text", {}).get("body", "")
+                sender_phone = messages[0].get("from", "")
+        except Exception:
+            pass
+
+    if not incoming_text:
+        incoming_text = "Hello! What can you help me with in Sri Lanka?"
+
+    # Execute LangGraph Multi-Agent System
+    state = run_agent(incoming_text)
+    raw_response = state.get("final_response", "")
+
+    # Format cleanly for WhatsApp markdown
+    wa_response = (
+        raw_response
+        .replace("### ", "🌴 ")
+        .replace("## ", "")
+        .replace("**", "*") # WhatsApp uses single asterisks for bold
+    )
+
+    # Return Twilio TwiML XML
+    twiml_reply = f"""<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Message>{wa_response}</Message>
+</Response>"""
+    return Response(content=twiml_reply, media_type="application/xml")
+
+@app.get("/api/whatsapp/webhook")
+def verify_whatsapp_meta_webhook(request: Request):
+    """Handles verification challenge for Meta WhatsApp Cloud API webhook."""
+    challenge = request.query_params.get("hub.challenge")
+    if challenge:
+        return Response(content=challenge, media_type="text/plain")
+    return {"status": "LankaAgent WhatsApp Webhook Ready", "service": "Twilio & Meta Cloud API"}
 
 # Mount frontend directory
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "frontend")
