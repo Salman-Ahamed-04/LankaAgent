@@ -88,6 +88,3 @@ run.bat
 Then visit: **`http://127.0.0.1:8000`** in your browser.
 
 ---
-
-* *Integrated a trilingual (Sinhala/Tamil/English) direct-dispatch bridge empowering rural homestays and community cooperatives to receive verified bookings with zero platform commissions.*
-* *Built a real-time reactive web dashboard showcasing live agent thought traces, tool execution graphs, and audio speech synthesis.*
