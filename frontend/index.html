@@ -291,128 +291,327 @@
     </section>
 
     <!-- ========================================================================
-         4. DISCOVER LOCAL EXPERIENCES (Micro-Economy Distribution)
+         4. DISCOVER LOCAL EXPERIENCES (Authentic Cultural Immersion & Micro-Economy)
          ======================================================================== -->
     <section id="experiences" class="experiences-section">
       <div class="section-container">
         
         <div class="section-header-row">
           <div>
-            <span class="section-kicker">COMMUNITY MARKETPLACE</span>
-            <h2 class="section-title">Discover Local Experiences</h2>
-            <p class="section-desc">Direct economic distribution supporting village homestays, licensed local guides, and transport cooperatives with 0% corporate commission.</p>
+            <div class="dashboard-kicker-row">
+              <span class="section-kicker">COMMUNITY MICRO-ECONOMY</span>
+              <span class="ai-badge">0% Corporate Extraction</span>
+            </div>
+            <h2 class="section-title">Discover Authentic Local Experiences</h2>
+            <p class="section-desc">Experience Sri Lanka through multi-generational village families, certified wilderness trackers, culinary matriarchs, and master handicraft guilds.</p>
           </div>
-          <div class="commission-guarantee-pill">
+          <div class="commission-guarantee-pill" title="SmartLanka passes 100% of booking value directly to local hosts">
             <span class="pill-check">✓</span>
-            <span>100% Direct Local Remittance</span>
+            <span>100% Direct Remittance to Local Families</span>
           </div>
         </div>
 
-        <div class="experiences-grid">
+        <!-- Category Filter Tabs Bar -->
+        <div class="exp-category-tabs" id="expCategoryTabs">
+          <button type="button" class="exp-cat-tab active" data-category="all">
+            <span>🌿 All Experiences (6)</span>
+          </button>
+          <button type="button" class="exp-cat-tab" data-category="homestay">
+            <span>🏡 Village Homestays</span>
+          </button>
+          <button type="button" class="exp-cat-tab" data-category="cooking">
+            <span>🍲 Local Cooking Experiences</span>
+          </button>
+          <button type="button" class="exp-cat-tab" data-category="guide">
+            <span>🧭 Licensed Local Guides</span>
+          </button>
+          <button type="button" class="exp-cat-tab" data-category="wildlife">
+            <span>🐘 Wildlife Experiences</span>
+          </button>
+          <button type="button" class="exp-cat-tab" data-category="artisan">
+            <span>🏺 Handicraft Artisans</span>
+          </button>
+        </div>
+
+        <!-- Experiences Editorial Grid -->
+        <div class="experiences-grid" id="experiencesGrid">
           
-          <!-- Experience 1: Homestay -->
-          <div class="experience-card">
+          <!-- Experience 1: Village Homestay (Ella Mist) -->
+          <article class="experience-card" data-category="homestay">
             <div class="exp-image-wrap">
               <img src="/assets/srilanka_nature_bg.jpg" alt="Ella Mist Organic Farmstead" class="exp-photo" />
-              <span class="exp-category-pill">Village Homestay</span>
-              <span class="exp-verify-badge">Verified Host</span>
+              <div class="exp-floating-badges">
+                <span class="exp-category-pill">Village Homestay</span>
+                <span class="exp-verify-badge">✓ SLTDA Registered #EH-842</span>
+              </div>
             </div>
             <div class="exp-info">
-              <div class="exp-location-rate">
-                <span class="exp-location">📍 Ella (Passara Road)</span>
-                <span class="exp-price">LKR 6,500 <small>/ night (~$21)</small></span>
+              <!-- Host Identity Bar -->
+              <div class="exp-host-header">
+                <div class="host-avatar-badge">NB</div>
+                <div class="host-title-col">
+                  <span class="host-name-label">Nimal & Sunethra Bandara</span>
+                  <span class="host-sub-label">3rd-Gen Tea Smallholders & Foresters</span>
+                </div>
+                <span class="exp-avail-pill avail-today">🟢 Available Today</span>
               </div>
-              <h3 class="exp-heading">Ella Mist Organic Farmstead & Homestay</h3>
-              <p class="exp-bio">Peaceful family home perched above tea gardens with home-cooked traditional meals and mountain vistas.</p>
-              <ul class="exp-amenities">
-                <li>• Authentic wood-fire clay pot dinner (Rice & 6 curries)</li>
-                <li>• Clean private room overlooking panoramic tea valleys</li>
-                <li>• Free pickup from Ella railway station</li>
-              </ul>
+
+              <h3 class="exp-heading">Ella Mist Organic Farmstead & Mountain Homestay</h3>
+              
+              <div class="exp-location-tag">
+                <span>📍 Ella • Passara Mountain Ridge • Central Highlands</span>
+              </div>
+
+              <p class="exp-bio">Perched on an organic Ceylon tea ridge above Ella Gap. Wake up to highland birdsong, misty valley sunrises, and authentic wood-fire hospitality.</p>
+              
+              <div class="exp-highlights-box">
+                <div class="hl-title">What Makes This Authentic:</div>
+                <ul class="exp-amenities">
+                  <li>• Evening clay-pot dinner: Heirloom red rice, pol sambol & 6 garden vegetable curries</li>
+                  <li>• Private pine-timber balcony overlooking panoramic Ella tea valleys</li>
+                  <li>• Free Tuk-Tuk pickup from Ella Railway Station & guided tea garden morning trek</li>
+                </ul>
+              </div>
+
               <div class="exp-footer-row">
-                <span class="exp-host-name">Host: Nimal & Sunethra Bandara</span>
+                <div class="exp-pricing-col">
+                  <div class="exp-price">LKR 6,500 <small>/ night (~$21 USD)</small></div>
+                  <span class="exp-remit-note">100% Direct Remittance • 0 LKR Booking Fee</span>
+                </div>
                 <button type="button" class="btn-reserve" onclick="openBookingModal('Ella Mist Organic Farmstead', 'Ella', 6500, 'Nimal & Sunethra Bandara')">Reserve Direct</button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Experience 2: Eco Cottage & River Bath -->
-          <div class="experience-card">
+          <!-- Experience 2: Village Homestay (Belihuloya Riverstone) -->
+          <article class="experience-card" data-category="homestay">
             <div class="exp-image-wrap">
               <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Belihuloya Riverstone Retreat" class="exp-photo" />
-              <span class="exp-category-pill">Eco Cottage</span>
-              <span class="exp-verify-badge">Verified Host</span>
+              <div class="exp-floating-badges">
+                <span class="exp-category-pill">Village Homestay</span>
+                <span class="exp-verify-badge">✓ Certified Eco Guild #SB-109</span>
+              </div>
             </div>
             <div class="exp-info">
-              <div class="exp-location-rate">
-                <span class="exp-location">📍 Belihuloya Riverbank</span>
-                <span class="exp-price">LKR 5,800 <small>/ night (~$19)</small></span>
+              <div class="exp-host-header">
+                <div class="host-avatar-badge">UW</div>
+                <div class="host-title-col">
+                  <span class="host-name-label">Upali Wijesinghe & Family</span>
+                  <span class="host-sub-label">Lifelong River Conservationist & Naturalist</span>
+                </div>
+                <span class="exp-avail-pill avail-open">🟢 3 Chalets Open</span>
               </div>
-              <h3 class="exp-heading">Belihuloya Riverstone Eco Retreat</h3>
-              <p class="exp-bio">Riverside eco-retreat nestled on natural mountain stream with waterfall trek guides and pure kithul tasting.</p>
-              <ul class="exp-amenities">
-                <li>• Natural river bathing pool in private garden</li>
-                <li>• Guided hike to Pahanthudawa hidden waterfall</li>
-                <li>• Fresh kithul treacle & buffalo curd tasting</li>
-              </ul>
+
+              <h3 class="exp-heading">Belihuloya Riverstone Natural Eco Cottage</h3>
+              
+              <div class="exp-location-tag">
+                <span>📍 Belihuloya • Mountain Riverbank Sanctuary • Sabaragamuwa</span>
+              </div>
+
+              <p class="exp-bio">Riverside natural stone cottage built on crystal mountain streams flowing from Horton Plains, surrounded by ancestral kithul palms.</p>
+              
+              <div class="exp-highlights-box">
+                <div class="hl-title">What Makes This Authentic:</div>
+                <ul class="exp-amenities">
+                  <li>• Natural river pebble bathing pool right in private cottage garden</li>
+                  <li>• Guided morning hike to hidden Pahanthudawa cascade and rock pools</li>
+                  <li>• Freshly tapped sweet kithul treacle & buffalo curd tasting session</li>
+                </ul>
+              </div>
+
               <div class="exp-footer-row">
-                <span class="exp-host-name">Host: Upali Wijesinghe</span>
+                <div class="exp-pricing-col">
+                  <div class="exp-price">LKR 5,800 <small>/ night (~$18.70 USD)</small></div>
+                  <span class="exp-remit-note">100% Direct Remittance • 0 LKR Booking Fee</span>
+                </div>
                 <button type="button" class="btn-reserve" onclick="openBookingModal('Belihuloya Riverstone Retreat', 'Belihuloya', 5800, 'Upali Wijesinghe')">Reserve Direct</button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Experience 3: Tuk-Tuk Co-op -->
-          <div class="experience-card">
+          <!-- Experience 3: Local Cooking Experience (Grandma Manel) -->
+          <article class="experience-card" data-category="cooking">
             <div class="exp-image-wrap">
-              <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Sigiriya Tuk-Tuk Drivers" class="exp-photo" />
-              <span class="exp-category-pill">Transport Cooperative</span>
-              <span class="exp-verify-badge">Official Co-op</span>
+              <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Sri Lankan Clay Pot Cooking Class" class="exp-photo" />
+              <div class="exp-floating-badges">
+                <span class="exp-category-pill">Local Cooking Experiences</span>
+                <span class="exp-verify-badge">✓ Certified Culinary Host #CT-304</span>
+              </div>
             </div>
             <div class="exp-info">
-              <div class="exp-location-rate">
-                <span class="exp-location">📍 Sigiriya & Dambulla</span>
-                <span class="exp-price">LKR 115 <small>/ km (Fixed Meter)</small></span>
+              <div class="exp-host-header">
+                <div class="host-avatar-badge">MD</div>
+                <div class="host-title-col">
+                  <span class="host-name-label">Grandma Manel Dissanayake</span>
+                  <span class="host-sub-label">Heritage Culinary Matriarch (42 Yrs Village Cooking)</span>
+                </div>
+                <span class="exp-avail-pill avail-tomorrow">🟢 Tomorrow 09:30 AM</span>
               </div>
-              <h3 class="exp-heading">Sigiriya Green Tuk-Tuk Drivers Association</h3>
-              <p class="exp-bio">Official registered tuk-tuk cooperative providing transparent meter rates and local wilderness insights.</p>
-              <ul class="exp-amenities">
-                <li>• Official metered cooperative pricing (zero tourist markup)</li>
-                <li>• Sunrise Pidurangala Rock transfer with headlamps provided</li>
-                <li>• Secret elephant corridor observation spots</li>
-              </ul>
+
+              <h3 class="exp-heading">Wood-Fired Clay Pot Curry & Coconut Roti Masterclass</h3>
+              
+              <div class="exp-location-tag">
+                <span>📍 Habarana Village • Ancient Royal Tank Border • Cultural Triangle</span>
+              </div>
+
+              <p class="exp-bio">Step into Grandma Manel's traditional open-air mud hearth kitchen for an unforgettable hands-on spice and culinary masterclass.</p>
+              
+              <div class="exp-highlights-box">
+                <div class="hl-title">What Makes This Authentic:</div>
+                <ul class="exp-amenities">
+                  <li>• Handpick fresh curry leaves, lemongrass, and green chilis from the organic home garden</li>
+                  <li>• Scrape whole coconuts on ancestral <em>hiramanaya</em> and grind roasted spices on granite <em>miris gala</em></li>
+                  <li>• Cook 6 classic dishes in seasoned clay pots over coffee-wood fires and feast on fresh lotus leaves</li>
+                </ul>
+              </div>
+
               <div class="exp-footer-row">
-                <span class="exp-host-name">Co-op Lead: Dinesh Priyashantha</span>
-                <button type="button" class="btn-reserve" onclick="openBookingModal('Sigiriya Driver Co-op', 'Sigiriya', 115, 'Dinesh Priyashantha')">Book Meter</button>
+                <div class="exp-pricing-col">
+                  <div class="exp-price">LKR 4,200 <small>/ guest (~$13.50 USD)</small></div>
+                  <span class="exp-remit-note">Includes 6-dish feast, heirloom spices & recipe scroll</span>
+                </div>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Grandma Manel Cooking Class', 'Habarana', 4200, 'Grandma Manel Dissanayake')">Book Masterclass</button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Experience 4: Traditional Village Guide -->
-          <div class="experience-card">
+          <!-- Experience 4: Licensed Local Guide (Elder Wasantha) -->
+          <article class="experience-card" data-category="guide">
             <div class="exp-image-wrap">
-              <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80" alt="Meemure Traditional Village Guide" class="exp-photo" />
-              <span class="exp-category-pill">Licensed Village Guide</span>
-              <span class="exp-verify-badge">Lifelong Elder</span>
+              <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80" alt="Meemure Knuckles Mountain Expedition" class="exp-photo" />
+              <div class="exp-floating-badges">
+                <span class="exp-category-pill">Licensed Local Guides</span>
+                <span class="exp-verify-badge">✓ Licensed Tracker (SLTDA #LT-882)</span>
+              </div>
             </div>
             <div class="exp-info">
-              <div class="exp-location-rate">
-                <span class="exp-location">📍 Meemure (Knuckles Range)</span>
-                <span class="exp-price">LKR 7,500 <small>/ day (~$24)</small></span>
+              <div class="exp-host-header">
+                <div class="host-avatar-badge">WK</div>
+                <div class="host-title-col">
+                  <span class="host-name-label">Elder Wasantha Kumara</span>
+                  <span class="host-sub-label">Knuckles Range Master Tracker & Village Head</span>
+                </div>
+                <span class="exp-avail-pill avail-limited">🟡 2 Spots Left (Sat)</span>
               </div>
-              <h3 class="exp-heading">Meemure Traditional Village Experience</h3>
-              <p class="exp-bio">Authentic Knuckles biodiversity expedition with lifelong village elder and wilderness tracker.</p>
-              <ul class="exp-amenities">
-                <li>• Guided trek to base of sacred Lakegala Rock</li>
-                <li>• Stream crossing and traditional paddy field harvest</li>
-                <li>• Authentic village lunch served on fresh lotus leaves</li>
-              </ul>
+
+              <h3 class="exp-heading">Sacred Lakegala Wilderness Trek with Lifelong Village Elder</h3>
+              
+              <div class="exp-location-tag">
+                <span>📍 Meemure Valley • UNESCO Knuckles Wilderness Sanctuary</span>
+              </div>
+
+              <p class="exp-bio">Explore Sri Lanka's most isolated mountain valley led by a lifelong tracker who knows every endemic orchid, hidden cave, and ancient trail.</p>
+              
+              <div class="exp-highlights-box">
+                <div class="hl-title">What Makes This Authentic:</div>
+                <ul class="exp-amenities">
+                  <li>• Intimate small group navigation (max 6 guests) to the foot of King Ravana's sacred Lakegala Rock</li>
+                  <li>• Identification of rare endemic pygmy lizards, purple-faced langurs, and medicinal mountain plants</li>
+                  <li>• Authentic village harvest lunch served on fresh plantain leaves beside an unpolluted mountain stream</li>
+                </ul>
+              </div>
+
               <div class="exp-footer-row">
-                <span class="exp-host-name">Guide: Wasantha Kumara</span>
-                <button type="button" class="btn-reserve" onclick="openBookingModal('Meemure Traditional Guide', 'Meemure', 7500, 'Wasantha Kumara')">Reserve Direct</button>
+                <div class="exp-pricing-col">
+                  <div class="exp-price">LKR 7,500 <small>/ day (~$24 USD)</small></div>
+                  <span class="exp-remit-note">100% Direct to Guide • Includes Conservation Permit</span>
+                </div>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Meemure Sacred Lakegala Trek', 'Meemure', 7500, 'Elder Wasantha Kumara')">Reserve Guide</button>
               </div>
             </div>
-          </div>
+          </article>
+
+          <!-- Experience 5: Wildlife Experience (Ethical Elephant & Leopard Safari) -->
+          <article class="experience-card" data-category="wildlife">
+            <div class="exp-image-wrap">
+              <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80" alt="Yala Wild Elephant Corridor" class="exp-photo" />
+              <div class="exp-floating-badges">
+                <span class="exp-category-pill">Wildlife Experiences</span>
+                <span class="exp-verify-badge">✓ Dept. of Wildlife Conservation #DWLC-742</span>
+              </div>
+            </div>
+            <div class="exp-info">
+              <div class="exp-host-header">
+                <div class="host-avatar-badge">JS</div>
+                <div class="host-title-col">
+                  <span class="host-name-label">Janaka Senanayake & Co-op</span>
+                  <span class="host-sub-label">Certified Wildlife Ethologist & Ex-Park Warden</span>
+                </div>
+                <span class="exp-avail-pill avail-open">🟢 Daily Departures</span>
+              </div>
+
+              <h3 class="exp-heading">Yala Bufferland Wild Elephant Corridor & Leopard Ethology Safari</h3>
+              
+              <div class="exp-location-tag">
+                <span>📍 Tissamaharama • Yala National Park Buffer Zone • Southern Sanctuary</span>
+              </div>
+
+              <p class="exp-bio">A strictly ethical, low-impact wildlife tracking safari conducted away from noisy tourist jeep jams, focusing on natural animal behavior.</p>
+              
+              <div class="exp-highlights-box">
+                <div class="hl-title">What Makes This Authentic:</div>
+                <ul class="exp-amenities">
+                  <li>• Observation of wild matriarch elephant family herds along ancient undisturbed water reservoir corridors</li>
+                  <li>• High-powered Carl Zeiss binoculars and bird identification guides provided for every passenger</li>
+                  <li>• Silent electric auxiliary vehicle stops allowing natural leopard and sloth bear vocalizations to be heard</li>
+                </ul>
+              </div>
+
+              <div class="exp-footer-row">
+                <div class="exp-pricing-col">
+                  <div class="exp-price">LKR 11,500 <small>/ party (~$37 USD)</small></div>
+                  <span class="exp-remit-note">Covers up to 5 guests • Custom 4x4 Jeep included</span>
+                </div>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Yala Ethical Wildlife Safari', 'Tissamaharama', 11500, 'Janaka Senanayake')">Book Safari Party</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Experience 6: Handicraft Artisans (Sunil's Mask & Weaving Guild) -->
+          <article class="experience-card" data-category="artisan">
+            <div class="exp-image-wrap">
+              <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Traditional Mask Carving and Weaving" class="exp-photo" />
+              <div class="exp-floating-badges">
+                <span class="exp-category-pill">Handicraft Artisans</span>
+                <span class="exp-verify-badge">✓ National Crafts Council Guild #NCC-19</span>
+              </div>
+            </div>
+            <div class="exp-info">
+              <div class="exp-host-header">
+                <div class="host-avatar-badge">SG</div>
+                <div class="host-title-col">
+                  <span class="host-name-label">Master Sunil Gunaratne</span>
+                  <span class="host-sub-label">4th-Generation Royal Craftsman & Guild Master</span>
+                </div>
+                <span class="exp-avail-pill avail-open">🟢 Daily Walk-ins & Classes</span>
+              </div>
+
+              <h3 class="exp-heading">Master Sunil's Dumbara Weaving & Sacred Kaduru Wood Mask Guild</h3>
+              
+              <div class="exp-location-tag">
+                <span>📍 Ambalangoda & Kandy • Traditional Artisan Guild Workshop</span>
+              </div>
+
+              <p class="exp-bio">Preserve ancient living heritage. Learn traditional chisel carving and vegetable-dye painting directly from master craftsmen.</p>
+              
+              <div class="exp-highlights-box">
+                <div class="hl-title">What Makes This Authentic:</div>
+                <ul class="exp-amenities">
+                  <li>• Hands-on chisel sculpting of a traditional <em>Maha Kola Sanni</em> or <em>Gurulu</em> mask from sacred Kaduru wood</li>
+                  <li>• Extracting natural organic mineral and tree-bark dyes (gamboge yellow, coral lime, lampblack)</li>
+                  <li>• Weave geometric UNESCO-nominated Dumbara rush reed patterns on ancestral pit looms to keep as your personal souvenir</li>
+                </ul>
+              </div>
+
+              <div class="exp-footer-row">
+                <div class="exp-pricing-col">
+                  <div class="exp-price">LKR 3,800 <small>/ guest (~$12 USD)</small></div>
+                  <span class="exp-remit-note">Includes wood block, tool kit & hand-carved mask to keep</span>
+                </div>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Traditional Mask Guild Workshop', 'Ambalangoda', 3800, 'Master Sunil Gunaratne')">Join Workshop</button>
+              </div>
+            </div>
+          </article>
 
         </div>
       </div>

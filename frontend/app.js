@@ -244,6 +244,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Local Experiences Category Filter Tabs
+  const expCatTabs = document.querySelectorAll('.exp-cat-tab');
+  const expCards = document.querySelectorAll('.experience-card');
+
+  expCatTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const selectedCat = tab.dataset.category;
+
+      expCatTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      expCards.forEach(card => {
+        if (selectedCat === 'all' || card.dataset.category === selectedCat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
   // Main Chat Form Submit
   if (chatForm && chatInput) {
     chatForm.addEventListener('submit', (e) => {
