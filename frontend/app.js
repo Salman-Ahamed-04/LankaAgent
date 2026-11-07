@@ -62,11 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroSearchBtn = document.getElementById('heroSearchBtn');
   if (heroSearchBtn) {
     heroSearchBtn.addEventListener('click', () => {
-      const origin = document.getElementById('searchOrigin')?.value.trim() || 'Colombo';
       const dest = document.getElementById('searchDest')?.value.trim() || 'Ella';
-      const vehicle = document.getElementById('searchVehicle')?.value || 'tuk_tuk';
+      const dates = document.getElementById('searchDates')?.value.trim() || 'Flexible';
 
-      const prompt = `I am planning to travel from ${origin} to ${dest} by ${vehicle.replace('_', ' ')}. Can you calculate the official fair meter fare, check any rail or road disruptions, and recommend authentic local homestays?`;
+      const prompt = `I am planning to explore ${dest} (Travel dates: ${dates}). Can you recommend an optimal itinerary, calculate official fair transport fares from Colombo, check any active disruptions, and recommend authentic verified local homestays?`;
       
       const assistantSection = document.getElementById('ai-assistant');
       if (assistantSection) {

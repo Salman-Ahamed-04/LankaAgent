@@ -7,66 +7,69 @@
   <meta name="description" content="Premium international travel technology platform for Sri Lanka. Intelligent AI travel concierge, official anti-gouging fare calculation, live rail disruption rerouting, and direct rural community homestays.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
-  <!-- Editorial & SAAS Typography (Manrope & Inter) -->
+  <!-- Editorial Typography: Manrope (Headings) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Primary Stylesheet -->
+  <link rel="stylesheet" href="/styles.css?v=5.0">
 </head>
 <body>
 
-  <!-- Top Global Navigation Bar -->
+  <!-- ========================================================================
+       1. GLOBAL NAVIGATION BAR (Clean, Ivory & Forest Green)
+       ======================================================================== -->
   <header class="app-header">
     <div class="nav-container">
-      <div class="brand-container">
-        <a href="#home" class="brand-link">
-          <div class="brand-logo-mark">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="32" height="32" rx="8" fill="#174D3A"/>
-              <path d="M16 6L23 16L16 26L9 16L16 6Z" fill="#DDE9DF" fill-opacity="0.3" stroke="#DDE9DF" stroke-width="1.8" stroke-linejoin="round"/>
-              <circle cx="16" cy="16" r="3" fill="#C69B52"/>
-            </svg>
-          </div>
-          <div class="brand-text">
-            <span class="brand-name">SmartLanka</span>
-            <span class="brand-subtitle">Tourism Intelligence</span>
-          </div>
-        </a>
-      </div>
+      
+      <!-- Brand Identity -->
+      <a href="#home" class="brand-link">
+        <div class="brand-logo-mark">
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#174D3A"/>
+            <path d="M16 6L23 16L16 26L9 16L16 6Z" fill="#E6EFE8" stroke="#E6EFE8" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="16" cy="16" r="3.2" fill="#C69B52"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">SmartLanka</span>
+          <span class="brand-subtitle">Travel Intelligence</span>
+        </div>
+      </a>
 
-      <!-- Main Navigation Menu -->
+      <!-- Center Navigation Links -->
       <nav class="main-nav">
         <a href="#home" class="nav-link active">Home</a>
         <a href="#destinations" class="nav-link">Destinations</a>
-        <a href="#experiences" class="nav-link">Experiences</a>
+        <a href="#experiences" class="nav-link">Local Experiences</a>
         <a href="#transport" class="nav-link">Transport</a>
         <a href="#itinerary" class="nav-link">Smart Itinerary</a>
-        <a href="#ai-assistant" class="nav-link nav-highlight">
-          <span class="sparkle-dot"></span>
-          AI Assistant
-        </a>
       </nav>
 
-      <!-- Right Utility Bar -->
+      <!-- Right Utility Controls -->
       <div class="header-actions">
-        <div class="cbsl-pill" title="Central Bank of Sri Lanka Reference Rate">
+        <!-- Currency Pill -->
+        <div class="currency-pill" title="Central Bank of Sri Lanka Reference Rate">
           <span class="cur-flag">🇱🇰</span>
           <span class="cur-text">1 USD ≈ <strong>310 LKR</strong></span>
         </div>
 
-        <!-- Google Gemini API Status Button -->
-        <button class="gemini-status-btn" id="geminiBtn" type="button" title="Configure Google Gemini API Key">
+        <!-- Google Gemini Status Pill -->
+        <button class="gemini-status-btn" id="geminiBtn" type="button" title="Configure Google Gemini API Connection">
           <span class="sparkle-icon">✨</span>
           <span id="geminiStatusText">Gemini Active</span>
         </button>
 
-        <a href="#ai-assistant" class="btn-primary-header">Plan with AI</a>
-        
-        <!-- Mobile Menu Toggle -->
-        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <!-- Primary AI Assistant Button -->
+        <a href="#ai-assistant" class="btn-primary-header">AI Assistant</a>
+
+        <!-- Mobile Navigation Toggle -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Open Navigation Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
+
     </div>
   </header>
 
@@ -78,153 +81,457 @@
       <a href="#experiences" class="mobile-link">Local Experiences</a>
       <a href="#transport" class="mobile-link">Transport & Fares</a>
       <a href="#itinerary" class="mobile-link">Smart Itinerary</a>
-      <a href="#ai-assistant" class="mobile-link highlight">AI Travel Concierge</a>
+      <a href="#ai-assistant" class="mobile-link highlight">AI Assistant Concierge</a>
     </nav>
   </div>
 
   <main>
-    <!-- SECTION 1: Editorial Hero Landing -->
+    <!-- ========================================================================
+         2. EDITORIAL HERO SECTION (Balanced Proportions & Whitespace)
+         ======================================================================== -->
     <section id="home" class="hero-section">
-      <div class="hero-backdrop">
-        <img src="/assets/srilanka_nature_bg.jpg" alt="Misty Sri Lanka Tea Hills" class="hero-img" />
-        <div class="hero-overlay"></div>
+      <div class="hero-container">
+        
+        <!-- Left Column: Editorial Headlines & Search -->
+        <div class="hero-text-col">
+          <span class="hero-label">DISCOVER SRI LANKA</span>
+          <h1 class="hero-title">Your journey through Sri Lanka starts here.</h1>
+          <p class="hero-description">
+            Discover breathtaking destinations, authentic local experiences and smarter ways to explore the island.
+          </p>
+
+          <!-- Clean Destination Search Component -->
+          <div class="hero-search-card">
+            <div class="search-input-group">
+              <label for="searchDest">Where do you want to go?</label>
+              <input type="text" id="searchDest" placeholder="e.g. Ella, Kandy, Sigiriya, Galle..." value="Ella" />
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-input-group">
+              <label for="searchDates">Travel dates</label>
+              <input type="text" id="searchDates" placeholder="e.g. This week, Flexible" value="Flexible" />
+            </div>
+            <button type="button" id="heroSearchBtn" class="btn-search-explore">
+              <span>Explore</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions-row">
+            <a href="#ai-assistant" class="btn-hero-primary">Plan Your Journey</a>
+            <a href="#destinations" class="btn-hero-secondary">Explore Destinations</a>
+          </div>
+        </div>
+
+        <!-- Right Column: Curated Photography Card -->
+        <div class="hero-image-col">
+          <div class="hero-photo-card">
+            <img src="/assets/srilanka_nature_bg.jpg" alt="Scenic Sri Lankan Mountain Landscape" class="hero-editorial-img" />
+            <div class="photo-caption-bar">
+              <span class="caption-icon">📍</span>
+              <span class="caption-text">Central Highlands & Tea Estates • Sri Lanka</span>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          <span>Autonomous Tourism Concierge & Micro-Economy Disperser</span>
-        </div>
-        <h1 class="hero-title">Discover Sri Lanka.<br><span class="hero-title-accent">Travel Smarter.</span></h1>
-        <p class="hero-description">
-          Explore extraordinary destinations, discover authentic local experiences and plan your journey with intelligent travel assistance.
-        </p>
-
-        <!-- Premium Search Bar -->
-        <div class="travel-search-bar">
-          <div class="search-field">
-            <span class="field-icon">📍</span>
-            <div class="field-content">
-              <label for="searchOrigin">From (Origin)</label>
-              <input type="text" id="searchOrigin" placeholder="e.g. Colombo, Airport" value="Colombo" />
-            </div>
-          </div>
-          <div class="search-divider"></div>
-          <div class="search-field">
-            <span class="field-icon">🎯</span>
-            <div class="field-content">
-              <label for="searchDest">Destination</label>
-              <input type="text" id="searchDest" placeholder="e.g. Ella, Kandy, Sigiriya" value="Ella" />
-            </div>
-          </div>
-          <div class="search-divider"></div>
-          <div class="search-field">
-            <span class="field-icon">🛺</span>
-            <div class="field-content">
-              <label for="searchVehicle">Travel Mode</label>
-              <select id="searchVehicle">
-                <option value="tuk_tuk">Tuk-Tuk (Cooperative)</option>
-                <option value="sedan">Private Sedan / Taxi</option>
-                <option value="van">Hill-Country Van</option>
-                <option value="train">Scenic Main Line Train</option>
-              </select>
-            </div>
-          </div>
-          <button type="button" id="heroSearchBtn" class="search-action-btn">
-            <span>Explore & Calculate</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
+    <!-- ========================================================================
+         3. POPULAR DESTINATIONS (Editorial Grid Layout)
+         ======================================================================== -->
+    <section id="destinations" class="destinations-section">
+      <div class="section-container">
+        <div class="section-header-center">
+          <span class="section-kicker">CURATED REGIONS</span>
+          <h2 class="section-title">Popular Destinations</h2>
+          <p class="section-desc">From misty UNESCO mountain tea plantations to 5th-century ancient rock citadels and historic colonial fortresses.</p>
         </div>
 
-        <!-- Quick CTAs -->
-        <div class="hero-cta-row">
-          <a href="#destinations" class="btn-secondary-hero">Explore Destinations</a>
-          <a href="#ai-assistant" class="btn-text-hero">
-            <span class="pulse-sparkle">✨</span>
-            <span>Launch AI Travel Assistant</span>
-          </a>
+        <div class="destinations-editorial-grid">
+          
+          <!-- Destination 1: Ella -->
+          <article class="dest-card dest-card-featured">
+            <div class="dest-media">
+              <img src="/assets/srilanka_nature_bg.jpg" alt="Ella Tea Country" class="dest-img" />
+              <span class="dest-region-tag">Highlands</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-title-row">
+                <div>
+                  <h3 class="dest-name">Ella</h3>
+                  <span class="dest-province">Badulla District • Central Highlands</span>
+                </div>
+                <span class="dest-season">Best: Jan – May</span>
+              </div>
+              <p class="dest-summary">A tranquil mountain sanctuary famous for the Nine Arches Railway Bridge, Little Adam's Peak trails, and panoramic tea garden vistas.</p>
+              <div class="dest-card-footer">
+                <span class="dest-perk">Scenic Train • Waterfalls • Tea Treks</span>
+                <button type="button" class="btn-card-link" onclick="triggerDestinationPlan('Ella')">Plan with AI ➔</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Destination 2: Sigiriya -->
+          <article class="dest-card">
+            <div class="dest-media">
+              <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Sigiriya Lion Rock" class="dest-img" />
+              <span class="dest-region-tag">UNESCO Citadel</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-title-row">
+                <div>
+                  <h3 class="dest-name">Sigiriya</h3>
+                  <span class="dest-province">Cultural Triangle</span>
+                </div>
+                <span class="dest-season">Best: May – Sep</span>
+              </div>
+              <p class="dest-summary">The ancient 5th-century palace fortress of King Kashyapa rising 200 meters above royal water gardens and wild elephant corridors.</p>
+              <div class="dest-card-footer">
+                <span class="dest-perk">Lion Rock • Pidurangala</span>
+                <button type="button" class="btn-card-link" onclick="triggerDestinationPlan('Sigiriya')">Plan ➔</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Destination 3: Kandy -->
+          <article class="dest-card">
+            <div class="dest-media">
+              <img src="https://images.unsplash.com/photo-1588598198321-9735fd524498?auto=format&fit=crop&w=800&q=80" alt="Temple of the Tooth, Kandy" class="dest-img" />
+              <span class="dest-region-tag">Sacred Capital</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-title-row">
+                <div>
+                  <h3 class="dest-name">Kandy</h3>
+                  <span class="dest-province">Central Province</span>
+                </div>
+                <span class="dest-season">Best: Dec – Apr</span>
+              </div>
+              <p class="dest-summary">The sacred royal hill capital housing the Temple of the Sacred Tooth Relic, serene Kandy Lake, and Royal Botanical Gardens Peradeniya.</p>
+              <div class="dest-card-footer">
+                <span class="dest-perk">Temple of Tooth • Peradeniya</span>
+                <button type="button" class="btn-card-link" onclick="triggerDestinationPlan('Kandy')">Plan ➔</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Destination 4: Galle -->
+          <article class="dest-card">
+            <div class="dest-media">
+              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="Galle Fort Lighthouse" class="dest-img" />
+              <span class="dest-region-tag">Colonial Fortress</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-title-row">
+                <div>
+                  <h3 class="dest-name">Galle</h3>
+                  <span class="dest-province">Southern Coast</span>
+                </div>
+                <span class="dest-season">Best: Nov – Apr</span>
+              </div>
+              <p class="dest-summary">A UNESCO-listed 17th-century Dutch colonial sea fortress lined with boutique spice merchants, coastal ramparts, and maritime museums.</p>
+              <div class="dest-card-footer">
+                <span class="dest-perk">Dutch Fort • Coral Reefs</span>
+                <button type="button" class="btn-card-link" onclick="triggerDestinationPlan('Galle')">Plan ➔</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Destination 5: Yala -->
+          <article class="dest-card">
+            <div class="dest-media">
+              <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80" alt="Yala Wild Elephants" class="dest-img" />
+              <span class="dest-region-tag">Safari Sanctuary</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-title-row">
+                <div>
+                  <h3 class="dest-name">Yala</h3>
+                  <span class="dest-province">Southern Wildlife Zone</span>
+                </div>
+                <span class="dest-season">Best: Feb – Jun</span>
+              </div>
+              <p class="dest-summary">Sri Lanka's premier wildlife park boasting the world's highest leopard density alongside wild elephants, sloth bears, and coastal lagoons.</p>
+              <div class="dest-card-footer">
+                <span class="dest-perk">Leopard Safari • Wildlife</span>
+                <button type="button" class="btn-card-link" onclick="triggerDestinationPlan('Yala')">Plan ➔</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Destination 6: Nuwara Eliya -->
+          <article class="dest-card">
+            <div class="dest-media">
+              <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80" alt="Nuwara Eliya Tea Hills" class="dest-img" />
+              <span class="dest-region-tag">Highland Estates</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-title-row">
+                <div>
+                  <h3 class="dest-name">Nuwara Eliya</h3>
+                  <span class="dest-province">1,868m High Country</span>
+                </div>
+                <span class="dest-season">Best: Feb – May</span>
+              </div>
+              <p class="dest-summary">Known as "Little England", nestled among historic single-estate Ceylon tea factories, misty Gregory Lake, and Horton Plains' World's End.</p>
+              <div class="dest-card-footer">
+                <span class="dest-perk">Pedro Tea Estate • World's End</span>
+                <button type="button" class="btn-card-link" onclick="triggerDestinationPlan('Nuwara Eliya')">Plan ➔</button>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: AI Travel Assistant (Core Feature) -->
-    <section id="ai-assistant" class="assistant-section">
+    <!-- ========================================================================
+         4. DISCOVER LOCAL EXPERIENCES (Micro-Economy Distribution)
+         ======================================================================== -->
+    <section id="experiences" class="experiences-section">
       <div class="section-container">
+        
         <div class="section-header-row">
           <div>
-            <span class="section-kicker">Core Intelligence</span>
-            <h2 class="section-title">AI Travel Assistant</h2>
-            <p class="section-desc">Real-time Sri Lankan travel logistics, official anti-gouging meter verification, and contingency rerouting.</p>
+            <span class="section-kicker">COMMUNITY MARKETPLACE</span>
+            <h2 class="section-title">Discover Local Experiences</h2>
+            <p class="section-desc">Direct economic distribution supporting village homestays, licensed local guides, and transport cooperatives with 0% corporate commission.</p>
           </div>
-          <div class="assistant-status-pill">
-            <span class="status-live-beacon"></span>
-            <span>LangGraph Multi-Agent Engine • Online</span>
+          <div class="commission-guarantee-pill">
+            <span class="pill-check">✓</span>
+            <span>100% Direct Local Remittance</span>
           </div>
         </div>
 
-        <!-- 3-Column Luxury SAAS Workspace -->
+        <div class="experiences-grid">
+          
+          <!-- Experience 1: Homestay -->
+          <div class="experience-card">
+            <div class="exp-image-wrap">
+              <img src="/assets/srilanka_nature_bg.jpg" alt="Ella Mist Organic Farmstead" class="exp-photo" />
+              <span class="exp-category-pill">Village Homestay</span>
+              <span class="exp-verify-badge">Verified Host</span>
+            </div>
+            <div class="exp-info">
+              <div class="exp-location-rate">
+                <span class="exp-location">📍 Ella (Passara Road)</span>
+                <span class="exp-price">LKR 6,500 <small>/ night (~$21)</small></span>
+              </div>
+              <h3 class="exp-heading">Ella Mist Organic Farmstead & Homestay</h3>
+              <p class="exp-bio">Peaceful family home perched above tea gardens with home-cooked traditional meals and mountain vistas.</p>
+              <ul class="exp-amenities">
+                <li>• Authentic wood-fire clay pot dinner (Rice & 6 curries)</li>
+                <li>• Clean private room overlooking panoramic tea valleys</li>
+                <li>• Free pickup from Ella railway station</li>
+              </ul>
+              <div class="exp-footer-row">
+                <span class="exp-host-name">Host: Nimal & Sunethra Bandara</span>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Ella Mist Organic Farmstead', 'Ella', 6500, 'Nimal & Sunethra Bandara')">Reserve Direct</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 2: Eco Cottage & River Bath -->
+          <div class="experience-card">
+            <div class="exp-image-wrap">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Belihuloya Riverstone Retreat" class="exp-photo" />
+              <span class="exp-category-pill">Eco Cottage</span>
+              <span class="exp-verify-badge">Verified Host</span>
+            </div>
+            <div class="exp-info">
+              <div class="exp-location-rate">
+                <span class="exp-location">📍 Belihuloya Riverbank</span>
+                <span class="exp-price">LKR 5,800 <small>/ night (~$19)</small></span>
+              </div>
+              <h3 class="exp-heading">Belihuloya Riverstone Eco Retreat</h3>
+              <p class="exp-bio">Riverside eco-retreat nestled on natural mountain stream with waterfall trek guides and pure kithul tasting.</p>
+              <ul class="exp-amenities">
+                <li>• Natural river bathing pool in private garden</li>
+                <li>• Guided hike to Pahanthudawa hidden waterfall</li>
+                <li>• Fresh kithul treacle & buffalo curd tasting</li>
+              </ul>
+              <div class="exp-footer-row">
+                <span class="exp-host-name">Host: Upali Wijesinghe</span>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Belihuloya Riverstone Retreat', 'Belihuloya', 5800, 'Upali Wijesinghe')">Reserve Direct</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 3: Tuk-Tuk Co-op -->
+          <div class="experience-card">
+            <div class="exp-image-wrap">
+              <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Sigiriya Tuk-Tuk Drivers" class="exp-photo" />
+              <span class="exp-category-pill">Transport Cooperative</span>
+              <span class="exp-verify-badge">Official Co-op</span>
+            </div>
+            <div class="exp-info">
+              <div class="exp-location-rate">
+                <span class="exp-location">📍 Sigiriya & Dambulla</span>
+                <span class="exp-price">LKR 115 <small>/ km (Fixed Meter)</small></span>
+              </div>
+              <h3 class="exp-heading">Sigiriya Green Tuk-Tuk Drivers Association</h3>
+              <p class="exp-bio">Official registered tuk-tuk cooperative providing transparent meter rates and local wilderness insights.</p>
+              <ul class="exp-amenities">
+                <li>• Official metered cooperative pricing (zero tourist markup)</li>
+                <li>• Sunrise Pidurangala Rock transfer with headlamps provided</li>
+                <li>• Secret elephant corridor observation spots</li>
+              </ul>
+              <div class="exp-footer-row">
+                <span class="exp-host-name">Co-op Lead: Dinesh Priyashantha</span>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Sigiriya Driver Co-op', 'Sigiriya', 115, 'Dinesh Priyashantha')">Book Meter</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 4: Traditional Village Guide -->
+          <div class="experience-card">
+            <div class="exp-image-wrap">
+              <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80" alt="Meemure Traditional Village Guide" class="exp-photo" />
+              <span class="exp-category-pill">Licensed Village Guide</span>
+              <span class="exp-verify-badge">Lifelong Elder</span>
+            </div>
+            <div class="exp-info">
+              <div class="exp-location-rate">
+                <span class="exp-location">📍 Meemure (Knuckles Range)</span>
+                <span class="exp-price">LKR 7,500 <small>/ day (~$24)</small></span>
+              </div>
+              <h3 class="exp-heading">Meemure Traditional Village Experience</h3>
+              <p class="exp-bio">Authentic Knuckles biodiversity expedition with lifelong village elder and wilderness tracker.</p>
+              <ul class="exp-amenities">
+                <li>• Guided trek to base of sacred Lakegala Rock</li>
+                <li>• Stream crossing and traditional paddy field harvest</li>
+                <li>• Authentic village lunch served on fresh lotus leaves</li>
+              </ul>
+              <div class="exp-footer-row">
+                <span class="exp-host-name">Guide: Wasantha Kumara</span>
+                <button type="button" class="btn-reserve" onclick="openBookingModal('Meemure Traditional Guide', 'Meemure', 7500, 'Wasantha Kumara')">Reserve Direct</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. SMART TRAVEL PLANNING (AI Feature Overview)
+         ======================================================================== -->
+    <section class="features-overview-section">
+      <div class="section-container">
+        <div class="section-header-center">
+          <span class="section-kicker">AUTONOMOUS CONCIERGE</span>
+          <h2 class="section-title">Smart Travel Planning</h2>
+          <p class="section-desc">Engineered to protect international tourists from arbitrary price gouging, track real-time railway slips, and support rural Sri Lankan families.</p>
+        </div>
+
+        <div class="features-four-grid">
+          <div class="feature-card">
+            <div class="feature-icon-box">🗺️</div>
+            <h3>Dynamic Itinerary Planning</h3>
+            <p>Intelligent multi-agent synthesis crafts realistic transit timelines accounting for mountain passes, railway schedules, and local opening hours.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon-box">🌦️</div>
+            <h3>Weather-Aware Advisories</h3>
+            <p>Monitors Department of Meteorology sea swell alerts and monsoonal rainfall, proactively advising on marine whale tours and hill country hikes.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon-box">🚂</div>
+            <h3>Train & Transport Assistance</h3>
+            <p>Tracks live disruptions on the Main Line railway between Kandy, Nanu Oya, and Ella, generating verified cooperative highway transfers.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon-box">🏷️</div>
+            <h3>Fair-Fare Estimates</h3>
+            <p>Audits private driver and tuk-tuk quotes against the official Ceylon Petroleum Corporation fuel index, providing Sinhala and Tamil negotiation scripts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. CORE AI TRAVEL ASSISTANT (Dedicated Luxury Workspace)
+         ======================================================================== -->
+    <section id="ai-assistant" class="assistant-section">
+      <div class="section-container">
+        
+        <div class="section-header-row">
+          <div>
+            <span class="section-kicker">CORE INTELLIGENCE</span>
+            <h2 class="section-title">AI Travel Assistant</h2>
+            <p class="section-desc">Direct conversational interface powered by Google Gemini 3.5 and LangGraph state machine tools.</p>
+          </div>
+          <div class="engine-badge">
+            <span class="engine-beacon"></span>
+            <span>StateGraph Pipeline Online</span>
+          </div>
+        </div>
+
+        <!-- 3-Column Luxury Workspace -->
         <div class="assistant-workspace">
           
-          <!-- LEFT SIDEBAR: Conversation History & Prompts -->
+          <!-- Left Column: Prompts & History -->
           <aside class="assistant-sidebar">
             <button type="button" class="btn-new-chat" id="newChatBtn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               <span>New Consultation</span>
             </button>
 
-            <div class="sidebar-block">
-              <h4 class="sidebar-label">Suggested Travel Prompts</h4>
+            <div class="sidebar-group">
+              <h4 class="sidebar-heading">Suggested Travel Prompts</h4>
               <div class="prompt-chips-list">
-                <button class="prompt-chip" data-query="Plan a 5-day Sri Lankan adventure covering cultural heritage, tea highlands, and southern beaches.">
-                  <span class="chip-dot"></span>
+                <button type="button" class="prompt-chip" data-query="Plan a 5-day Sri Lankan adventure covering cultural heritage, tea highlands, and southern beaches.">
+                  <span class="chip-bullet"></span>
                   <span>Plan a 5-day Sri Lankan adventure</span>
                 </button>
-                <button class="prompt-chip" data-query="I am in Kandy planning to take the train to Ella tomorrow, but a tuk-tuk driver quoted 12,000 LKR. Is that a scam and are the trains running?">
-                  <span class="chip-dot"></span>
+                <button type="button" class="prompt-chip" data-query="Find the best Kandy to Ella train options tomorrow and check if there are any track landslides.">
+                  <span class="chip-bullet"></span>
                   <span>Find the best Kandy to Ella train options</span>
                 </button>
-                <button class="prompt-chip" data-query="I want to escape tourist crowds and discover authentic village experiences with organic local food.">
-                  <span class="chip-dot"></span>
+                <button type="button" class="prompt-chip" data-query="Discover authentic village experiences with organic traditional food and river baths.">
+                  <span class="chip-bullet"></span>
                   <span>Discover authentic village experiences</span>
                 </button>
-                <button class="prompt-chip" data-query="Recommend verified affordable local homestays in Belihuloya and Ella with zero middleman commissions.">
-                  <span class="chip-dot"></span>
+                <button type="button" class="prompt-chip" data-query="Find affordable local homestays in Belihuloya and Ella with zero middleman commissions.">
+                  <span class="chip-bullet"></span>
                   <span>Find affordable local homestays</span>
                 </button>
-                <button class="prompt-chip" data-query="Explore destinations and marine excursions in Mirissa and Galle based on current weather warnings.">
-                  <span class="chip-dot"></span>
+                <button type="button" class="prompt-chip" data-query="Explore destinations and whale watching excursions in Mirissa based on current weather warnings.">
+                  <span class="chip-bullet"></span>
                   <span>Explore destinations based on current weather</span>
                 </button>
               </div>
             </div>
 
-            <div class="sidebar-block recent-history-block">
-              <h4 class="sidebar-label">Active Route Context</h4>
-              <div class="active-context-card" id="activeContextCard">
-                <div class="context-item">
-                  <span class="ctx-title">Active Corridor:</span>
-                  <span class="ctx-val" id="ctxCorridor">Colombo ➔ Ella</span>
+            <div class="sidebar-group context-group">
+              <h4 class="sidebar-heading">Active Route Context</h4>
+              <div class="context-box">
+                <div class="context-row">
+                  <span>Corridor:</span>
+                  <strong id="ctxCorridor">Colombo ➔ Ella</strong>
                 </div>
-                <div class="context-item">
-                  <span class="ctx-title">CPC Fuel Index:</span>
-                  <span class="ctx-val">370 LKR / L</span>
+                <div class="context-row">
+                  <span>Fuel Index:</span>
+                  <span>370 LKR / L</span>
                 </div>
-                <div class="context-item">
-                  <span class="ctx-title">Neural Engine:</span>
-                  <span class="ctx-val">Google Gemini 3.5</span>
+                <div class="context-row">
+                  <span>AI Engine:</span>
+                  <span>Gemini 3.5 Flash</span>
                 </div>
               </div>
             </div>
           </aside>
 
-          <!-- MAIN CONVERSATION AREA -->
+          <!-- Middle Column: Main Conversation Area -->
           <div class="assistant-main-chat">
             
             <div class="chat-viewport" id="chatMessages">
               <!-- Initial Welcome Message -->
               <div class="chat-msg agent-msg initial-msg">
                 <div class="msg-avatar">
-                  <span class="avatar-emblem">SL</span>
+                  <span>SL</span>
                 </div>
                 <div class="msg-content">
                   <div class="msg-meta">
@@ -233,21 +540,21 @@
                   </div>
                   <div class="msg-text">
                     <p class="greeting-lead"><strong>Hello, welcome to SmartLanka.</strong> Where would you like your Sri Lankan journey to begin?</p>
-                    <p>I am your verified autonomous travel broker. Unlike generic travel tools, I am directly integrated into live Sri Lankan transport infrastructure:</p>
-                    <ul class="greeting-features">
+                    <p>I am your verified autonomous travel broker. Unlike generic travel tools, I am directly connected to live Sri Lankan transport infrastructure:</p>
+                    <ul class="greeting-bullets">
                       <li><strong>Official Fuel-Indexed Fair Fares:</strong> Instant verification against CPC baseline rates so you never overpay for private hires or tuk-tuks.</li>
                       <li><strong>Real-Time Contingency Rerouting:</strong> Live monitoring of Sri Lanka Railways Main Line slips and coastal weather advisories.</li>
                       <li><strong>Direct Micro-Economy Dispatch:</strong> Zero-commission links to rural family homestays and community guides.</li>
                     </ul>
-                    <p class="prompt-invite">Select any suggested prompt on the left or type your travel question below.</p>
+                    <p class="greeting-footer">Select any suggested prompt on the left or type your travel question below.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Composer Area -->
+            <!-- Composer Form -->
             <div class="chat-composer-wrap">
-              <form class="chat-composer-box" id="chatForm">
+              <form class="chat-composer-form" id="chatForm">
                 <input 
                   type="text" 
                   id="chatInput" 
@@ -255,7 +562,7 @@
                   autocomplete="off" 
                   required 
                 />
-                <button type="submit" id="sendBtn" class="btn-send-message">
+                <button type="submit" id="sendBtn" class="btn-send">
                   <span>Send</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
@@ -263,31 +570,31 @@
             </div>
           </div>
 
-          <!-- RIGHT PANEL: Live Intelligence & Tools Deck -->
+          <!-- Right Column: Live Intelligence & Tools Deck -->
           <aside class="assistant-right-panel">
-            <div class="panel-tab-bar">
-              <button class="right-tab active" data-tab="trace">
+            <div class="right-tab-bar">
+              <button type="button" class="right-tab active" data-tab="trace">
                 <span>Reasoning</span>
               </button>
-              <button class="right-tab" data-tab="fare">
+              <button type="button" class="right-tab" data-tab="fare">
                 <span>Fare Sentinel</span>
               </button>
-              <button class="right-tab" data-tab="disruptions">
+              <button type="button" class="right-tab" data-tab="disruptions">
                 <span>Alerts</span>
                 <span class="counter-badge" id="disruptionCount">3</span>
               </button>
-              <button class="right-tab" data-tab="hosts">
+              <button type="button" class="right-tab" data-tab="hosts">
                 <span>Homestays</span>
               </button>
             </div>
 
-            <div class="panel-tab-content">
+            <div class="right-tab-viewport">
               
               <!-- Tab 1: Agent Reasoning Trace -->
               <div class="tab-pane active" id="tab-trace">
                 <div class="pane-head">
                   <h4>LangGraph State Machine Trace</h4>
-                  <p>Step-by-step audit of intent binding, disruption sentinel, and neural synthesis.</p>
+                  <p>Step-by-step audit of intent parsing, tool execution, and neural synthesis.</p>
                 </div>
                 <div class="trace-feed" id="traceTimeline">
                   <div class="deck-empty-state">
@@ -301,7 +608,7 @@
               <div class="tab-pane" id="tab-fare">
                 <div class="pane-head">
                   <h4>Anti-Gouging Fare Sentinel</h4>
-                  <p>Ceylon Petroleum Corporation index + mountain elevation torque multiplier.</p>
+                  <p>CPC fuel index + mountain elevation multipliers + bilingual negotiation phrases.</p>
                 </div>
                 <div class="fare-deck" id="fareDisplay">
                   <div class="deck-empty-state">
@@ -314,8 +621,8 @@
               <!-- Tab 3: Disruption Radar -->
               <div class="tab-pane" id="tab-disruptions">
                 <div class="pane-head">
-                  <h4>Transit & Marine Disruptions</h4>
-                  <p>Active advisories verified through railway station masters and maritime feeds.</p>
+                  <h4>Transit & Marine Alerts</h4>
+                  <p>Active advisories verified through railway masters and maritime feeds.</p>
                 </div>
                 <div class="disruptions-feed" id="disruptionsList">
                   <!-- Populated dynamically via /api/disruptions -->
@@ -325,7 +632,7 @@
               <!-- Tab 4: Rural Homestays -->
               <div class="tab-pane" id="tab-hosts">
                 <div class="pane-head">
-                  <h4>Direct-to-Community Homestays</h4>
+                  <h4>Direct Community Homestays</h4>
                   <p>0% middleman commission. Direct pre-translated dispatch in Sinhala & Tamil.</p>
                 </div>
                 <div class="hosts-feed" id="hostsList">
@@ -340,327 +647,53 @@
       </div>
     </section>
 
-    <!-- SECTION 3: Destination Discovery (Editorial Layout) -->
-    <section id="destinations" class="destinations-section">
-      <div class="section-container">
-        <div class="section-header-center">
-          <span class="section-kicker">Curated Regions</span>
-          <h2 class="section-title">Extraordinary Sri Lankan Destinations</h2>
-          <p class="section-desc">From misty UNESCO central tea highlands to ancient rock citadels and pristine coastal ramparts.</p>
-        </div>
-
-        <div class="editorial-destinations-grid">
-          
-          <!-- Destination 1: Ella -->
-          <article class="destination-card featured-large">
-            <div class="card-media">
-              <img src="/assets/srilanka_nature_bg.jpg" alt="Ella Tea Country" class="dest-img" />
-              <div class="card-overlay"></div>
-              <span class="dest-badge">Highland Corridor</span>
-            </div>
-            <div class="card-body">
-              <div class="dest-header">
-                <div>
-                  <h3 class="dest-name">Ella</h3>
-                  <span class="dest-loc">Badulla District • Central Highlands</span>
-                </div>
-                <span class="best-time">Best: Jan – May</span>
-              </div>
-              <p class="dest-desc">A misty highland retreat framed by the iconic Nine Arches Railway Bridge, Little Adam's Peak, and rolling organic tea plantations.</p>
-              <div class="dest-footer">
-                <span class="dest-highlight">Scenic Railway • Waterfalls • Tea Treks</span>
-                <button type="button" class="btn-dest-explore" onclick="triggerDestinationPlan('Ella')">Plan Visit with AI ➔</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Destination 2: Sigiriya -->
-          <article class="destination-card">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Sigiriya Lion Rock" class="dest-img" />
-              <div class="card-overlay"></div>
-              <span class="dest-badge">UNESCO Heritage</span>
-            </div>
-            <div class="card-body">
-              <div class="dest-header">
-                <div>
-                  <h3 class="dest-name">Sigiriya</h3>
-                  <span class="dest-loc">Matale District • Cultural Triangle</span>
-                </div>
-                <span class="best-time">Best: May – Sep</span>
-              </div>
-              <p class="dest-desc">The 5th-century ancient citadel of King Kashyapa towering 200 meters above emerald jungle canopies and ancient royal water gardens.</p>
-              <div class="dest-footer">
-                <span class="dest-highlight">Lion Rock • Pidurangala • Wild Elephants</span>
-                <button type="button" class="btn-dest-explore" onclick="triggerDestinationPlan('Sigiriya')">Plan Visit ➔</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Destination 3: Kandy -->
-          <article class="destination-card">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1588598198321-9735fd524498?auto=format&fit=crop&w=800&q=80" alt="Kandy Temple of the Tooth" class="dest-img" />
-              <div class="card-overlay"></div>
-              <span class="dest-badge">Sacred Capital</span>
-            </div>
-            <div class="card-body">
-              <div class="dest-header">
-                <div>
-                  <h3 class="dest-name">Kandy</h3>
-                  <span class="dest-loc">Central Province • Hill Capital</span>
-                </div>
-                <span class="best-time">Best: Dec – Apr</span>
-              </div>
-              <p class="dest-desc">The final royal stronghold of ancient Sri Lanka, home to the Temple of the Sacred Tooth Relic and the Peradeniya Botanical Gardens.</p>
-              <div class="dest-footer">
-                <span class="dest-highlight">Temple of Tooth • Peradeniya • Kandy Lake</span>
-                <button type="button" class="btn-dest-explore" onclick="triggerDestinationPlan('Kandy')">Plan Visit ➔</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Destination 4: Galle -->
-          <article class="destination-card">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="Galle Fort Lighthouse" class="dest-img" />
-              <div class="card-overlay"></div>
-              <span class="dest-badge">Colonial Coast</span>
-            </div>
-            <div class="card-body">
-              <div class="dest-header">
-                <div>
-                  <h3 class="dest-name">Galle</h3>
-                  <span class="dest-loc">Southern Province • Coastal Fort</span>
-                </div>
-                <span class="best-time">Best: Nov – Apr</span>
-              </div>
-              <p class="dest-desc">A living 17th-century Dutch colonial sea fortress filled with boutique spice houses, historic ocean ramparts, and nearby coral reefs.</p>
-              <div class="dest-footer">
-                <span class="dest-highlight">Dutch Fort • Lighthouse • Coral Reefs</span>
-                <button type="button" class="btn-dest-explore" onclick="triggerDestinationPlan('Galle')">Plan Visit ➔</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Destination 5: Yala -->
-          <article class="destination-card">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80" alt="Yala National Park Elephant" class="dest-img" />
-              <div class="card-overlay"></div>
-              <span class="dest-badge">Wildlife Sanctuary</span>
-            </div>
-            <div class="card-body">
-              <div class="dest-header">
-                <div>
-                  <h3 class="dest-name">Yala</h3>
-                  <span class="dest-loc">Southern & Uva Provinces</span>
-                </div>
-                <span class="best-time">Best: Feb – Jun</span>
-              </div>
-              <p class="dest-desc">The world's highest density habitat for Sri Lankan leopards (*Panthera pardus kotiya*), wild Asian elephants, and coastal marine lagoons.</p>
-              <div class="dest-footer">
-                <span class="dest-highlight">Leopard Safari • Sloth Bears • Mangroves</span>
-                <button type="button" class="btn-dest-explore" onclick="triggerDestinationPlan('Yala')">Plan Visit ➔</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Destination 6: Nuwara Eliya -->
-          <article class="destination-card">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80" alt="Nuwara Eliya Tea Estate" class="dest-img" />
-              <div class="card-overlay"></div>
-              <span class="dest-badge">Little England</span>
-            </div>
-            <div class="card-body">
-              <div class="dest-header">
-                <div>
-                  <h3 class="dest-name">Nuwara Eliya</h3>
-                  <span class="dest-loc">Central Highlands • 1,868m Elevation</span>
-                </div>
-                <span class="best-time">Best: Feb – May</span>
-              </div>
-              <p class="dest-desc">Colonial architecture surrounded by world-renowned single-estate Ceylon tea factories, Gregory Lake, and Horton Plains' World's End.</p>
-              <div class="dest-footer">
-                <span class="dest-highlight">Pedro Estate • Gregory Lake • World's End</span>
-                <button type="button" class="btn-dest-explore" onclick="triggerDestinationPlan('Nuwara Eliya')">Plan Visit ➔</button>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: Local Experiences Marketplace (Economic Disperser) -->
-    <section id="experiences" class="experiences-section">
-      <div class="section-container">
-        <div class="section-header-row">
-          <div>
-            <span class="section-kicker">Economic Distribution</span>
-            <h2 class="section-title">Vetted Community Experiences & Homestays</h2>
-            <p class="section-desc">Empowering Sri Lankan village homestays, licensed rural guides, and driver cooperatives with 0% middleman commission.</p>
-          </div>
-          <div class="zero-commission-tag">
-            <span class="lock-shield">🛡️</span>
-            <span>100% Direct Local Remittance</span>
-          </div>
-        </div>
-
-        <div class="experiences-grid">
-          
-          <!-- Experience 1 -->
-          <div class="experience-card">
-            <div class="exp-media">
-              <img src="/assets/srilanka_nature_bg.jpg" alt="Ella Mist Organic Farmstead" class="exp-img" />
-              <span class="exp-tag">Rural Homestay</span>
-              <span class="exp-verified">✓ Verified Host</span>
-            </div>
-            <div class="exp-body">
-              <div class="exp-meta-top">
-                <span class="exp-loc">📍 Ella (Passara Road)</span>
-                <span class="exp-rate">LKR 6,500 <small>/ night (~$21)</small></span>
-              </div>
-              <h3 class="exp-title">Ella Mist Organic Farmstead & Homestay</h3>
-              <p class="exp-snippet">Peaceful family home perched above tea gardens with home-cooked traditional meals and mountain vistas.</p>
-              <ul class="exp-perks">
-                <li>• Authentic wood-fire clay pot dinner (Rice & 6 curries)</li>
-                <li>• Guaranteed clean private room with tea valley view</li>
-                <li>• Free pickup from Ella railway station</li>
-              </ul>
-              <div class="exp-action-row">
-                <div class="host-badge">Host: Nimal & Sunethra Bandara</div>
-                <button type="button" class="btn-book-exp" onclick="openBookingModal('Ella Mist Organic Farmstead', 'Ella', 6500, 'Nimal & Sunethra Bandara')">Reserve Direct</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Experience 2 -->
-          <div class="experience-card">
-            <div class="exp-media">
-              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Belihuloya Riverstone Eco Retreat" class="exp-img" />
-              <span class="exp-tag">Eco Cottage</span>
-              <span class="exp-verified">✓ Verified Host</span>
-            </div>
-            <div class="exp-body">
-              <div class="exp-meta-top">
-                <span class="exp-loc">📍 Belihuloya Riverbank</span>
-                <span class="exp-rate">LKR 5,800 <small>/ night (~$19)</small></span>
-              </div>
-              <h3 class="exp-title">Belihuloya Riverstone Eco Retreat</h3>
-              <p class="exp-snippet">Riverside eco-retreat nestled on natural mountain stream with waterfall trek guides and pure kithul tasting.</p>
-              <ul class="exp-perks">
-                <li>• Natural river bathing pool in private garden</li>
-                <li>• Guided hike to Pahanthudawa hidden waterfall</li>
-                <li>• Fresh kithul treacle & buffalo curd tasting</li>
-              </ul>
-              <div class="exp-action-row">
-                <div class="host-badge">Host: Upali Wijesinghe</div>
-                <button type="button" class="btn-book-exp" onclick="openBookingModal('Belihuloya Riverstone Retreat', 'Belihuloya', 5800, 'Upali Wijesinghe')">Reserve Direct</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Experience 3 -->
-          <div class="experience-card">
-            <div class="exp-media">
-              <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Sigiriya Green Tuk-Tuk" class="exp-img" />
-              <span class="exp-tag">Driver Cooperative</span>
-              <span class="exp-verified">✓ Official Co-op</span>
-            </div>
-            <div class="exp-body">
-              <div class="exp-meta-top">
-                <span class="exp-loc">📍 Sigiriya & Dambulla</span>
-                <span class="exp-rate">LKR 115 <small>/ km (Fixed Meter)</small></span>
-              </div>
-              <h3 class="exp-title">Sigiriya Green Tuk-Tuk Drivers Association</h3>
-              <p class="exp-snippet">Official registered tuk-tuk cooperative providing transparent meter rates and local wilderness insights.</p>
-              <ul class="exp-perks">
-                <li>• Official metered cooperative pricing (zero tourist markup)</li>
-                <li>• Sunrise Pidurangala Rock transfer with headlamps provided</li>
-                <li>• Secret elephant corridor observation spots</li>
-              </ul>
-              <div class="exp-action-row">
-                <div class="host-badge">Co-op Lead: Dinesh Priyashantha</div>
-                <button type="button" class="btn-book-exp" onclick="openBookingModal('Sigiriya Driver Co-op', 'Sigiriya', 115, 'Dinesh Priyashantha')">Book Meter</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Experience 4 -->
-          <div class="experience-card">
-            <div class="exp-media">
-              <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80" alt="Meemure Village Guide" class="exp-img" />
-              <span class="exp-tag">Village Elder Guide</span>
-              <span class="exp-verified">✓ Verified Guide</span>
-            </div>
-            <div class="exp-body">
-              <div class="exp-meta-top">
-                <span class="exp-loc">📍 Meemure (Knuckles Range)</span>
-                <span class="exp-rate">LKR 7,500 <small>/ day (~$24)</small></span>
-              </div>
-              <h3 class="exp-title">Meemure Traditional Village Experience</h3>
-              <p class="exp-snippet">Authentic Knuckles biodiversity expedition with lifelong village elder and wilderness tracker.</p>
-              <ul class="exp-perks">
-                <li>• Guided trek to base of sacred Lakegala Rock</li>
-                <li>• Stream crossing and traditional paddy field harvest</li>
-                <li>• Authentic village lunch served on fresh lotus leaves</li>
-              </ul>
-              <div class="exp-action-row">
-                <div class="host-badge">Guide: Wasantha Kumara</div>
-                <button type="button" class="btn-book-exp" onclick="openBookingModal('Meemure Traditional Guide', 'Meemure', 7500, 'Wasantha Kumara')">Reserve Direct</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: Train & Transport Sentinel -->
+    <!-- ========================================================================
+         7. TRAIN & TRANSPORT SENTINEL (Interactive Meter Calculator)
+         ======================================================================== -->
     <section id="transport" class="transport-section">
       <div class="section-container">
+        
         <div class="section-header-center">
-          <span class="section-kicker">Transparent Transit</span>
-          <h2 class="section-title">Train Status & Anti-Gouging Fare Sentinel</h2>
-          <p class="section-desc">Live railway monitoring, officially gazetted CPC fuel index calculations, and verified local counter-offer scripts.</p>
+          <span class="section-kicker">TRANSPARENT LOGISTICS</span>
+          <h2 class="section-title">Train Status & Fair-Fare Calculator</h2>
+          <p class="section-desc">Auditing Sri Lanka Railways mountain routes and calculating official fuel-indexed meter rates for tuk-tuks, sedans, and vans.</p>
         </div>
 
         <div class="transport-grid">
           
-          <!-- Column 1: Live Interactive Fare Calculator -->
+          <!-- Column 1: Live Interactive Meter Calculator -->
           <div class="transport-card">
-            <div class="t-card-head">
-              <h3>🛺 Instant Fair-Fare Meter Calculator</h3>
-              <p>Computes fair price using Ceylon Petroleum fuel index + mountain elevation multipliers.</p>
+            <div class="card-head-simple">
+              <h3>🛺 Official Fair-Fare Calculator</h3>
+              <p>Computes fair price using Ceylon Petroleum Corporation fuel rates + elevation torque.</p>
             </div>
-            <form id="standaloneFareForm" class="fare-calc-form">
-              <div class="form-row">
-                <div class="form-group">
+
+            <form id="standaloneFareForm" class="fare-form">
+              <div class="form-row-two">
+                <div class="form-field">
                   <label for="fareOriginInput">Origin</label>
                   <input type="text" id="fareOriginInput" placeholder="e.g. Kandy" value="Kandy" required />
                 </div>
-                <div class="form-group">
+                <div class="form-field">
                   <label for="fareDestInput">Destination</label>
                   <input type="text" id="fareDestInput" placeholder="e.g. Ella" value="Ella" required />
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group">
+              <div class="form-row-two">
+                <div class="form-field">
                   <label for="fareVehicleSelect">Vehicle Type</label>
                   <select id="fareVehicleSelect">
-                    <option value="tuk_tuk">Tuk-Tuk (3 Wheeler)</option>
+                    <option value="tuk_tuk">Tuk-Tuk (3-Wheeler)</option>
                     <option value="sedan">Sedan / Air-conditioned Car</option>
                     <option value="van">Van / KDH Commuter</option>
                   </select>
                 </div>
-                <div class="form-group">
+                <div class="form-field">
                   <label for="quotedPriceInput">Driver's Quote (Optional LKR)</label>
                   <input type="number" id="quotedPriceInput" placeholder="e.g. 12000" />
                 </div>
               </div>
-              <button type="submit" class="btn-calc-fare">Audit Meter Fare Now</button>
+              <button type="submit" class="btn-audit-fare">Audit Meter Fare Now</button>
             </form>
 
             <div id="quickFareResult" class="quick-fare-result">
@@ -670,44 +703,44 @@
 
           <!-- Column 2: Scenic Train Main Line & Disruption Alerts -->
           <div class="transport-card">
-            <div class="t-card-head">
-              <h3>🚂 Main Line Train Status & Disruption Feed</h3>
-              <p>Auditing the famous Kandy – Nanu Oya – Ella mountain railway corridor.</p>
+            <div class="card-head-simple">
+              <h3>🚂 Main Line Train Status & Contingency Protocol</h3>
+              <p>Continuous monitoring of Kandy – Nanu Oya – Ella scenic railway.</p>
             </div>
-            
-            <div class="train-route-overview">
-              <div class="route-line-node">
-                <span class="node-circle"></span>
+
+            <div class="train-nodes-flow">
+              <div class="train-node">
+                <span class="node-dot"></span>
                 <div>
-                  <strong>Kandy Station</strong>
-                  <small>Departure Hub</small>
+                  <strong>Kandy Railway Station</strong>
+                  <small>Departure Station</small>
                 </div>
               </div>
-              <div class="route-line-connector">
-                <span>Scenic 2.5 hr Tea Pass</span>
+              <div class="node-connector">
+                <span>Scenic 2.5 hr Tea Estate Rail</span>
               </div>
-              <div class="route-line-node warning">
-                <span class="node-circle"></span>
+              <div class="train-node node-warning">
+                <span class="node-dot dot-warning"></span>
                 <div>
-                  <strong>Nanu Oya / Ohiya</strong>
-                  <small style="color: #b91c1c;">Active Track Stabilization</small>
+                  <strong>Nanu Oya / Ohiya Section</strong>
+                  <small style="color: #991B1B;">Active Track Ballast Stabilization</small>
                 </div>
               </div>
-              <div class="route-line-connector alt">
-                <span>Vetted Co-op Minivan Reroute</span>
+              <div class="node-connector connector-alt">
+                <span>Vetted Co-op Minivan Transfer (via Haputale Pass)</span>
               </div>
-              <div class="route-line-node success">
-                <span class="node-circle"></span>
+              <div class="train-node node-success">
+                <span class="node-dot dot-success"></span>
                 <div>
-                  <strong>Ella Station</strong>
-                  <small style="color: #174D3A;">Terminus Clear</small>
+                  <strong>Ella Railway Station</strong>
+                  <small style="color: #174D3A;">Destination Clear</small>
                 </div>
               </div>
             </div>
 
-            <div class="train-advisory-box">
-              <div class="adv-title">⚠️ Live Contingency Protocol Active:</div>
-              <p>Trains 1005 (Podi Menike) and 1007 (Tikiri Menike) are terminating at Nanu Oya due to minor track stabilization. Passengers are seamlessly transferred over Haputale Pass via cooperative minivans (+25 mins impact).</p>
+            <div class="advisory-box">
+              <div class="adv-label">⚠️ Live Contingency Protocol Active:</div>
+              <p>Trains 1005 (Podi Menike) and 1007 (Tikiri Menike) terminate early at Nanu Oya. Passengers are transferred over Haputale Pass via cooperative minivans (+25 mins, ~2,500 LKR transfer cost).</p>
             </div>
           </div>
 
@@ -715,67 +748,70 @@
       </div>
     </section>
 
-    <!-- SECTION 6: Smart Itinerary (Day-by-Day Timeline) -->
+    <!-- ========================================================================
+         8. SMART ITINERARY (5-Day Curated Timeline)
+         ======================================================================== -->
     <section id="itinerary" class="itinerary-section">
       <div class="section-container">
+        
         <div class="section-header-center">
-          <span class="section-kicker">Intelligent Planning</span>
-          <h2 class="section-title">Smart 5-Day Sri Lankan Itinerary</h2>
-          <p class="section-desc">A professionally balanced route designed for cultural immersion, scenic rail transit, and direct community impact.</p>
+          <span class="section-kicker">SMART ITINERARY</span>
+          <h2 class="section-title">5-Day Sri Lankan Master Itinerary</h2>
+          <p class="section-desc">A balanced route engineered for cultural immersion, scenic rail transit, and direct community impact.</p>
         </div>
 
         <div class="itinerary-timeline">
           
-          <div class="timeline-day-card">
-            <div class="day-indicator">
-              <span class="day-num">01</span>
-              <span class="day-tag">Day 1</span>
+          <div class="day-card">
+            <div class="day-badge">
+              <span class="day-number">01</span>
+              <span class="day-text">Day 1</span>
             </div>
-            <div class="day-details">
-              <div class="day-head">
+            <div class="day-body">
+              <div class="day-header">
                 <h3>Arrival & Cultural Triangle Transit</h3>
-                <span class="day-route">Bandaranaike Airport (CMB) ➔ Sigiriya</span>
+                <span class="day-corridor">Bandaranaike Airport ➔ Sigiriya</span>
               </div>
-              <p>Airport arrival, obtain Dialog tourist SIM, and private highway transfer to the Cultural Triangle. Evening ascent of Pidurangala Rock for sunset over the ancient Lion Citadel.</p>
-              <div class="day-logistics">
+              <p>Airport arrival, acquire a local Dialog tourist SIM, and private highway transfer to the Cultural Triangle. Sunset climb of Pidurangala Rock with views over Sigiriya Lion Citadel.</p>
+              <div class="day-specs">
                 <span>🚗 Highway Transfer: ~3.5 hrs</span>
                 <span>🏡 Stay: Sigiriya Green Co-op</span>
-                <span>💡 Tip: Purchase tickets at the base gate</span>
+                <span>💡 Tip: Headlamps provided for sunset descent</span>
               </div>
             </div>
           </div>
 
-          <div class="timeline-day-card">
-            <div class="day-indicator">
-              <span class="day-num">02</span>
-              <span class="day-tag">Day 2</span>
+          <div class="day-card">
+            <div class="day-badge">
+              <span class="day-number">02</span>
+              <span class="day-text">Day 2</span>
             </div>
-            <div class="day-details">
-              <div class="day-head">
+            <div class="day-body">
+              <div class="day-header">
                 <h3>Ancient Citadel & Sacred Kandy</h3>
-                <span class="day-route">Sigiriya ➔ Dambulla Cave Temple ➔ Kandy</span>
+                <span class="day-corridor">Sigiriya ➔ Dambulla ➔ Kandy</span>
               </div>
-              <p>Morning exploration of Sigiriya Lion Rock water gardens. Midday visit to Dambulla UNESCO golden rock caves. Afternoon arrival in Kandy and evening Thevawa ritual at the Temple of the Sacred Tooth Relic.</p>
-              <div class="day-logistics">
+              <p>Morning exploration of the Sigiriya Lion Rock gardens. Midday visit to Dambulla UNESCO rock cave temples. Afternoon arrival in Kandy and evening Thevawa ritual at the Temple of the Tooth.</p>
+              <div class="day-specs">
                 <span>🚗 Scenic Drive: ~2.5 hrs</span>
                 <span>🍛 Dinner: Authentic clay-pot rice & curry</span>
-                <span>👗 Dress code: White attire required for temple</span>
+                <span>👗 Temple dress: White attire covering knees/shoulders</span>
               </div>
             </div>
           </div>
 
-          <div class="timeline-day-card">
-            <div class="day-indicator">
-              <span class="day-num">03</span>
-              <span class="day-tag">Day 3</span>
+          <div class="day-card">
+            <div class="day-badge">
+              <span class="day-number">03</span>
+              <span class="day-text">Day 3</span>
             </div>
-            <div class="day-details">
-              <div class="day-head">
+            <div class="day-body">
+              <div class="day-header">
                 <h3>The Iconic Blue Train Journey</h3>
-                <span class="day-route">Kandy Station ➔ Nanu Oya ➔ Ella</span>
+                <span class="day-corridor">Kandy ➔ Nanu Oya ➔ Ella</span>
               </div>
-              <p>Board the morning scenic train through emerald mist and tea estates. Transfer via cooperative minivan over Haputale Pass to Ella. Sunset hike up Little Adam's Peak.</p>
-              <div class="day-logistics">
+              <p>Board the scenic morning train through misty tea estates. Transfer via cooperative minivan over Haputale Pass to Ella. Sunset hike up Little Adam's Peak.</p>
+              <div class="day-specs">
                 <span>🚂 Scenic Train: 2.5 hrs + 1.8 hr transfer</span>
                 <span>🏡 Stay: Ella Mist Farmstead</span>
                 <span>⚠️ SmartLanka Disruption Sentinel Active</span>
@@ -783,18 +819,18 @@
             </div>
           </div>
 
-          <div class="timeline-day-card">
-            <div class="day-indicator">
-              <span class="day-num">04</span>
-              <span class="day-tag">Day 4</span>
+          <div class="day-card">
+            <div class="day-badge">
+              <span class="day-number">04</span>
+              <span class="day-text">Day 4</span>
             </div>
-            <div class="day-details">
-              <div class="day-head">
+            <div class="day-body">
+              <div class="day-header">
                 <h3>Nine Arches Bridge & Southern Descent</h3>
-                <span class="day-route">Ella ➔ Ravana Falls ➔ Mirissa Coast</span>
+                <span class="day-corridor">Ella ➔ Ravana Falls ➔ Mirissa</span>
               </div>
-              <p>Early sunrise photography at Nine Arches Bridge as morning trains pass. Breakfast at the farmstead, followed by southern descent past Ravana Falls towards the turquoise Indian Ocean.</p>
-              <div class="day-logistics">
+              <p>Sunrise photography at Nine Arches Bridge. Organic farmstead breakfast followed by southern descent past Ravana Falls towards the turquoise Indian Ocean.</p>
+              <div class="day-specs">
                 <span>🚗 Southern Highway Descent: ~3 hrs</span>
                 <span>🏖️ Sunset: Coconut Tree Hill Walk</span>
                 <span>🌊 Marine weather audit checked</span>
@@ -802,18 +838,18 @@
             </div>
           </div>
 
-          <div class="timeline-day-card">
-            <div class="day-indicator">
-              <span class="day-num">05</span>
-              <span class="day-tag">Day 5</span>
+          <div class="day-card">
+            <div class="day-badge">
+              <span class="day-number">05</span>
+              <span class="day-text">Day 5</span>
             </div>
-            <div class="day-details">
-              <div class="day-head">
+            <div class="day-body">
+              <div class="day-header">
                 <h3>Galle Fort Colonial Walk & Departure</h3>
-                <span class="day-route">Mirissa ➔ Galle Dutch Fort ➔ Airport (CMB)</span>
+                <span class="day-corridor">Mirissa ➔ Galle Fort ➔ Airport</span>
               </div>
-              <p>Morning coastal walk around Galle Fort ramparts and lighthouse. Exploration of local gem artisans and spice boutiques. Southern Expressway express transit back to airport.</p>
-              <div class="day-logistics">
+              <p>Morning coastal walk along Galle Fort ramparts and lighthouse. Exploration of local spice merchants and gem artisans. Southern Expressway express transit back to airport.</p>
+              <div class="day-specs">
                 <span>🚗 Southern Expressway: 2 hrs to CMB</span>
                 <span>🛍️ Spices: Handpicked cinnamon & tea</span>
                 <span>✈️ Final departure brief confirmed</span>
@@ -825,69 +861,72 @@
       </div>
     </section>
 
-    <!-- SECTION 7: Why Travel With SmartLanka -->
-    <section class="why-section">
+    <!-- ========================================================================
+         9. SUPPORT LOCAL COMMUNITIES (Economic Impact Pillar)
+         ======================================================================== -->
+    <section class="community-impact-section">
       <div class="section-container">
-        <div class="section-header-center">
-          <span class="section-kicker">The SmartLanka Standard</span>
-          <h2 class="section-title">Built for Modern, Fair & Inclusive Tourism</h2>
-          <p class="section-desc">Replacing extractive commercial intermediaries with verifiable, transparent algorithms and direct community links.</p>
-        </div>
-
-        <div class="why-pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-icon">🏷️</div>
-            <h3>Anti-Gouging Fare Sentinel</h3>
-            <p>Every transport estimate is mathematically calculated using Ceylon Petroleum Corporation fuel costs and provincial terrain factors. Tourists are protected from arbitrary markups.</p>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-icon">🔄</div>
-            <h3>Autonomous Disruption Rerouting</h3>
-            <p>Monitors hill-country railway slips and ocean swell advisories. If a disruption occurs, the AI autonomously computes contingency highway transfers to keep your itinerary on track.</p>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-icon">🏡</div>
-            <h3>Direct Micro-Economy Impact</h3>
-            <p>Bypasses multinational travel aggregators that charge up to 30% commission. 100% of your booking fee goes directly into the hands of local homestay families and licensed guides.</p>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-icon">🗣️</div>
-            <h3>Bilingual Counter-Offer Audio</h3>
-            <p>Generates pre-translated Sinhala and Tamil negotiation phrases with one-click audio playback, enabling respectful, transparent communication with local drivers.</p>
+        <div class="impact-card">
+          <div class="impact-content">
+            <span class="section-kicker" style="color: #C69B52;">LOCAL ECONOMIC DISTRIBUTION</span>
+            <h2 class="impact-title">Supporting Sri Lanka's Independent Micro-Economy</h2>
+            <p class="impact-description">
+              Extractive commercial travel aggregators frequently charge up to 25–30% in platform commissions. SmartLanka replaces extractive intermediaries with open-source algorithms, connecting international travelers directly with verified rural homestay families, licensed wilderness trackers, and community driver cooperatives.
+            </p>
+            <div class="impact-stats-row">
+              <div class="stat-item">
+                <span class="stat-number">0%</span>
+                <span class="stat-label">Platform Booking Fee</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Direct Local Host Remittance</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">CPC</span>
+                <span class="stat-label">Government-Indexed Fuel Standard</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Global Footer -->
+  <!-- ========================================================================
+       10. GLOBAL FOOTER (Editorial & Understated)
+       ======================================================================== -->
   <footer class="app-footer">
     <div class="footer-container">
-      <div class="footer-top">
-        <div class="footer-brand">
+      
+      <div class="footer-grid">
+        <div class="footer-brand-col">
           <div class="brand-text">
-            <span class="brand-name">SmartLanka</span>
-            <span class="brand-subtitle">Autonomous Tourism Concierge</span>
+            <span class="brand-name" style="color: #174D3A;">SmartLanka</span>
+            <span class="brand-subtitle">Travel Intelligence</span>
           </div>
-          <p class="footer-desc">
-            A premium travel technology platform designed for Sri Lankan economic recovery, sustainable transit, and rural community empowerment.
+          <p class="footer-tagline">
+            An enterprise-grade autonomous tourism logistics platform engineered for Sri Lankan economic recovery, sustainable transit, and rural community empowerment.
           </p>
         </div>
-        <div class="footer-links-col">
+
+        <div class="footer-nav-col">
           <h4>Platform</h4>
           <a href="#destinations">Destinations</a>
           <a href="#experiences">Local Experiences</a>
           <a href="#transport">Transport Sentinel</a>
           <a href="#itinerary">Smart Itinerary</a>
         </div>
-        <div class="footer-links-col">
+
+        <div class="footer-nav-col">
           <h4>Intelligence</h4>
-          <a href="#ai-assistant">AI Concierge</a>
+          <a href="#ai-assistant">AI Travel Concierge</a>
           <a href="#transport">Fuel Index Formula</a>
           <a href="#transport">Live Rail Radar</a>
           <a href="#ai-assistant">Gemini 3.5 Synthesis</a>
         </div>
-        <div class="footer-links-col">
+
+        <div class="footer-nav-col">
           <h4>Community</h4>
           <a href="#experiences">Verified Homestays</a>
           <a href="#experiences">Tuk-Tuk Cooperatives</a>
@@ -896,81 +935,85 @@
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="footer-copy">
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
           <span>&copy; 2026 SmartLanka Technologies. Engineered for Sri Lankan Tourism.</span>
         </div>
-        <div class="footer-badges">
-          <span class="tech-pill">Python 3.11</span>
-          <span class="tech-pill">FastAPI</span>
-          <span class="tech-pill">LangGraph</span>
-          <span class="tech-pill">Google Gemini</span>
+        <div class="footer-tech-stack">
+          <span class="tech-tag">Python 3.11</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">LangGraph</span>
+          <span class="tech-tag">Google Gemini</span>
         </div>
       </div>
+
     </div>
   </footer>
 
-  <!-- Booking & Direct Dispatch Modal -->
+  <!-- ========================================================================
+       11. MODALS (Booking Dispatch & Gemini Configuration)
+       ======================================================================== -->
+  <!-- Direct Booking Modal -->
   <div class="modal-backdrop" id="bookingModal">
     <div class="modal-card">
       <div class="modal-header">
         <div>
-          <span class="modal-kicker">Direct Host Dispatch</span>
+          <span class="modal-kicker">Direct Community Dispatch</span>
           <h3 id="modalExpTitle">Book Community Homestay</h3>
         </div>
-        <button type="button" class="btn-close-modal" id="closeBookingModalBtn">&times;</button>
+        <button type="button" class="btn-close-modal" id="closeBookingModalBtn" aria-label="Close dialog">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="booking-summary-box">
-          <div class="bs-row">
+        <div class="booking-summary-card">
+          <div class="summary-line">
             <span>Location:</span>
             <strong id="modalExpLoc">Ella</strong>
           </div>
-          <div class="bs-row">
+          <div class="summary-line">
             <span>Host / Guide:</span>
             <strong id="modalExpHost">Nimal & Sunethra Bandara</strong>
           </div>
-          <div class="bs-row">
+          <div class="summary-line">
             <span>Rate:</span>
             <strong id="modalExpRate" style="color: #174D3A;">LKR 6,500 / night</strong>
           </div>
-          <div class="bs-row">
+          <div class="summary-line">
             <span>Platform Commission:</span>
-            <span class="zero-fee">0 LKR (100% to Host)</span>
+            <strong style="color: #174D3A;">0 LKR (100% to Host)</strong>
           </div>
         </div>
 
-        <form id="directBookingForm" class="booking-form">
-          <div class="form-row">
-            <div class="form-group">
+        <form id="directBookingForm" class="booking-dialog-form">
+          <div class="dialog-row">
+            <div class="dialog-field">
               <label for="bookTravelerName">Your Name</label>
               <input type="text" id="bookTravelerName" placeholder="e.g. Sarah Jenkins" required />
             </div>
-            <div class="form-group">
-              <label for="bookTravelerPhone">WhatsApp Phone Number</label>
+            <div class="dialog-field">
+              <label for="bookTravelerPhone">WhatsApp Phone</label>
               <input type="tel" id="bookTravelerPhone" placeholder="+1 / +44 / +61..." required />
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
+          <div class="dialog-row">
+            <div class="dialog-field">
               <label for="bookTravelerDate">Arrival Date</label>
               <input type="date" id="bookTravelerDate" required />
             </div>
-            <div class="form-group">
+            <div class="dialog-field">
               <label for="bookTravelerGuests">Guests</label>
               <input type="number" id="bookTravelerGuests" min="1" max="10" value="2" required />
             </div>
           </div>
-          <button type="submit" class="btn-confirm-dispatch">Confirm Direct Community Dispatch</button>
+          <button type="submit" class="btn-dialog-submit">Confirm Direct Community Dispatch</button>
         </form>
       </div>
       <div class="modal-footer">
-        <span class="safe-note">🔒 No upfront deposit required. Payment made directly to the local host upon arrival.</span>
+        <span class="modal-safe-note">🔒 No upfront deposit required. Payment made directly to the local host upon arrival.</span>
       </div>
     </div>
   </div>
 
-  <!-- Google Gemini API Key Configuration Modal -->
+  <!-- Google Gemini API Key Modal -->
   <div class="modal-backdrop" id="apiModal">
     <div class="modal-card">
       <div class="modal-header">
@@ -978,15 +1021,15 @@
           <span class="modal-kicker">System Configuration</span>
           <h3>Google Gemini API Connection</h3>
         </div>
-        <button type="button" class="btn-close-modal" id="closeModalBtn">&times;</button>
+        <button type="button" class="btn-close-modal" id="closeModalBtn" aria-label="Close dialog">&times;</button>
       </div>
       <div class="modal-body">
-        <p class="modal-desc">
+        <p class="modal-body-desc">
           SmartLanka leverages <strong>Google Gemini 3.5</strong> for dynamic natural language understanding, route analysis, and bilingual synthesis.
           Get your free API key at <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a>.
         </p>
-        <form id="geminiKeyForm" class="booking-form">
-          <div class="form-group">
+        <form id="geminiKeyForm" class="booking-dialog-form">
+          <div class="dialog-field">
             <label for="apiKeyInput">Gemini API Key</label>
             <input 
               type="password" 
@@ -995,15 +1038,15 @@
               required 
             />
           </div>
-          <button type="submit" class="btn-confirm-dispatch">Save & Activate Key</button>
+          <button type="submit" class="btn-dialog-submit">Save & Activate Key</button>
         </form>
       </div>
       <div class="modal-footer">
-        <span class="safe-note">🔒 Key is securely saved to your local backend <code>.env</code> file.</span>
+        <span class="modal-safe-note">🔒 Key is securely saved to your local backend <code>.env</code> file.</span>
       </div>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="/app.js?v=5.0"></script>
 </body>
 </html>
