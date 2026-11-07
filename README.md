@@ -1,17 +1,17 @@
-# 🌴 LankaAgent: Autonomous Tourism Logistics & Micro-Economy Broker
+#  LankaAgent: Autonomous Tourism Logistics & Micro-Economy Broker
 
 > **An Agentic AI Multi-Agent System Engineered for Sri Lankan Tourism Resilience, Price Fairness, and Rural Economic Inclusion.**
 
 ---
 
-## 🎯 The Real-World Problem in Sri Lanka
+##  The Real-World Problem in Sri Lanka
 Tourism is Sri Lanka's fastest driver of foreign currency (Forex) recovery. However, the travel ecosystem faces two severe structural bottlenecks:
 1. **Unpredictable Transit Disruptions:** Unexpected Upcountry rail slips (e.g., Nanu Oya to Ella Main Line) or sudden monsoon sea swells leave independent travelers stranded with no autonomous re-routing support.
 2. **Asymmetric Pricing & Economic Concentration:** Tourists outside Colombo are routinely overcharged (up to 300%–500% over gazetted rates) due to lack of transparent meter standards, while authentic rural homestays and village guides (who speak Sinhala or Tamil and lack English digital marketing) are bypassed by large commercial tour cartels.
 
 ---
 
-## 🧠 Agentic Architecture (LangGraph Multi-Agent System)
+##  Agentic Architecture (LangGraph Multi-Agent System)
 
 ```
                             ┌─────────────────────────────────┐
@@ -42,7 +42,7 @@ Tourism is Sri Lanka's fastest driver of foreign currency (Forex) recovery. Howe
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 * **Deterministic Tool Calling:** Computes mathematical, terrain-indexed transport fares based on official Ceylon Petroleum Corporation (CPC) fuel prices rather than allowing the LLM to hallucinate prices.
 * **Autonomous Disruption Recovery:** Detects hazards on mountain rail corridors and maritime zones, formulating realistic, timed alternative connections (e.g., Nanu Oya to Ella via Haputale Pass minivan cooperative).
@@ -60,7 +60,7 @@ Tourism is Sri Lanka's fastest driver of foreign currency (Forex) recovery. Howe
 
 ---
 
-## 💻 How to Run
+##  How to Run
 
 ### Option 1: Using NPM (Recommended)
 You can run the full backend and frontend with standard npm scripts:
