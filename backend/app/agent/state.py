@@ -31,11 +31,17 @@ class DisruptionAlert(TypedDict):
     status: str
     agent_recommendation: str
 
-class LankaAgentState(TypedDict):
+class LankaAgentState(TypedDict, total=False):
     messages: List[Dict[str, str]]
     user_query: str
     origin: Optional[str]
     destination: Optional[str]
+    intent: Optional[str]
+    vehicle_type: Optional[str]
+    quoted_fare: Optional[float]
+    needs_fare_check: Optional[bool]
+    needs_disruption_check: Optional[bool]
+    needs_host_search: Optional[bool]
     active_disruptions: List[DisruptionAlert]
     fare_card: Optional[FairFareCard]
     recommended_hosts: List[Dict[str, Any]]
