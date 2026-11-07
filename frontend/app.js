@@ -1145,4 +1145,60 @@ document.addEventListener('DOMContentLoaded', () => {
       filterItineraryDay('all');
     });
   }
+
+  // ==========================================
+  // THEME SWITCHER (LIGHT / DARK NOCTURNAL MODE)
+  // ==========================================
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeLabel = document.getElementById('themeLabel');
+  const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
+  const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+  const mobileThemeLabel = document.getElementById('mobileThemeLabel');
+
+  function updateThemeDisplay(theme) {
+    const isDark = theme === 'dark';
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (themeIcon) themeIcon.textContent = '☀️';
+      if (themeLabel) themeLabel.textContent = 'Light';
+      if (mobileThemeIcon) mobileThemeIcon.textContent = '☀️';
+      if (mobileThemeLabel) mobileThemeLabel.textContent = 'Switch to Light Mode';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (themeIcon) themeIcon.textContent = '🌙';
+      if (themeLabel) themeLabel.textContent = 'Dark';
+      if (mobileThemeIcon) mobileThemeIcon.textContent = '🌙';
+      if (mobileThemeLabel) mobileThemeLabel.textContent = 'Switch to Dark Mode';
+    }
+
+    // Refresh map layout if rendered
+    if (itineraryMap) {
+      setTimeout(() => {
+        try { itineraryMap.invalidateSize(); } catch(e) {}
+      }, 150);
+    }
+  }
+
+  function handleThemeToggle() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    try {
+      localStorage.setItem('smartlanka_theme', nextTheme);
+    } catch (e) {
+      console.warn('localStorage access error:', e);
+    }
+    updateThemeDisplay(nextTheme);
+  }
+
+  // Sync initial button text with active theme attribute
+  const initialTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  updateThemeDisplay(initialTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', handleThemeToggle);
+  }
+  if (mobileThemeToggleBtn) {
+    mobileThemeToggleBtn.addEventListener('click', handleThemeToggle);
+  }
 });

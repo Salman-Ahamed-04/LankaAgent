@@ -16,7 +16,19 @@
   <link rel="stylesheet" href="/assets/leaflet.css">
 
   <!-- Primary Stylesheet -->
-  <link rel="stylesheet" href="/styles.css?v=5.1">
+  <link rel="stylesheet" href="/styles.css?v=5.4">
+
+  <!-- Immediate Theme Initializer to prevent flashing -->
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('smartlanka_theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -86,6 +98,12 @@
           <span id="geminiStatusText">Gemini Active</span>
         </button>
 
+        <!-- Dark / Light Mode Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Toggle Dark Mode" title="Toggle Dark / Light Mode">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+          <span class="theme-label" id="themeLabel">Dark</span>
+        </button>
+
         <!-- Primary AI Assistant Button -->
         <a href="#ai-assistant" class="btn-primary-header">AI Assistant</a>
 
@@ -107,6 +125,10 @@
       <a href="#transport" class="mobile-link">Transport & Fares</a>
       <a href="#itinerary" class="mobile-link">Smart Itinerary</a>
       <a href="#ai-assistant" class="mobile-link highlight">AI Assistant Concierge</a>
+      <button type="button" class="mobile-theme-toggle" id="mobileThemeToggleBtn">
+        <span id="mobileThemeIcon">🌙</span>
+        <span id="mobileThemeLabel">Switch to Dark Mode</span>
+      </button>
     </nav>
   </div>
 
@@ -1724,6 +1746,6 @@
 
   <!-- Local Leaflet Interactive Maps JS -->
   <script src="/assets/leaflet.js"></script>
-  <script src="/app.js?v=5.2"></script>
+  <script src="/app.js?v=5.4"></script>
 </body>
 </html>

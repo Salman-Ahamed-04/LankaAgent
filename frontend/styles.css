@@ -3174,3 +3174,738 @@ h1, h2, h3, h4, h5, h6 {
     gap: 2rem;
   }
 }
+
+
+/* ==========================================================================
+   THEME TOGGLE BUTTON & DARK MODE STYLES
+   ========================================================================== */
+
+/* Toggle Buttons */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #FFFFFF;
+  border: 1px solid #E8EAE5;
+  color: #202923;
+  padding: 0.42rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.theme-toggle-btn:hover {
+  background: #F3F5F1;
+  border-color: #D3D8CF;
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn .theme-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.mobile-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+  background: #EAEFEA;
+  border: 1px solid #D5DDD5;
+  border-radius: 10px;
+  color: #174D3A;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   DARK MODE PALETTE: LUXURY NOCTURNAL TROPICAL RETREAT
+   ========================================================================== */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background-color: #0A140F !important;
+  color: #E2ECE5 !important;
+}
+
+/* Header & Navigation */
+[data-theme="dark"] .app-header {
+  background: rgba(10, 20, 15, 0.94) !important;
+  border-bottom-color: #1B3528 !important;
+}
+
+[data-theme="dark"] .brand-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .brand-tagline {
+  color: #8CA395 !important;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #A9BFB1 !important;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  color: #6FE2A5 !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn {
+  background: #152B20 !important;
+  border-color: #234836 !important;
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  background: #1B382A !important;
+  border-color: #31624A !important;
+}
+
+[data-theme="dark"] .mobile-drawer {
+  background: #0E1D16 !important;
+  border-top-color: #1E3B2D !important;
+}
+
+[data-theme="dark"] .mobile-link {
+  color: #C3D5CA !important;
+  border-bottom-color: #1B3528 !important;
+}
+
+[data-theme="dark"] .mobile-theme-toggle {
+  background: #162E23 !important;
+  border-color: #264A38 !important;
+  color: #8AE0B3 !important;
+}
+
+/* Hero Section */
+[data-theme="dark"] .hero-badge {
+  background: rgba(23, 77, 58, 0.45) !important;
+  border-color: #275C46 !important;
+  color: #8AE0B3 !important;
+}
+
+[data-theme="dark"] .hero-title {
+  color: #F4F8F5 !important;
+}
+
+[data-theme="dark"] .hero-subtitle {
+  color: #A1B6A9 !important;
+}
+
+[data-theme="dark"] .hero-search-card {
+  background: #12241C !important;
+  border-color: #1F3D2F !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .search-input-group label {
+  color: #8FA698 !important;
+}
+
+[data-theme="dark"] .search-input-group input,
+[data-theme="dark"] .search-input-group select {
+  background: #0D1C15 !important;
+  border-color: #203F30 !important;
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .search-input-group input:focus,
+[data-theme="dark"] .search-input-group select:focus {
+  border-color: #2E7D5B !important;
+  box-shadow: 0 0 0 3px rgba(46, 125, 91, 0.25) !important;
+}
+
+/* Section Common Titles & Badges */
+[data-theme="dark"] .section-badge {
+  background: #163023 !important;
+  border-color: #234836 !important;
+  color: #8AE0B3 !important;
+}
+
+[data-theme="dark"] .section-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .section-desc {
+  color: #9BB0A3 !important;
+}
+
+/* Destinations Section */
+[data-theme="dark"] .destinations-section {
+  background: #0D1A13 !important;
+}
+
+[data-theme="dark"] .destination-card {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .destination-card:hover {
+  border-color: #2B5742 !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .dest-title {
+  color: #F4F8F5 !important;
+}
+
+[data-theme="dark"] .dest-desc {
+  color: #9BB0A3 !important;
+}
+
+[data-theme="dark"] .dest-meta-row {
+  border-top-color: #1A3629 !important;
+}
+
+[data-theme="dark"] .dest-meta-item .meta-label {
+  color: #7A9183 !important;
+}
+
+[data-theme="dark"] .dest-meta-item .meta-value {
+  color: #E2ECE5 !important;
+}
+
+/* Local Experiences Section */
+[data-theme="dark"] .experiences-section {
+  background: #0A140F !important;
+}
+
+[data-theme="dark"] .exp-filter-tab {
+  background: #12241C !important;
+  border-color: #1F3D2F !important;
+  color: #9EB3A6 !important;
+}
+
+[data-theme="dark"] .exp-filter-tab:hover {
+  background: #162E23 !important;
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .exp-filter-tab.active {
+  background: #23543D !important;
+  border-color: #2E7D5B !important;
+  color: #F0FDF4 !important;
+}
+
+[data-theme="dark"] .exp-card {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32) !important;
+}
+
+[data-theme="dark"] .exp-card:hover {
+  border-color: #2F5D48 !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.48) !important;
+}
+
+[data-theme="dark"] .exp-host-name {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .exp-host-role {
+  color: #8FA698 !important;
+}
+
+[data-theme="dark"] .exp-title {
+  color: #F4F8F5 !important;
+}
+
+[data-theme="dark"] .exp-desc {
+  color: #9DB3A6 !important;
+}
+
+[data-theme="dark"] .exp-highlights-list {
+  border-top-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .exp-highlights-list li {
+  color: #B5C9BD !important;
+}
+
+[data-theme="dark"] .exp-card-footer {
+  background: #0F1E17 !important;
+  border-top-color: #1A3629 !important;
+}
+
+[data-theme="dark"] .exp-price-label {
+  color: #7F9789 !important;
+}
+
+[data-theme="dark"] .exp-price-main {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .exp-guarantee-banner {
+  background: #11241B !important;
+  border-color: #1E3D2F !important;
+}
+
+[data-theme="dark"] .guarantee-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .guarantee-desc {
+  color: #9EB3A6 !important;
+}
+
+/* Smart Travel Planning Features Section */
+[data-theme="dark"] .features-section {
+  background: #0D1A13 !important;
+}
+
+[data-theme="dark"] .feature-card {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+}
+
+[data-theme="dark"] .feature-icon-wrapper {
+  background: #183325 !important;
+  border-color: #244C37 !important;
+  color: #8AE0B3 !important;
+}
+
+[data-theme="dark"] .feature-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .feature-desc {
+  color: #9EB3A6 !important;
+}
+
+/* AI Assistant Concierge */
+[data-theme="dark"] .assistant-section {
+  background: #0A140F !important;
+}
+
+[data-theme="dark"] .assistant-workspace {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .assistant-sidebar {
+  background: #0F1F18 !important;
+  border-right-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .sidebar-header {
+  border-bottom-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .sidebar-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .session-item {
+  color: #B5C9BD !important;
+}
+
+[data-theme="dark"] .session-item:hover {
+  background: #162E23 !important;
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .session-item.active {
+  background: #1B3B2D !important;
+  border-left-color: #4ADE80 !important;
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .session-date {
+  color: #708A7B !important;
+}
+
+[data-theme="dark"] .assistant-main-chat {
+  background: #12241C !important;
+}
+
+[data-theme="dark"] .chat-header {
+  background: #12241C !important;
+  border-bottom-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .chat-header-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .chat-header-status {
+  color: #8EB39E !important;
+}
+
+[data-theme="dark"] .welcome-card {
+  background: #0F1E17 !important;
+  border-color: #1C382A !important;
+}
+
+[data-theme="dark"] .welcome-heading {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .welcome-body {
+  color: #9DB3A6 !important;
+}
+
+[data-theme="dark"] .prompt-chip {
+  background: #162E23 !important;
+  border-color: #244A37 !important;
+  color: #C3D8CB !important;
+}
+
+[data-theme="dark"] .prompt-chip:hover {
+  background: #1E3D2F !important;
+  border-color: #32674D !important;
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .msg-bubble.assistant {
+  background: #0F1F18 !important;
+  border-color: #1C392B !important;
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .msg-bubble.user {
+  background: #1B4533 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .chat-composer {
+  background: #12241C !important;
+  border-top-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .chat-composer textarea {
+  background: #0D1C15 !important;
+  border-color: #1E3D2F !important;
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .chat-composer textarea:focus {
+  border-color: #2E7D5B !important;
+  box-shadow: 0 0 0 3px rgba(46, 125, 91, 0.25) !important;
+}
+
+[data-theme="dark"] .assistant-right-panel {
+  background: #0F1F18 !important;
+  border-left-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .panel-section {
+  border-bottom-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .panel-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .context-box {
+  background: #13271E !important;
+  border-color: #1E3D2F !important;
+}
+
+[data-theme="dark"] .context-label {
+  color: #7D9688 !important;
+}
+
+[data-theme="dark"] .context-value {
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .tip-card {
+  background: #13271E !important;
+  border-left-color: #C69B52 !important;
+}
+
+[data-theme="dark"] .tip-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .tip-body {
+  color: #9DB3A6 !important;
+}
+
+/* Transport & Fair Fare Section */
+[data-theme="dark"] .transport-section {
+  background: #0D1A13 !important;
+}
+
+[data-theme="dark"] .transport-card {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-theme="dark"] .calc-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .calc-subtitle {
+  color: #9DB3A6 !important;
+}
+
+[data-theme="dark"] .input-field-group label {
+  color: #8FA698 !important;
+}
+
+[data-theme="dark"] .input-field-group select,
+[data-theme="dark"] .input-field-group input {
+  background: #0D1C15 !important;
+  border-color: #1F3D2F !important;
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .fare-breakdown-card {
+  background: #0D1C15 !important;
+  border-color: #1E3D2F !important;
+}
+
+[data-theme="dark"] .fare-total-label {
+  color: #8FA698 !important;
+}
+
+[data-theme="dark"] .fare-total-amount {
+  color: #6FE2A5 !important;
+}
+
+[data-theme="dark"] .fare-stat-row {
+  border-bottom-color: #183325 !important;
+}
+
+[data-theme="dark"] .fare-stat-label {
+  color: #8FA698 !important;
+}
+
+[data-theme="dark"] .fare-stat-val {
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .train-card {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+}
+
+[data-theme="dark"] .train-item {
+  border-bottom-color: #1A3629 !important;
+}
+
+[data-theme="dark"] .train-name {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .train-route {
+  color: #8FA698 !important;
+}
+
+[data-theme="dark"] .train-price {
+  color: #6FE2A5 !important;
+}
+
+/* ==========================================================================
+   SMART ITINERARY DASHBOARD (DARK MODE)
+   ========================================================================== */
+
+[data-theme="dark"] .itinerary-section {
+  background: #0A140F !important;
+}
+
+[data-theme="dark"] .itinerary-workspace-container {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .itinerary-header-bar {
+  background: #0E1D16 !important;
+  border-bottom-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .itinerary-title-group h3 {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .itinerary-day-tab {
+  background: #142B20 !important;
+  border-color: #1F3D2F !important;
+  color: #9DB3A6 !important;
+}
+
+[data-theme="dark"] .itinerary-day-tab:hover {
+  background: #1A392A !important;
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .itinerary-day-tab.active {
+  background: #255840 !important;
+  border-color: #2E7D5B !important;
+  color: #F0FDF4 !important;
+}
+
+[data-theme="dark"] .itinerary-timeline-panel {
+  background: #102119 !important;
+  border-right-color: #1A3629 !important;
+}
+
+[data-theme="dark"] .timeline-section-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .timeline-stop-card {
+  background: #13271E !important;
+  border-color: #1E3D2F !important;
+}
+
+[data-theme="dark"] .timeline-stop-card:hover {
+  border-color: #2F5D48 !important;
+  background: #162E23 !important;
+}
+
+[data-theme="dark"] .timeline-stop-card.active {
+  border-color: #4ADE80 !important;
+  background: #173326 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .stop-time {
+  color: #6FE2A5 !important;
+}
+
+[data-theme="dark"] .stop-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .stop-desc {
+  color: #9DB3A6 !important;
+}
+
+[data-theme="dark"] .itinerary-map-panel {
+  background: #0A140F !important;
+}
+
+/* Map Dark Tiles Filter: converts standard CartoDB / OSM into dark satellite mode */
+[data-theme="dark"] .leaflet-tile {
+  filter: brightness(0.65) invert(1) contrast(3) hue-rotate(200deg) saturate(0.25) !important;
+}
+
+[data-theme="dark"] .map-floating-overlay-card {
+  background: rgba(14, 29, 22, 0.92) !important;
+  border-color: #214333 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .alt-route-toggle-box {
+  background: rgba(14, 29, 22, 0.92) !important;
+  border-color: #214333 !important;
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .map-bottom-breakdown-bar {
+  background: rgba(14, 29, 22, 0.95) !important;
+  border-color: #214333 !important;
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .map-nav-btn {
+  background: #162E23 !important;
+  border-color: #264A38 !important;
+  color: #E2ECE5 !important;
+}
+
+[data-theme="dark"] .map-nav-btn:hover {
+  background: #1F3D2F !important;
+  color: #6FE2A5 !important;
+}
+
+[data-theme="dark"] .leaflet-popup-content-wrapper {
+  background: #12241C !important;
+  color: #E2ECE5 !important;
+  border: 1px solid #234836 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55) !important;
+}
+
+[data-theme="dark"] .leaflet-popup-tip {
+  background: #12241C !important;
+}
+
+/* Community Impact Section */
+[data-theme="dark"] .impact-section {
+  background: #0D1A13 !important;
+}
+
+[data-theme="dark"] .impact-card {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+}
+
+[data-theme="dark"] .impact-stat-number {
+  color: #E4B86A !important;
+}
+
+[data-theme="dark"] .impact-stat-label {
+  color: #9EB3A6 !important;
+}
+
+/* Modals */
+[data-theme="dark"] .modal-card {
+  background: #12241C !important;
+  border-color: #1E3D2F !important;
+  color: #E2ECE5 !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .modal-header {
+  border-bottom-color: #1B3629 !important;
+}
+
+[data-theme="dark"] .modal-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .modal-close-btn {
+  background: #162E23 !important;
+  color: #9DB3A6 !important;
+}
+
+[data-theme="dark"] .modal-close-btn:hover {
+  color: #F1F6F3 !important;
+}
+
+/* Footer */
+[data-theme="dark"] .app-footer {
+  background: #070E0B !important;
+  border-top-color: #162A20 !important;
+}
+
+[data-theme="dark"] .footer-brand-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .footer-brand-desc {
+  color: #7D9486 !important;
+}
+
+[data-theme="dark"] .footer-col-title {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .footer-links a {
+  color: #8CA395 !important;
+}
+
+[data-theme="dark"] .footer-links a:hover {
+  color: #6FE2A5 !important;
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top-color: #14271E !important;
+  color: #6B8074 !important;
+}
