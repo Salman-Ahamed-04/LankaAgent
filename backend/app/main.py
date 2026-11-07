@@ -15,9 +15,9 @@ from app.agent.tools.disruption_sentinel import check_route_disruptions, load_di
 from app.agent.tools.local_host_bridge import match_and_dispatch_local_hosts, load_hosts
 
 app = FastAPI(
-    title="LankaAgent API",
-    description="Autonomous Tourism Logistics & Micro-Economy Broker Multi-Agent System",
-    version="1.0.0"
+    title="SmartLanka API",
+    description="Autonomous Tourism Concierge & Local Micro-Economy Disperser Multi-Agent System",
+    version="2.0.0"
 )
 
 # Enable CORS for local dev
