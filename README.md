@@ -89,14 +89,5 @@ Then visit: **`http://127.0.0.1:8000`** in your browser.
 
 ---
 
-## 📄 How to Put This on Your CV / Resume
-
-### **Project Title:**
-**LankaAgent: Autonomous Multi-Agent Tourism Logistics & Micro-Economy Broker**
-
-### **Bullet Points for Resume:**
-* *Designed and implemented a stateful multi-agent system using **LangGraph** and **FastAPI** to address real-world travel logistics disruptions and tourist price exploitation in Sri Lanka.*
-* *Engineered a deterministic **Fair-Fare Sentinel tool** calculating transport pricing based on live CPC fuel indexes, vehicle depreciation, and terrain gradient multipliers, reducing tourist overcharge rates.*
-* *Implemented an **Autonomous Disruption Sentinel** that monitors railway track advisories and marine swell feeds, autonomously generating multi-modal contingency routes with time/cost impact estimates.*
 * *Integrated a trilingual (Sinhala/Tamil/English) direct-dispatch bridge empowering rural homestays and community cooperatives to receive verified bookings with zero platform commissions.*
 * *Built a real-time reactive web dashboard showcasing live agent thought traces, tool execution graphs, and audio speech synthesis.*
