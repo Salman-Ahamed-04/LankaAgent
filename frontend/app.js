@@ -162,19 +162,19 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="fare-stat-box">
             <div class="label">Official Fair Meter Fare</div>
             <div class="value">LKR ${fare.estimated_fair_fare_lkr.toLocaleString()}</div>
-            <div class="label" style="margin-top: 5px; color: #10b981;">≈ $${fare.estimated_fair_fare_usd} USD</div>
+            <div class="label" style="margin-top: 5px; color: #047857; font-weight: 700;">≈ $${fare.estimated_fair_fare_usd} USD</div>
           </div>
           <div class="fare-stat-box">
             <div class="label">Corridor & Elevation</div>
-            <div class="value" style="font-size: 1.15rem; color: #06b6d4;">${fare.origin} ➔ ${fare.destination}</div>
-            <div class="label" style="margin-top: 5px;">${fare.distance_km} km • Multiplier x${fare.terrain_factor}</div>
+            <div class="value" style="font-size: 1.15rem; color: #0284c7; font-weight: 700;">${fare.origin} ➔ ${fare.destination}</div>
+            <div class="label" style="margin-top: 5px; color: #64748b;">${fare.distance_km} km • Terrain Factor x${fare.terrain_factor}</div>
           </div>
         </div>
 
         ${fare.quoted_scam_fare_lkr ? `
           <div class="scam-warning-box">
             <div class="scam-warning-title">⚠️ Overcharge Flagged: ${fare.overcharge_pct}% Above Fair Meter</div>
-            <p style="font-size: 0.85rem; color: #fecdd3; line-height: 1.45;">
+            <p style="font-size: 0.88rem; color: #9f1239; line-height: 1.5; font-weight: 500;">
               Driver quoted <strong>LKR ${fare.quoted_scam_fare_lkr.toLocaleString()}</strong>. Insisting on official meter saves you <strong>LKR ${fare.potential_savings_lkr.toLocaleString()}</strong>.
             </p>
           </div>
@@ -212,14 +212,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="host-name">${h.business_name}</div>
             <div class="host-location">📍 ${h.location} • Host: ${h.host_name}</div>
           </div>
-          <div class="host-price">LKR ${h.rate_lkr.toLocaleString()} <span style="font-size: 0.72rem; color: #94a3b8;">(~$${h.rate_usd_approx})</span></div>
+          <div class="host-price">LKR ${h.rate_lkr.toLocaleString()} <span style="font-size: 0.76rem; color: #64748b; font-weight: 500;">(~$${h.rate_usd_approx})</span></div>
         </div>
-        <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45;">${h.bio_english}</p>
+        <p style="font-size: 0.86rem; color: #334155; line-height: 1.5; margin-top: 4px;">${h.bio_english}</p>
         <div class="dispatch-preview">
-          <div style="font-size: 0.72rem; color: #a5b4fc; font-weight: 700; margin-bottom: 4px; text-transform: uppercase;">
+          <div style="font-size: 0.72rem; color: #92400e; font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em;">
             📲 Direct Host Voice/Text Dispatch:
           </div>
-          <div style="font-family: -apple-system, sans-serif;">"${h.dispatch_message_sinhala}"</div>
+          <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; color: #78350f;">"${h.dispatch_message_sinhala}"</div>
         </div>
       `;
       hostsList.appendChild(card);

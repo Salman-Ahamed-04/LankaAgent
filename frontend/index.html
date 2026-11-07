@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LankaAgent | Autonomous Tourism Logistics & Micro-Economy Engine</title>
-  <meta name="description" content="Enterprise-grade stateful multi-agent system for real-time Sri Lankan travel logistics, anti-gouging fare calculation, disruption recovery, and rural economic inclusion.">
+  <title>LankaAgent | Sri Lanka Travel AI & Anti-Scam Guide</title>
+  <meta name="description" content="AI travel guide and fair-pricing broker for Sri Lanka. Real-time train updates, official tuk-tuk meter fares, anti-scam protection, and direct village homestays.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
-  <!-- Premium Fonts -->
+  <!-- Friendly & Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,19 +15,19 @@
 </head>
 <body>
 
-  <!-- Top Executive Navigation Bar -->
+  <!-- Top Navigation Bar (Light & Inviting) -->
   <header class="app-header">
     <div class="header-left">
       <div class="brand-container">
         <div class="brand-emblem">
           <svg class="emblem-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="9" fill="url(#brandGrad)" />
-            <path d="M16 6L23 16L16 26L9 16L16 6Z" fill="#10B981" fill-opacity="0.25" stroke="#34D399" stroke-width="1.5" stroke-linejoin="round"/>
-            <circle cx="16" cy="16" r="3" fill="#10B981"/>
+            <rect width="32" height="32" rx="10" fill="url(#brandGrad)" />
+            <path d="M16 6L23 16L16 26L9 16L16 6Z" fill="#10B981" fill-opacity="0.25" stroke="#059669" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="16" cy="16" r="3.5" fill="#059669"/>
             <defs>
               <linearGradient id="brandGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#0F172A"/>
-                <stop offset="1" stop-color="#022C22"/>
+                <stop stop-color="#E6F4EA"/>
+                <stop offset="1" stop-color="#CEEAD6"/>
               </linearGradient>
             </defs>
           </svg>
@@ -36,75 +36,79 @@
         <div class="brand-titles">
           <div class="brand-title-row">
             <h1 class="brand-name">LankaAgent</h1>
-            <span class="system-chip">v1.0 AI Engine</span>
+            <span class="system-chip">🌴 Tourist Guide</span>
           </div>
-          <p class="brand-caption">Autonomous Tourism Logistics & Micro-Economy Broker</p>
+          <p class="brand-caption">Sri Lanka AI Travel Assistant & Anti-Scam Guide</p>
         </div>
       </div>
     </div>
 
-    <!-- Live Telemetry & Quick Indicators -->
+    <!-- Live Badges & Indicators -->
     <div class="header-right">
       <div class="telemetry-pill">
         <span class="telemetry-dot live"></span>
-        <span class="telemetry-label">LangGraph StateGraph</span>
-        <span class="telemetry-badge">Active</span>
+        <span class="telemetry-label">AI Agent</span>
+        <span class="telemetry-badge">Ready</span>
       </div>
 
-      <div class="exchange-rate-card">
+      <div class="exchange-rate-card" title="Central Bank of Sri Lanka Reference Rate">
         <span class="cur-flag">🇱🇰</span>
-        <span class="cur-label">CBSL Index:</span>
+        <span class="cur-label">Today's Rate:</span>
         <span class="cur-rate">1 USD ≈ <strong>310 LKR</strong></span>
       </div>
 
-      <!-- Google Gemini API Status Pill -->
-      <button class="gemini-status-btn" id="geminiBtn" type="button" title="Google Gemini API Configuration">
+      <!-- Google Gemini API Status Button -->
+      <button class="gemini-status-btn" id="geminiBtn" type="button" title="Google Gemini API Status & Settings">
         <span class="sparkle-icon">✨</span>
         <span id="geminiStatusText">Checking Gemini...</span>
       </button>
     </div>
   </header>
 
-  <!-- Interactive Scenario Launcher Bar -->
+  <!-- Popular Tourist Scenarios Bar -->
   <section class="scenario-ribbon">
     <div class="ribbon-inner">
       <div class="ribbon-tag">
-        <span class="spark-icon">⚡</span>
-        <span>Curated Scenarios:</span>
+        <span class="spark-icon">💡</span>
+        <span>Popular Tourist Questions:</span>
       </div>
       <div class="preset-chips">
-        <button class="chip-btn" data-query="I am in Kandy planning to take the train to Ella tomorrow, but a tuk-tuk driver quoted 12,000 LKR. Is that a scam and are the trains running?">
+        <button class="chip-btn chip-train" data-query="I am in Kandy planning to take the train to Ella tomorrow, but a tuk-tuk driver quoted 12,000 LKR. Is that a scam and are the trains running?">
           <span class="chip-icon">🚂</span>
-          <span class="chip-text">Kandy ➔ Ella: Rail Landslide & Fare Audit</span>
+          <span class="chip-text">Kandy ➔ Ella: Train Status & Tuk-Tuk Fare Check</span>
         </button>
-        <button class="chip-btn" data-query="Going to Mirissa for whale watching tomorrow morning. Any weather warnings? What is the fair taxi fare from Galle?">
+        <button class="chip-btn chip-beach" data-query="Going to Mirissa for whale watching tomorrow morning. Any weather warnings? What is the fair taxi fare from Galle?">
           <span class="chip-icon">🌊</span>
-          <span class="chip-text">Mirissa: Marine Swell & Galle Taxi Meter</span>
+          <span class="chip-text">Mirissa: Whale Watching & Fair Taxi Fare</span>
         </button>
-        <button class="chip-btn" data-query="I want to escape tourist crowds and stay in a traditional village homestay in Belihuloya with local food and river bath.">
+        <button class="chip-btn chip-stay" data-query="I want to escape tourist crowds and stay in a traditional village homestay in Belihuloya with local food and river bath.">
           <span class="chip-icon">🏡</span>
-          <span class="chip-text">Belihuloya: Rural Agro-Homestay Direct Bridge</span>
+          <span class="chip-text">Belihuloya: Organic Village Homestay</span>
+        </button>
+        <button class="chip-btn chip-sim" data-query="What is the best way to get a local Dialog SIM card at Colombo Airport and travel on a budget?">
+          <span class="chip-icon">📶</span>
+          <span class="chip-text">Colombo Airport: Dialog SIM & Budget Tips</span>
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Main Designer Workspace Layout -->
+  <!-- Main 2-Column Tourist Workspace Layout -->
   <main class="workspace-grid">
     
-    <!-- LEFT PANEL: Autonomous Conversational Concierge -->
+    <!-- LEFT PANEL: Tourist AI Travel Assistant -->
     <section class="panel-card chat-panel">
       <div class="panel-header">
         <div class="panel-header-title">
           <span class="panel-icon">💬</span>
           <div>
-            <h2>Autonomous Travel Concierge</h2>
-            <p class="panel-subtitle">Stateful Intent Binding & Dynamic Multi-Tool Execution</p>
+            <h2>Sri Lanka Travel Concierge</h2>
+            <p class="panel-subtitle">Ask anything about train routes, fair fares, places to visit, or avoiding scams</p>
           </div>
         </div>
         <div class="panel-badge">
           <span class="dot-beacon"></span>
-          <span>Cyclic Agent Active</span>
+          <span>Online & Ready</span>
         </div>
       </div>
 
@@ -116,23 +120,29 @@
           </div>
           <div class="msg-bubble">
             <div class="msg-header">
-              <span class="msg-sender">LankaAgent Engine</span>
+              <span class="msg-sender">LankaAgent Guide</span>
               <span class="msg-time">Just now</span>
             </div>
             <div class="msg-body">
-              <p><strong>Ayubowan & Welcome to Sri Lanka!</strong></p>
-              <p>I am your autonomous logistics & fair-pricing broker. Unlike basic chatbots, I continuously scan live Sri Lanka Railways notices, marine swell advisories, and calculate transparent <strong>CPC-fuel indexed fair fares</strong> so you are never overcharged.</p>
-              <p>Ask me about travel routes, driver fare quotes (e.g. <em>"Driver asked for 8,000 LKR"</em>), or connecting with verified village homestays!</p>
+              <p><strong>Ayubowan & Welcome to Sri Lanka! 🙏</strong></p>
+              <p>I am your personal AI travel companion. Whether you are planning your first trip or already exploring our island, I am here to help you travel safely and affordably:</p>
+              <ul>
+                <li>🛺 <strong>Check Tuk-Tuk & Taxi Fares:</strong> Tell me a driver's quote (e.g. <em>"Driver asked for 8,000 LKR"</em>) and I'll calculate the official fuel-indexed fair meter rate.</li>
+                <li>🚂 <strong>Track Train Delays & Slips:</strong> Live monitoring of the famous Kandy-Ella scenic railway and coastal weather advisories.</li>
+                <li>🏡 <strong>Authentic Village Homestays:</strong> Discover vetted local family stays with zero corporate booking commission.</li>
+                <li>🌴 <strong>Attractions & Travel Tips:</strong> Ask about SIM cards, authentic food spots, packing advice, and hidden gems!</li>
+              </ul>
+              <p style="margin-top: 10px; color: #047857; font-weight: 500;">Type your question below or click any of the popular topics above to get started!</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Designer Floating Input Bar -->
+      <!-- Floating Light Input Bar -->
       <div class="chat-input-wrapper">
         <form class="chat-input-box" id="chatForm">
           <div class="input-icon-prefix">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
             </svg>
@@ -140,13 +150,13 @@
           <input 
             type="text" 
             id="chatInput" 
-            placeholder="Type your Sri Lanka travel query, driver price quote, or destination..." 
+            placeholder="Ask about fares, trains, places to visit, or scams... (e.g. 'Is 5000 LKR fair from Airport to Colombo?')" 
             autocomplete="off"
             required
           />
-          <button type="submit" id="sendBtn" class="primary-send-btn" title="Execute Query (Enter)">
-            <span>Plan Route</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <button type="submit" id="sendBtn" class="primary-send-btn" title="Send message (Enter)">
+            <span>Ask Guide</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -155,18 +165,18 @@
       </div>
     </section>
 
-    <!-- RIGHT PANEL: Mission Control & Sentinel Operations -->
+    <!-- RIGHT PANEL: Travel Tools & Live Cards -->
     <section class="panel-card operations-panel">
       
       <!-- Segmented Tab Navigation -->
       <div class="segmented-tabs">
         <button class="seg-tab active" data-tab="trace">
           <span class="tab-emoji">⚡</span>
-          <span class="tab-text">Agent Reasoning</span>
+          <span class="tab-text">AI Reasoning</span>
         </button>
         <button class="seg-tab" data-tab="disruptions">
           <span class="tab-emoji">🚨</span>
-          <span class="tab-text">Disruptions</span>
+          <span class="tab-text">Travel Alerts</span>
           <span class="counter-badge" id="disruptionCount">3</span>
         </button>
         <button class="seg-tab" data-tab="fare">
@@ -175,7 +185,7 @@
         </button>
         <button class="seg-tab" data-tab="hosts">
           <span class="tab-emoji">🏡</span>
-          <span class="tab-text">Rural Homestays</span>
+          <span class="tab-text">Village Homestays</span>
         </button>
       </div>
 
@@ -186,19 +196,18 @@
         <div class="tab-view active" id="tab-trace">
           <div class="view-intro">
             <div>
-              <h3>LangGraph State Machine Trace</h3>
-              <p>Real-time execution log of agent intent binding, tools, and constraints.</p>
+              <h3>AI Research & Decision Trace</h3>
+              <p>Watch how LankaAgent analyzes your query, audits route hazards, and calculates fair pricing in real-time.</p>
             </div>
-            <span class="tech-tag">Stateful Pregel</span>
+            <span class="tech-tag">Live Agent</span>
           </div>
           <div class="trace-deck" id="traceTimeline">
             <div class="deck-placeholder">
               <div class="radar-scan-box">
-                <div class="radar-pulse"></div>
-                <span class="radar-center">⚙️</span>
+                <span class="radar-center">🌿</span>
               </div>
-              <h4>Awaiting Traveler Request</h4>
-              <p>Type a message or click any scenario above to watch the multi-agent graph reason and call tools in real-time.</p>
+              <h4>Ready for Your Travel Question</h4>
+              <p>Type a message or click any scenario above to watch LankaAgent research and verify facts for your journey.</p>
             </div>
           </div>
         </div>
@@ -207,10 +216,10 @@
         <div class="tab-view" id="tab-disruptions">
           <div class="view-intro">
             <div>
-              <h3>Sri Lanka Transit & Weather Radar</h3>
-              <p>Continuous monitoring of Sri Lanka Railways Main Line & coastal weather.</p>
+              <h3>Live Train & Weather Advisories</h3>
+              <p>Continuous monitoring of Sri Lanka Railways Main Line, hill country slips, and coastal marine swells.</p>
             </div>
-            <span class="tech-tag live-tag">Live Feed</span>
+            <span class="tech-tag live-tag">Live Updates</span>
           </div>
           <div class="disruptions-deck" id="disruptionsList">
             <!-- Populated dynamically -->
@@ -221,16 +230,16 @@
         <div class="tab-view" id="tab-fare">
           <div class="view-intro">
             <div>
-              <h3>Official Meter & Terrain Indexer</h3>
-              <p>Ceylon Petroleum Corporation (CPC) fuel index + mountain elevation torque formula.</p>
+              <h3>Official Meter & Anti-Scam Calculator</h3>
+              <p>Official fuel-indexed pricing formula with Sinhala & Tamil audio negotiation phrases.</p>
             </div>
-            <span class="tech-tag">Anti-Gouging</span>
+            <span class="tech-tag">Fair Pricing</span>
           </div>
           <div class="fare-deck" id="fareDisplay">
             <div class="deck-placeholder">
               <span class="empty-glyph">🛺</span>
-              <h4>No Route Analyzed Yet</h4>
-              <p>Enter a destination or driver quote (e.g., <em>"Driver asked 9,000 LKR"</em>) to calculate the official fair meter rate.</p>
+              <h4>No Price Checked Yet</h4>
+              <p>Ask about a route or driver quote (e.g. <em>"Driver asked 9,000 LKR for Kandy to Ella"</em>) to see the official fair meter rate and savings.</p>
             </div>
           </div>
         </div>
@@ -239,10 +248,10 @@
         <div class="tab-view" id="tab-hosts">
           <div class="view-intro">
             <div>
-              <h3>Direct-to-Community Micro-Economy Bridge</h3>
-              <p>Zero platform commission • Pre-translated Sinhala/Tamil dispatch.</p>
+              <h3>Direct-to-Community Homestays</h3>
+              <p>Authentic family-run village stays with zero platform booking commission.</p>
             </div>
-            <span class="tech-tag">Inclusive Tourism</span>
+            <span class="tech-tag">Community First</span>
           </div>
           <div class="hosts-deck" id="hostsList">
             <!-- Populated dynamically -->
@@ -258,7 +267,7 @@
     <div class="footer-wrap">
       <div class="footer-left">
         <span class="status-indicator-dot"></span>
-        <span>LankaAgent Multi-Agent Engine • Designed for Sri Lankan Economic Recovery & Inclusive Tourism</span>
+        <span>LankaAgent • Designed for Sustainable & Inclusive Sri Lankan Tourism 🇱🇰</span>
       </div>
       <div class="footer-right">
         <span class="badge-tech">Python 3.11</span>
@@ -267,7 +276,9 @@
         <span class="badge-tech">Google Gemini</span>
       </div>
     </div>
-  <!-- Gemini API Key Modal -->
+  </footer>
+
+  <!-- Gemini API Key Configuration Modal -->
   <div class="api-modal-backdrop" id="apiModal">
     <div class="api-modal-card">
       <div class="api-modal-header">
@@ -275,10 +286,10 @@
           <span>✨</span>
           <h3>Connect Google Gemini API</h3>
         </div>
-        <button class="modal-close-btn" id="closeModalBtn" type="button">&times;</button>
+        <button class="modal-close-btn" id="closeModalBtn" type="button" aria-label="Close modal">&times;</button>
       </div>
       <p class="api-modal-desc">
-        Power LankaAgent's neural intent parsing & travel synthesis with <strong>Gemini 2.5 Flash</strong>. 
+        Power LankaAgent's neural query understanding and personalized travel guides with <strong>Google Gemini</strong>. 
         You can get a free API key instantly from <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a>.
       </p>
       <form id="geminiKeyForm" class="api-modal-form">
