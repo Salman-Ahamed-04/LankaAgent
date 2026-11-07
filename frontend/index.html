@@ -12,8 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
+  <!-- Leaflet Interactive Maps CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
   <!-- Primary Stylesheet -->
-  <link rel="stylesheet" href="/styles.css?v=5.0">
+  <link rel="stylesheet" href="/styles.css?v=5.1">
 </head>
 <body>
 
@@ -749,115 +752,541 @@
     </section>
 
     <!-- ========================================================================
-         8. SMART ITINERARY (5-Day Curated Timeline)
+         8. SMART ITINERARY DASHBOARD (Interactive Map & Daily Timeline)
          ======================================================================== -->
     <section id="itinerary" class="itinerary-section">
-      <div class="section-container">
+      <div class="section-container itinerary-wide-container">
         
-        <div class="section-header-center">
-          <span class="section-kicker">SMART ITINERARY</span>
-          <h2 class="section-title">5-Day Sri Lankan Master Itinerary</h2>
-          <p class="section-desc">A balanced route engineered for cultural immersion, scenic rail transit, and direct community impact.</p>
+        <!-- Header & Control Bar -->
+        <div class="itinerary-dashboard-header">
+          <div class="dashboard-header-text">
+            <div class="dashboard-kicker-row">
+              <span class="section-kicker">SMART ITINERARY DASHBOARD</span>
+              <span class="ai-badge">✨ AI Recommendations</span>
+            </div>
+            <h2 class="section-title">Top 5-Day Sri Lanka Master Itinerary</h2>
+            <p class="section-desc">Explore iconic landmarks, scenic mountain rail routes, and pristine southern beaches in a unified interactive planner.</p>
+          </div>
+
+          <!-- Quick Status & Route Switcher -->
+          <div class="dashboard-controls-deck">
+            <!-- Route Variant Switcher -->
+            <div class="route-variant-switch">
+              <span class="switch-label">Route Mode:</span>
+              <button type="button" class="btn-route-switch active" id="btnPrimaryRoute">
+                <span class="route-indicator-dot dot-primary"></span>
+                <span>Primary Scenic Rail</span>
+              </button>
+              <button type="button" class="btn-route-switch" id="btnAltRoute">
+                <span class="route-indicator-dot dot-alt"></span>
+                <span>Alternative Weather Reroute</span>
+              </button>
+            </div>
+
+            <!-- Global Weather & Crowd Status Pill -->
+            <div class="dashboard-meta-pills">
+              <div class="meta-pill weather-alert-pill" title="Hill Country Monsoonal Advisory">
+                <span class="pill-icon">🌦️</span>
+                <span>Weather Alert: Highland Showers (PM)</span>
+              </div>
+              <div class="meta-pill crowd-pill" title="Crowd Flow Status">
+                <span class="pill-icon">🟢</span>
+                <span>Crowds: Morning Optimum</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="itinerary-timeline">
+        <!-- Day Selector Tabs Bar -->
+        <div class="itinerary-day-tabs" id="itineraryDayTabs">
+          <button type="button" class="day-tab active" data-day="all">
+            <span class="day-tab-num">All</span>
+            <span class="day-tab-title">Full Island Overview</span>
+          </button>
+          <button type="button" class="day-tab" data-day="1">
+            <span class="day-tab-num">Day 1</span>
+            <span class="day-tab-title">Sigiriya Ancient Citadel</span>
+          </button>
+          <button type="button" class="day-tab" data-day="2">
+            <span class="day-tab-num">Day 2</span>
+            <span class="day-tab-title">Sacred Kandy Heritage</span>
+          </button>
+          <button type="button" class="day-tab" data-day="3">
+            <span class="day-tab-num">Day 3</span>
+            <span class="day-tab-title">Iconic Blue Train & Ella</span>
+          </button>
+          <button type="button" class="day-tab" data-day="4">
+            <span class="day-tab-num">Day 4</span>
+            <span class="day-tab-title">Nine Arches & Mirissa</span>
+          </button>
+          <button type="button" class="day-tab" data-day="5">
+            <span class="day-tab-num">Day 5</span>
+            <span class="day-tab-title">Historic Galle Dutch Fort</span>
+          </button>
+        </div>
+
+        <!-- The Main Interactive Dashboard Grid (Timeline on Left, Map on Right) -->
+        <div class="itinerary-dashboard-grid">
           
-          <div class="day-card">
-            <div class="day-badge">
-              <span class="day-number">01</span>
-              <span class="day-text">Day 1</span>
-            </div>
-            <div class="day-body">
-              <div class="day-header">
-                <h3>Arrival & Cultural Triangle Transit</h3>
-                <span class="day-corridor">Bandaranaike Airport ➔ Sigiriya</span>
+          <!-- Left Column: Daily Travel Timeline & Stop Cards -->
+          <div class="dashboard-timeline-col" id="timelineCardsContainer">
+            
+            <!-- Timeline Day 1 -->
+            <div class="timeline-day-block" data-day-block="1">
+              <div class="timeline-day-header">
+                <div class="day-header-badge">
+                  <span class="badge-day">Day 1</span>
+                  <span class="badge-date">07/18/26 • Cultural Triangle</span>
+                </div>
+                <div class="day-weather-strip strip-sunny">
+                  <span class="weather-icon">☀️</span>
+                  <span>29°C Clear Skies • Sunrise climb recommended</span>
+                </div>
               </div>
-              <p>Airport arrival, acquire a local Dialog tourist SIM, and private highway transfer to the Cultural Triangle. Sunset climb of Pidurangala Rock with views over Sigiriya Lion Citadel.</p>
-              <div class="day-specs">
-                <span>🚗 Highway Transfer: ~3.5 hrs</span>
-                <span>🏡 Stay: Sigiriya Green Co-op</span>
-                <span>💡 Tip: Headlamps provided for sunset descent</span>
+
+              <div class="timeline-stops-list">
+                <!-- Stop 1.1 -->
+                <div class="stop-card active" data-stop-id="sigiriya">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=400&q=80" alt="Sigiriya Lion Rock" class="stop-thumbnail" />
+                    <span class="stop-order">1</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Sigiriya Lion Rock Citadel</h4>
+                        <span class="stop-address">📍 Matale District • UNESCO World Heritage</span>
+                      </div>
+                      <div class="stop-rating">⭐ 5.0 <small>(12.8k)</small></div>
+                    </div>
+                    <p class="stop-desc">Climb King Kashyapa's 5th-century royal sky fortress rising 200m above the jungle canopy. Marvel at the ancient mirror wall and frescoes.</p>
+                    
+                    <!-- Indicators: Crowd, Weather, Transport Status, Alternative -->
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-low" title="Crowd Level: Low">
+                        <span class="dot-status dot-green"></span> Low Crowd (Best: 6:30 AM)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        ☀️ 28°C • Light Breeze
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🚗 AC Sedan Confirmed • LKR 14,500
+                      </span>
+                    </div>
+
+                    <div class="stop-alternative-callout">
+                      <span class="alt-tag">Alternative Route:</span>
+                      <span>Climb adjacent <strong>Pidurangala Rock</strong> at sunrise for iconic panorama of Sigiriya with 80% fewer tourists (LKR 1,000 entrance).</span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('sigiriya')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Sigiriya Lion Rock')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stop 1.2 -->
+                <div class="stop-card" data-stop-id="dambulla">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=400&q=80" alt="Dambulla Cave Temple" class="stop-thumbnail" />
+                    <span class="stop-order">2</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Dambulla Royal Rock Cave Temple</h4>
+                        <span class="stop-address">📍 Dambulla • Golden Temple Sanctuary</span>
+                      </div>
+                      <div class="stop-rating">⭐ 4.9 <small>(8.4k)</small></div>
+                    </div>
+                    <p class="stop-desc">Magnificent cave monastery housing 153 Buddha statues and centuries-old ceiling murals preserved over 2,200 years.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-med" title="Crowd Level: Moderate">
+                        <span class="dot-status dot-yellow"></span> Moderate Crowd (11:00 AM)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        🌤️ 31°C • Warm Midday
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🛺 Tuk-Tuk Co-op Metered • LKR 850
+                      </span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('dambulla')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Dambulla Cave Temple')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <!-- Timeline Day 2 -->
+            <div class="timeline-day-block" data-day-block="2">
+              <div class="timeline-day-header">
+                <div class="day-header-badge">
+                  <span class="badge-day">Day 2</span>
+                  <span class="badge-date">07/19/26 • Sacred Hill Capital</span>
+                </div>
+                <div class="day-weather-strip strip-pleasant">
+                  <span class="weather-icon">🌤️</span>
+                  <span>25°C Mountain Breeze • Evening Thevawa Ceremony</span>
+                </div>
+              </div>
+
+              <div class="timeline-stops-list">
+                <!-- Stop 2.1 -->
+                <div class="stop-card" data-stop-id="kandy_tooth">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1588598198321-9735fd524498?auto=format&fit=crop&w=400&q=80" alt="Temple of the Sacred Tooth Relic" class="stop-thumbnail" />
+                    <span class="stop-order">3</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Temple of the Sacred Tooth Relic</h4>
+                        <span class="stop-address">📍 Kandy Lakefront • Sri Dalada Maligawa</span>
+                      </div>
+                      <div class="stop-rating">⭐ 5.0 <small>(15.2k)</small></div>
+                    </div>
+                    <p class="stop-desc">The sacred royal palace sanctuary preserving the left canine relic of Gautama Buddha. Witness the ceremonial evening drumming and ritual worship.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-high" title="Crowd Level: Peak at Ceremony">
+                        <span class="dot-status dot-red"></span> Peak Surge (18:30 Puja)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        ⛅ 24°C • Pleasant Hill Climate
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🚶 Lakefront Walk (5 mins from stay)
+                      </span>
+                    </div>
+
+                    <div class="stop-alternative-callout">
+                      <span class="alt-tag">Crowd Tip:</span>
+                      <span>Enter at 06:00 AM morning ceremony to avoid crowds and observe monks in serene meditation.</span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('kandy_tooth')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Temple of the Tooth')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stop 2.2 -->
+                <div class="stop-card" data-stop-id="peradeniya">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80" alt="Royal Botanical Gardens Peradeniya" class="stop-thumbnail" />
+                    <span class="stop-order">4</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Royal Botanical Gardens, Peradeniya</h4>
+                        <span class="stop-address">📍 Mahaweli Riverbank • Central Province</span>
+                      </div>
+                      <div class="stop-rating">⭐ 4.8 <small>(9.1k)</small></div>
+                    </div>
+                    <p class="stop-desc">147-acre world-renowned garden renowned for its 4,000 plant species, giant Javan fig tree, royal palm avenue, and orchid pavilion.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-low" title="Crowd Level: Low">
+                        <span class="dot-status dot-green"></span> Low Crowd (Expansive 147 acres)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        🌤️ 26°C • Afternoon Sun
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🛺 Metered Tuk-Tuk Confirmed • LKR 1,100
+                      </span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('peradeniya')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Peradeniya Botanical Gardens')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Day 3 -->
+            <div class="timeline-day-block" data-day-block="3">
+              <div class="timeline-day-header">
+                <div class="day-header-badge">
+                  <span class="badge-day">Day 3</span>
+                  <span class="badge-date">07/20/26 • Iconic Blue Train</span>
+                </div>
+                <div class="day-weather-strip strip-rain">
+                  <span class="weather-icon">🌧️</span>
+                  <span>19°C Mist & Rain Alert • Contingency protocol active</span>
+                </div>
+              </div>
+
+              <div class="timeline-stops-list">
+                <!-- Stop 3.1 -->
+                <div class="stop-card" data-stop-id="blue_train">
+                  <div class="stop-media">
+                    <img src="/assets/srilanka_nature_bg.jpg" alt="Kandy to Ella Scenic Train" class="stop-thumbnail" />
+                    <span class="stop-order">5</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">The Iconic Blue Train Journey</h4>
+                        <span class="stop-address">📍 Kandy Station ➔ Nanu Oya ➔ Ella</span>
+                      </div>
+                      <div class="stop-rating">⭐ 5.0 <small>(24.3k)</small></div>
+                    </div>
+                    <p class="stop-desc">The world's most scenic mountain rail voyage passing emerald tea estates, mist-shrouded viaducts, and roaring waterfalls.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-high" title="Crowd Level: Booked 30 Days Ahead">
+                        <span class="dot-status dot-red"></span> Peak Demand (1st Class)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        🌧️ 18°C • Highland Mist & Showers
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status" id="trainBookingBadge">
+                        🚂 Train #1005 Podi Menike • Reserved
+                      </span>
+                    </div>
+
+                    <!-- Contingency Box for Track Stabilization -->
+                    <div class="stop-contingency-box" id="trainContingencyNotice">
+                      <div class="contingency-title">⚠️ Track Advisory & Alternative Route:</div>
+                      <p>Rail slip at Nanu Oya: Train terminates at Nanu Oya. SmartLanka vetted cooperative minivans take travelers over Haputale Pass to Ella (+25 mins, LKR 2,500 / seat).</p>
+                      <button type="button" class="btn-toggle-alt-route" id="btnInlineAltTrigger">Switch to Haputale Reroute ➔</button>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('blue_train')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Kandy to Ella train')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stop 3.2 -->
+                <div class="stop-card" data-stop-id="ella_gap">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=400&q=80" alt="Little Adam's Peak, Ella" class="stop-thumbnail" />
+                    <span class="stop-order">6</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Little Adam's Peak & Ella Mist</h4>
+                        <span class="stop-address">📍 Ella • Passara Ridge Trails</span>
+                      </div>
+                      <div class="stop-rating">⭐ 4.9 <small>(11.7k)</small></div>
+                    </div>
+                    <p class="stop-desc">Gentle mountain ridge hike leading through tea plantations to a panoramic lookout across Ella Gap towards the southern plains.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-med" title="Crowd Level: Moderate">
+                        <span class="dot-status dot-yellow"></span> Moderate (Sunset: 17:30)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        🌤️ 21°C • Clearing Sunset
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🏡 Stay: Ella Mist Farmstead (Confirmed)
+                      </span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('ella_gap')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Little Adams Peak')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Day 4 -->
+            <div class="timeline-day-block" data-day-block="4">
+              <div class="timeline-day-header">
+                <div class="day-header-badge">
+                  <span class="badge-day">Day 4</span>
+                  <span class="badge-date">07/21/26 • Viaduct & Southern Coast</span>
+                </div>
+                <div class="day-weather-strip strip-sunny">
+                  <span class="weather-icon">🌊</span>
+                  <span>29°C Tropical Ocean • Sea Swell Calm</span>
+                </div>
+              </div>
+
+              <div class="timeline-stops-list">
+                <!-- Stop 4.1 -->
+                <div class="stop-card" data-stop-id="nine_arches">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=400&q=80" alt="Nine Arches Bridge, Demodara" class="stop-thumbnail" />
+                    <span class="stop-order">7</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Nine Arches Demodara Viaduct</h4>
+                        <span class="stop-address">📍 Demodara, Ella • Bridge in the Sky</span>
+                      </div>
+                      <div class="stop-rating">⭐ 5.0 <small>(18.5k)</small></div>
+                    </div>
+                    <p class="stop-desc">Colonial engineering masterpiece built entirely with brick, stone, and cement without a single piece of steel. Catch the 09:20 AM train passing overhead.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-low" title="Crowd Level: Low at Sunrise">
+                        <span class="dot-status dot-green"></span> Low Crowd (Best: 06:15 AM)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        ☀️ 22°C • Crisp Morning Mist
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🚶 Forest Trail Walk (20 mins)
+                      </span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('nine_arches')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Nine Arches Bridge')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stop 4.2 -->
+                <div class="stop-card" data-stop-id="mirissa">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=80" alt="Coconut Tree Hill, Mirissa" class="stop-thumbnail" />
+                    <span class="stop-order">8</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Coconut Tree Hill & Mirissa Bay</h4>
+                        <span class="stop-address">📍 Mirissa • Southern Coastal Sanctuary</span>
+                      </div>
+                      <div class="stop-rating">⭐ 4.9 <small>(14.1k)</small></div>
+                    </div>
+                    <p class="stop-desc">Scenic palm-crested promontory overlooking turquoise ocean waves. Enjoy fresh king coconut water and sunset coastal dining.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-med" title="Crowd Level: Moderate at Sunset">
+                        <span class="dot-status dot-yellow"></span> Moderate (Sunset: 18:00)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        ☀️ 29°C • Tropical Ocean Breeze
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🚗 Highway Transfer Confirmed • LKR 12,000
+                      </span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('mirissa')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Mirissa Beach')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Day 5 -->
+            <div class="timeline-day-block" data-day-block="5">
+              <div class="timeline-day-header">
+                <div class="day-header-badge">
+                  <span class="badge-day">Day 5</span>
+                  <span class="badge-date">07/22/26 • Dutch Ramparts & Departure</span>
+                </div>
+                <div class="day-weather-strip strip-sunny">
+                  <span class="weather-icon">☀️</span>
+                  <span>30°C Coastal Sunshine • Expressway to CMB</span>
+                </div>
+              </div>
+
+              <div class="timeline-stops-list">
+                <!-- Stop 5.1 -->
+                <div class="stop-card" data-stop-id="galle_fort">
+                  <div class="stop-media">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=80" alt="Galle Dutch Fort Ramparts" class="stop-thumbnail" />
+                    <span class="stop-order">9</span>
+                  </div>
+                  <div class="stop-body">
+                    <div class="stop-header-row">
+                      <div>
+                        <h4 class="stop-name">Galle Fort Ramparts & Lighthouse</h4>
+                        <span class="stop-address">📍 Galle • 17th-Century Colonial Citadel</span>
+                      </div>
+                      <div class="stop-rating">⭐ 5.0 <small>(21.4k)</small></div>
+                    </div>
+                    <p class="stop-desc">Living UNESCO fortress founded by Portuguese and fortified by Dutch settlers. Stroll along bastion ramparts, artisan boutiques, and the historic lighthouse.</p>
+
+                    <div class="stop-badges-row">
+                      <span class="badge-crowd crowd-low" title="Crowd Level: Low in Morning">
+                        <span class="dot-status dot-green"></span> Low Crowd (Morning 08:30)
+                      </span>
+                      <span class="badge-weather" title="Weather Forecast">
+                        ☀️ 29°C • Pleasant Sea Wind
+                      </span>
+                      <span class="badge-transport" title="Transport Booking Status">
+                        🚗 Southern Expressway to CMB • LKR 9,500
+                      </span>
+                    </div>
+
+                    <div class="stop-actions">
+                      <button type="button" class="btn-stop-action" onclick="focusOnMap('galle_fort')">📍 View on Map</button>
+                      <button type="button" class="btn-stop-action" onclick="askAiAboutStop('Galle Fort')">✨ Ask Concierge</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div class="day-card">
-            <div class="day-badge">
-              <span class="day-number">02</span>
-              <span class="day-text">Day 2</span>
-            </div>
-            <div class="day-body">
-              <div class="day-header">
-                <h3>Ancient Citadel & Sacred Kandy</h3>
-                <span class="day-corridor">Sigiriya ➔ Dambulla ➔ Kandy</span>
-              </div>
-              <p>Morning exploration of the Sigiriya Lion Rock gardens. Midday visit to Dambulla UNESCO rock cave temples. Afternoon arrival in Kandy and evening Thevawa ritual at the Temple of the Tooth.</p>
-              <div class="day-specs">
-                <span>🚗 Scenic Drive: ~2.5 hrs</span>
-                <span>🍛 Dinner: Authentic clay-pot rice & curry</span>
-                <span>👗 Temple dress: White attire covering knees/shoulders</span>
-              </div>
-            </div>
-          </div>
+          <!-- Right Column: Interactive Route Map Pane -->
+          <div class="dashboard-map-col">
+            <div class="map-wrapper-card">
+              
+              <!-- Map Container -->
+              <div id="itineraryMap" class="leaflet-map-frame"></div>
 
-          <div class="day-card">
-            <div class="day-badge">
-              <span class="day-number">03</span>
-              <span class="day-text">Day 3</span>
-            </div>
-            <div class="day-body">
-              <div class="day-header">
-                <h3>The Iconic Blue Train Journey</h3>
-                <span class="day-corridor">Kandy ➔ Nanu Oya ➔ Ella</span>
+              <!-- Map Overlay Legend (Top Right) -->
+              <div class="map-overlay-legend">
+                <div class="legend-row">
+                  <span class="legend-line line-scenic"></span>
+                  <span>Primary Scenic Rail</span>
+                </div>
+                <div class="legend-row">
+                  <span class="legend-line line-alt"></span>
+                  <span>Haputale Pass Reroute</span>
+                </div>
+                <div class="legend-row">
+                  <span class="legend-pin-sample"></span>
+                  <span>Interactive Waypoints</span>
+                </div>
               </div>
-              <p>Board the scenic morning train through misty tea estates. Transfer via cooperative minivan over Haputale Pass to Ella. Sunset hike up Little Adam's Peak.</p>
-              <div class="day-specs">
-                <span>🚂 Scenic Train: 2.5 hrs + 1.8 hr transfer</span>
-                <span>🏡 Stay: Ella Mist Farmstead</span>
-                <span>⚠️ SmartLanka Disruption Sentinel Active</span>
-              </div>
-            </div>
-          </div>
 
-          <div class="day-card">
-            <div class="day-badge">
-              <span class="day-number">04</span>
-              <span class="day-text">Day 4</span>
-            </div>
-            <div class="day-body">
-              <div class="day-header">
-                <h3>Nine Arches Bridge & Southern Descent</h3>
-                <span class="day-corridor">Ella ➔ Ravana Falls ➔ Mirissa</span>
+              <!-- Floating Bottom Day Breakdown Bar (Matching user's uploaded screenshot) -->
+              <div class="map-bottom-breakdown-bar">
+                <div class="breakdown-nav">
+                  <button type="button" class="btn-map-nav" id="btnPrevDay" aria-label="Previous Day">‹</button>
+                  <span class="breakdown-label" id="mapBreakdownLabel">Day 1 – Itinerary breakdown</span>
+                  <button type="button" class="btn-map-nav" id="btnNextDay" aria-label="Next Day">›</button>
+                </div>
+                <div class="map-zoom-stats">
+                  <button type="button" class="btn-reset-map" id="btnResetMap" title="Fit All Sri Lanka Waypoints">⛶ Fit Island</button>
+                  <span class="transit-stat-tag" id="mapTransitStat">🚗 Transit: ~3.5 hrs • 148 km</span>
+                </div>
               </div>
-              <p>Sunrise photography at Nine Arches Bridge. Organic farmstead breakfast followed by southern descent past Ravana Falls towards the turquoise Indian Ocean.</p>
-              <div class="day-specs">
-                <span>🚗 Southern Highway Descent: ~3 hrs</span>
-                <span>🏖️ Sunset: Coconut Tree Hill Walk</span>
-                <span>🌊 Marine weather audit checked</span>
-              </div>
-            </div>
-          </div>
 
-          <div class="day-card">
-            <div class="day-badge">
-              <span class="day-number">05</span>
-              <span class="day-text">Day 5</span>
-            </div>
-            <div class="day-body">
-              <div class="day-header">
-                <h3>Galle Fort Colonial Walk & Departure</h3>
-                <span class="day-corridor">Mirissa ➔ Galle Fort ➔ Airport</span>
-              </div>
-              <p>Morning coastal walk along Galle Fort ramparts and lighthouse. Exploration of local spice merchants and gem artisans. Southern Expressway express transit back to airport.</p>
-              <div class="day-specs">
-                <span>🚗 Southern Expressway: 2 hrs to CMB</span>
-                <span>🛍️ Spices: Handpicked cinnamon & tea</span>
-                <span>✈️ Final departure brief confirmed</span>
-              </div>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -1047,6 +1476,8 @@
     </div>
   </div>
 
-  <script src="/app.js?v=5.0"></script>
+  <!-- Leaflet Interactive Maps JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/app.js?v=5.1"></script>
 </body>
 </html>

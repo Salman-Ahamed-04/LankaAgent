@@ -628,4 +628,376 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ==========================================================================
+  // SMART ITINERARY DASHBOARD CONTROLLER (Interactive Map & Timeline)
+  // ==========================================================================
+  const itineraryMapContainer = document.getElementById('itineraryMap');
+  let itineraryMap = null;
+  const activeMarkers = {};
+  let primaryPolyline = null;
+  let altPolyline = null;
+  let currentActiveDay = 'all';
+  let currentRouteMode = 'primary'; // 'primary' | 'alt'
+
+  const stopsData = {
+    sigiriya: {
+      name: "Sigiriya Lion Rock Citadel",
+      shortLoc: "Cultural Triangle",
+      day: 1,
+      coords: [7.9570, 80.7603],
+      rating: "5.0 ★",
+      crowd: "🟢 Low (6:30 AM)",
+      thumb: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=150&q=80"
+    },
+    dambulla: {
+      name: "Dambulla Royal Cave Temple",
+      shortLoc: "Golden Temple Sanctuary",
+      day: 1,
+      coords: [7.8742, 80.6511],
+      rating: "4.9 ★",
+      crowd: "🟡 Moderate Crowd",
+      thumb: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=150&q=80"
+    },
+    kandy_tooth: {
+      name: "Temple of the Sacred Tooth",
+      shortLoc: "Kandy Lakefront",
+      day: 2,
+      coords: [7.2936, 80.6413],
+      rating: "5.0 ★",
+      crowd: "🔴 Peak Ceremony (18:30)",
+      thumb: "https://images.unsplash.com/photo-1588598198321-9735fd524498?auto=format&fit=crop&w=150&q=80"
+    },
+    peradeniya: {
+      name: "Royal Botanical Gardens",
+      shortLoc: "Peradeniya, Kandy",
+      day: 2,
+      coords: [7.2711, 80.5960],
+      rating: "4.8 ★",
+      crowd: "🟢 Low Crowd (147 Acres)",
+      thumb: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=150&q=80"
+    },
+    blue_train: {
+      name: "Iconic Blue Train Journey",
+      shortLoc: "Kandy ➔ Nanu Oya ➔ Ella",
+      day: 3,
+      coords: [6.9404, 80.7486],
+      rating: "5.0 ★",
+      crowd: "🔴 High Demand (Booked)",
+      thumb: "/assets/srilanka_nature_bg.jpg"
+    },
+    ella_gap: {
+      name: "Little Adam's Peak & Gap",
+      shortLoc: "Ella Mountain Ridge",
+      day: 3,
+      coords: [6.8748, 81.0465],
+      rating: "4.9 ★",
+      crowd: "🟡 Moderate (Sunset)",
+      thumb: "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=150&q=80"
+    },
+    nine_arches: {
+      name: "Nine Arches Viaduct Bridge",
+      shortLoc: "Demodara, Ella",
+      day: 4,
+      coords: [6.8767, 81.0608],
+      rating: "5.0 ★",
+      crowd: "🟢 Low Crowd (06:15 AM)",
+      thumb: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=150&q=80"
+    },
+    mirissa: {
+      name: "Coconut Tree Hill & Bay",
+      shortLoc: "Mirissa Southern Coast",
+      day: 4,
+      coords: [5.9442, 80.4593],
+      rating: "4.9 ★",
+      crowd: "🟡 Sunset Gatherings",
+      thumb: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=150&q=80"
+    },
+    galle_fort: {
+      name: "Galle Fort Ramparts",
+      shortLoc: "Galle Lighthouse Citadel",
+      day: 5,
+      coords: [6.0275, 80.2170],
+      rating: "5.0 ★",
+      crowd: "🟢 Low Crowd (08:30 AM)",
+      thumb: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=150&q=80"
+    }
+  };
+
+  const primaryRouteCoords = [
+    [7.1808, 79.8841], // Airport
+    [7.9570, 80.7603], // Sigiriya
+    [7.8742, 80.6511], // Dambulla
+    [7.2936, 80.6413], // Kandy Tooth
+    [7.2711, 80.5960], // Peradeniya
+    [6.9404, 80.7486], // Nanu Oya Rail
+    [6.8748, 81.0465], // Ella Little Adam's Peak
+    [6.8767, 81.0608], // Nine Arches
+    [5.9442, 80.4593], // Mirissa
+    [6.0275, 80.2170], // Galle
+    [7.1808, 79.8841]  // Return CMB Airport
+  ];
+
+  const altRouteCoords = [
+    [7.2936, 80.6413], // Kandy
+    [6.7681, 80.9570], // Haputale Mountain Pass
+    [6.8748, 81.0465]  // Ella
+  ];
+
+  function initItineraryDashboardMap() {
+    if (!itineraryMapContainer || typeof L === 'undefined') return;
+
+    try {
+      itineraryMap = L.map('itineraryMap', {
+        center: [7.2936, 80.6413],
+        zoom: 8,
+        zoomControl: true,
+        scrollWheelZoom: false
+      });
+
+      // CartoDB Voyager clean pastel travel tiles
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap',
+        maxZoom: 18,
+        subdomains: 'abcd'
+      }).addTo(itineraryMap);
+
+      // Primary Scenic Polyline
+      primaryPolyline = L.polyline(primaryRouteCoords, {
+        color: '#174D3A',
+        weight: 4.5,
+        opacity: 0.9,
+        smoothFactor: 1
+      }).addTo(itineraryMap);
+
+      // Alternative Contingency Polyline
+      altPolyline = L.polyline(altRouteCoords, {
+        color: '#C69B52',
+        weight: 3.5,
+        opacity: 0.55,
+        dashArray: '6, 8',
+        smoothFactor: 1
+      }).addTo(itineraryMap);
+
+      // Render Floating Callout Card Markers
+      Object.keys(stopsData).forEach(key => {
+        const stop = stopsData[key];
+
+        const customIcon = L.divIcon({
+          className: 'leaflet-floating-card-wrapper',
+          html: `
+            <div class="leaflet-floating-card" data-card-id="${key}">
+              <img src="${stop.thumb}" alt="${stop.name}" class="floating-thumb" />
+              <div class="floating-info">
+                <div class="floating-title">${stop.name}</div>
+                <div class="floating-loc">📍 ${stop.shortLoc}</div>
+                <div class="floating-rating">${stop.rating} • <span style="color: #174D3A; font-weight: 600;">${stop.crowd}</span></div>
+              </div>
+            </div>
+            <div class="custom-waypoint-pin" id="pin-${key}"></div>
+          `,
+          iconSize: [230, 68],
+          iconAnchor: [30, 68]
+        });
+
+        const marker = L.marker(stop.coords, { icon: customIcon }).addTo(itineraryMap);
+        marker.on('click', () => {
+          selectStop(key);
+        });
+
+        activeMarkers[key] = marker;
+      });
+
+      // Fit Initial Bounds
+      itineraryMap.fitBounds(primaryPolyline.getBounds(), { padding: [40, 40] });
+
+    } catch (e) {
+      console.warn("Could not initialize Leaflet map:", e);
+    }
+  }
+
+  // Initialize Map
+  initItineraryDashboardMap();
+
+  // Select Stop Function
+  window.selectStop = function(stopId) {
+    const stop = stopsData[stopId];
+    if (!stop) return;
+
+    // Highlight stop card in timeline
+    document.querySelectorAll('.stop-card').forEach(card => card.classList.remove('active'));
+    const targetCard = document.querySelector(`.stop-card[data-stop-id="${stopId}"]`);
+    if (targetCard) {
+      targetCard.classList.add('active');
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Highlight pin on map
+    document.querySelectorAll('.custom-waypoint-pin').forEach(pin => pin.classList.remove('pin-active'));
+    const targetPin = document.getElementById(`pin-${stopId}`);
+    if (targetPin) targetPin.classList.add('pin-active');
+
+    // Pan map to stop
+    if (itineraryMap) {
+      itineraryMap.flyTo(stop.coords, 10, { duration: 1.2 });
+    }
+  };
+
+  // View on Map Button
+  window.focusOnMap = function(stopId) {
+    window.selectStop(stopId);
+    if (window.innerWidth <= 1024) {
+      const mapEl = document.getElementById('itineraryMap');
+      if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Ask AI Concierge to Refine Stop
+  window.askAiAboutStop = function(stopName) {
+    const prompt = `Can you refine our itinerary for ${stopName} to optimize crowd arrival, check live weather, and confirm transport fare from Colombo?`;
+    const assistantSection = document.getElementById('ai-assistant');
+    if (assistantSection) {
+      assistantSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (chatInput) chatInput.value = prompt;
+    handleSendMessage(prompt);
+  };
+
+  // Route Mode Switcher
+  const btnPrimaryRoute = document.getElementById('btnPrimaryRoute');
+  const btnAltRoute = document.getElementById('btnAltRoute');
+  const btnInlineAltTrigger = document.getElementById('btnInlineAltTrigger');
+  const mapTransitStat = document.getElementById('mapTransitStat');
+  const trainBookingBadge = document.getElementById('trainBookingBadge');
+
+  window.toggleRouteMode = function(mode) {
+    currentRouteMode = mode;
+    if (mode === 'alt') {
+      btnPrimaryRoute?.classList.remove('active');
+      btnAltRoute?.classList.add('active');
+
+      if (altPolyline) {
+        altPolyline.setStyle({ color: '#C69B52', weight: 5, opacity: 1, dashArray: null });
+      }
+      if (primaryPolyline) {
+        primaryPolyline.setStyle({ opacity: 0.45 });
+      }
+      if (mapTransitStat) {
+        mapTransitStat.textContent = '⚡ Alt Reroute: Minivan via Haputale (+25 mins • 2,500 LKR)';
+      }
+      if (trainBookingBadge) {
+        trainBookingBadge.textContent = '🚐 Vetted Co-op Minivan • Reserved';
+      }
+      if (itineraryMap && altPolyline) {
+        itineraryMap.flyToBounds(altPolyline.getBounds(), { padding: [60, 60], duration: 1.2 });
+      }
+    } else {
+      btnAltRoute?.classList.remove('active');
+      btnPrimaryRoute?.classList.add('active');
+
+      if (primaryPolyline) {
+        primaryPolyline.setStyle({ color: '#174D3A', weight: 4.5, opacity: 0.9 });
+      }
+      if (altPolyline) {
+        altPolyline.setStyle({ color: '#C69B52', weight: 3.5, opacity: 0.55, dashArray: '6, 8' });
+      }
+      if (mapTransitStat) {
+        mapTransitStat.textContent = '🚗 Transit: ~3.5 hrs • 148 km';
+      }
+      if (trainBookingBadge) {
+        trainBookingBadge.textContent = '🚂 Train #1005 Podi Menike • Reserved';
+      }
+      if (itineraryMap && primaryPolyline) {
+        itineraryMap.flyToBounds(primaryPolyline.getBounds(), { padding: [40, 40], duration: 1.2 });
+      }
+    }
+  };
+
+  if (btnPrimaryRoute) btnPrimaryRoute.addEventListener('click', () => window.toggleRouteMode('primary'));
+  if (btnAltRoute) btnAltRoute.addEventListener('click', () => window.toggleRouteMode('alt'));
+  if (btnInlineAltTrigger) btnInlineAltTrigger.addEventListener('click', () => window.toggleRouteMode('alt'));
+
+  // Day Filter Tabs Controller
+  const dayTabs = document.querySelectorAll('.day-tab');
+  const dayBlocks = document.querySelectorAll('.timeline-day-block');
+  const mapBreakdownLabel = document.getElementById('mapBreakdownLabel');
+
+  function filterItineraryDay(day) {
+    currentActiveDay = day;
+
+    // Update active tab button
+    dayTabs.forEach(tab => {
+      if (tab.dataset.day === String(day)) tab.classList.add('active');
+      else tab.classList.remove('active');
+    });
+
+    // Filter timeline blocks
+    if (day === 'all') {
+      dayBlocks.forEach(b => b.classList.remove('hidden'));
+      if (mapBreakdownLabel) mapBreakdownLabel.textContent = 'All Days – Full Island Overview';
+      if (itineraryMap && primaryPolyline) {
+        itineraryMap.flyToBounds(primaryPolyline.getBounds(), { padding: [40, 40], duration: 1.2 });
+      }
+    } else {
+      const dayNum = parseInt(day);
+      dayBlocks.forEach(b => {
+        if (b.dataset.dayBlock === String(dayNum)) b.classList.remove('hidden');
+        else b.classList.add('hidden');
+      });
+
+      const dayNames = {
+        1: 'Day 1 – Sigiriya Citadel',
+        2: 'Day 2 – Sacred Kandy',
+        3: 'Day 3 – Blue Train & Ella',
+        4: 'Day 4 – Viaduct & Mirissa',
+        5: 'Day 5 – Galle Dutch Fort'
+      };
+      if (mapBreakdownLabel) mapBreakdownLabel.textContent = dayNames[dayNum] || `Day ${dayNum} Breakdown`;
+
+      // Zoom map to that day's stops
+      const dayCoords = Object.values(stopsData)
+        .filter(s => s.day === dayNum)
+        .map(s => s.coords);
+
+      if (itineraryMap && dayCoords.length > 0) {
+        const bounds = L.latLngBounds(dayCoords);
+        itineraryMap.flyToBounds(bounds, { padding: [80, 80], maxZoom: 11, duration: 1.2 });
+      }
+    }
+  }
+
+  dayTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterItineraryDay(tab.dataset.day);
+    });
+  });
+
+  // Bottom Map Navigation Controls
+  const btnPrevDay = document.getElementById('btnPrevDay');
+  const btnNextDay = document.getElementById('btnNextDay');
+  const btnResetMap = document.getElementById('btnResetMap');
+
+  if (btnPrevDay) {
+    btnPrevDay.addEventListener('click', () => {
+      let nextDay;
+      if (currentActiveDay === 'all' || currentActiveDay === '1') nextDay = 5;
+      else nextDay = parseInt(currentActiveDay) - 1;
+      filterItineraryDay(nextDay);
+    });
+  }
+
+  if (btnNextDay) {
+    btnNextDay.addEventListener('click', () => {
+      let nextDay;
+      if (currentActiveDay === 'all' || currentActiveDay === '5') nextDay = 1;
+      else nextDay = parseInt(currentActiveDay) + 1;
+      filterItineraryDay(nextDay);
+    });
+  }
+
+  if (btnResetMap) {
+    btnResetMap.addEventListener('click', () => {
+      filterItineraryDay('all');
+    });
+  }
 });
