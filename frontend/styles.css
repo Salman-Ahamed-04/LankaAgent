@@ -4203,3 +4203,217 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #1E3D2F !important;
   color: #8AE0B3 !important;
 }
+
+
+/* ==========================================================================
+   FLOATING AI CONCIERGE QUICK LAUNCHER WIDGET
+   ========================================================================== */
+
+.floating-bot-container {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.65rem;
+  pointer-events: none;
+}
+
+.floating-bot-bubble {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #FFFFFF;
+  border: 1px solid #E8EAE5;
+  border-radius: 14px;
+  padding: 0.7rem 0.95rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(0);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  max-width: 280px;
+}
+
+.floating-bot-bubble:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+.floating-bot-bubble.bubble-hidden {
+  opacity: 0;
+  transform: translateY(12px) scale(0.94);
+  pointer-events: none;
+}
+
+.bubble-avatar-mini {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.bubble-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.bubble-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #174D3A;
+  margin-bottom: 0.1rem;
+}
+
+.bubble-text {
+  font-size: 0.74rem;
+  color: #737B74;
+  line-height: 1.35;
+}
+
+.btn-close-bubble {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: #8C948E;
+  cursor: pointer;
+  padding: 0 0.15rem;
+  margin-left: 0.35rem;
+  transition: color 0.15s ease;
+}
+
+.btn-close-bubble:hover {
+  color: #202923;
+}
+
+.floating-bot-btn {
+  pointer-events: auto;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #174D3A;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(23, 77, 58, 0.38);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+}
+
+.floating-bot-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  background-color: #113A2C;
+  box-shadow: 0 14px 32px rgba(23, 77, 58, 0.48);
+}
+
+.floating-bot-btn:active {
+  transform: scale(0.95);
+}
+
+.bot-icon-svg {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.25s ease;
+}
+
+.floating-bot-btn:hover .bot-icon-svg {
+  transform: rotate(6deg) scale(1.05);
+}
+
+.floating-bot-pulse {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(16, 185, 129, 0.55);
+  animation: botPulse 2.8s infinite cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+@keyframes botPulse {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.bot-online-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #10B981;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+}
+
+/* Chatbot Section Pulse Glow when triggered by launcher */
+@keyframes workspaceGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 125, 91, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(46, 125, 91, 0.3);
+  }
+  100% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.assistant-workspace.workspace-highlight {
+  animation: workspaceGlow 1.8s ease-out;
+}
+
+/* Floating Bot Dark Mode Overrides */
+[data-theme="dark"] .floating-bot-bubble {
+  background-color: #12241C !important;
+  border-color: #1E3D2F !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .bubble-title {
+  color: #6FE2A5 !important;
+}
+
+[data-theme="dark"] .bubble-text {
+  color: #9DB3A6 !important;
+}
+
+[data-theme="dark"] .btn-close-bubble {
+  color: #7D9486 !important;
+}
+
+[data-theme="dark"] .btn-close-bubble:hover {
+  color: #F1F6F3 !important;
+}
+
+[data-theme="dark"] .floating-bot-btn {
+  background-color: #1E5C42 !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55) !important;
+}
+
+[data-theme="dark"] .floating-bot-btn:hover {
+  background-color: #277454 !important;
+}
+
+[data-theme="dark"] .bot-online-badge {
+  border-color: #12241C !important;
+}

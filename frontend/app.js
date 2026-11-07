@@ -1201,4 +1201,67 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileThemeToggleBtn) {
     mobileThemeToggleBtn.addEventListener('click', handleThemeToggle);
   }
+
+  // ==========================================
+  // FLOATING AI CONCIERGE QUICK LAUNCHER BOT
+  // ==========================================
+  const floatingBotBtn = document.getElementById('floatingBotBtn');
+  const floatingBotBubble = document.getElementById('floatingBotBubble');
+  const btnCloseBubble = document.getElementById('btnCloseBubble');
+  const aiSection = document.getElementById('ai-assistant');
+  const chatInputEl = document.getElementById('chatInput');
+  const assistantWorkspace = document.querySelector('.assistant-workspace');
+
+  function openChatbotPage() {
+    // Hide notification bubble
+    if (floatingBotBubble) {
+      floatingBotBubble.classList.add('bubble-hidden');
+    }
+
+    // Smoothly scroll to AI travel assistant section
+    if (aiSection) {
+      aiSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Glow highlight on workspace
+    if (assistantWorkspace) {
+      assistantWorkspace.classList.remove('workspace-highlight');
+      void assistantWorkspace.offsetWidth; // trigger reflow
+      assistantWorkspace.classList.add('workspace-highlight');
+    }
+
+    // Auto-focus chat input field for effortless typing
+    if (chatInputEl) {
+      setTimeout(() => {
+        try {
+          chatInputEl.focus();
+        } catch (e) {}
+      }, 500);
+    }
+  }
+
+  if (floatingBotBtn) {
+    floatingBotBtn.addEventListener('click', openChatbotPage);
+  }
+
+  if (floatingBotBubble) {
+    floatingBotBubble.addEventListener('click', (e) => {
+      if (e.target.closest('#btnCloseBubble')) return;
+      openChatbotPage();
+    });
+  }
+
+  if (btnCloseBubble) {
+    btnCloseBubble.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (floatingBotBubble) {
+        floatingBotBubble.classList.add('bubble-hidden');
+      }
+    });
+  }
+
+  // Auto-dismiss bubble after 8 seconds of scrolling
+  let bubbleDismissTimeout = setTimeout(() => {
+    if (floatingBotBubble) floatingBotBubble.classList.add('bubble-hidden');
+  }, 10000);
 });
