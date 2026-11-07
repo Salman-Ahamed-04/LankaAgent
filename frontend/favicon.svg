@@ -1,3 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <text y=".9em" font-size="90">🇱🇰</text>
+<svg width="64" height="64" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- App Badge Squircle -->
+  <rect x="1" y="1" width="34" height="34" rx="10" fill="#174D3A" />
+  
+  <!-- Smartphone Device Frame -->
+  <rect x="6.5" y="4.5" width="16" height="27" rx="3.5" fill="#FFFFFF" stroke="#DDE9DF" stroke-width="1.2"/>
+  
+  <!-- Smartphone Screen Glass -->
+  <rect x="8" y="7" width="13" height="22" rx="2" fill="#E6EFE8"/>
+  
+  <!-- Speaker Ear-Piece Notch -->
+  <rect x="12" y="5.5" width="5" height="1" rx="0.5" fill="#174D3A"/>
+  
+  <!-- In-App AI Conversational Speech Bubble -->
+  <path d="M9.5 9.5H19.5C20.3 9.5 21 10.2 21 11V17.5C21 18.3 20.3 19 19.5 19H13.8L11 21.8V19H9.5C8.7 19 8 18.3 8 17.5V11C8 10.2 8.7 9.5 9.5 9.5Z" fill="#174D3A"/>
+  
+  <!-- Dynamic AI Sparkle Star (Muted Gold) -->
+  <path d="M14.5 11C14.5 12.6 13.3 13.8 11.7 13.8C13.3 13.8 14.5 15 14.5 16.6C14.5 15 15.7 13.8 17.3 13.8C15.7 13.8 14.5 12.6 14.5 11Z" fill="#C69B52"/>
+  <circle cx="17.8" cy="11.5" r="0.75" fill="#FDE68A"/>
+  
+  <!-- Smartphone Home Bar -->
+  <rect x="11.5" y="27" width="6" height="1" rx="0.5" fill="#174D3A" opacity="0.6"/>
+  
+  <!-- Outward AI Voice & App Communication Waves -->
+  <path d="M25 11.5C27 13.5 27 17 25 19" stroke="#C69B52" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M28.2 8.8C31.5 12.1 31.5 18.4 28.2 21.7" stroke="#C69B52" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
 </svg>
