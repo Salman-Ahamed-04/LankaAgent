@@ -635,6 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const itineraryMapContainer = document.getElementById('itineraryMap');
   let itineraryMap = null;
   const activeMarkers = {};
+  let primaryHaloPolyline = null;
   let primaryPolyline = null;
   let altPolyline = null;
   let currentActiveDay = 'all';
@@ -642,6 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const stopsData = {
     sigiriya: {
+      num: 1,
       name: "Sigiriya Lion Rock Citadel",
       shortLoc: "Cultural Triangle",
       day: 1,
@@ -651,6 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=150&q=80"
     },
     dambulla: {
+      num: 2,
       name: "Dambulla Royal Cave Temple",
       shortLoc: "Golden Temple Sanctuary",
       day: 1,
@@ -660,6 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=150&q=80"
     },
     kandy_tooth: {
+      num: 3,
       name: "Temple of the Sacred Tooth",
       shortLoc: "Kandy Lakefront",
       day: 2,
@@ -669,6 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "https://images.unsplash.com/photo-1588598198321-9735fd524498?auto=format&fit=crop&w=150&q=80"
     },
     peradeniya: {
+      num: 4,
       name: "Royal Botanical Gardens",
       shortLoc: "Peradeniya, Kandy",
       day: 2,
@@ -678,6 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=150&q=80"
     },
     blue_train: {
+      num: 5,
       name: "Iconic Blue Train Journey",
       shortLoc: "Kandy ➔ Nanu Oya ➔ Ella",
       day: 3,
@@ -687,6 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "/assets/srilanka_nature_bg.jpg"
     },
     ella_gap: {
+      num: 6,
       name: "Little Adam's Peak & Gap",
       shortLoc: "Ella Mountain Ridge",
       day: 3,
@@ -696,6 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=150&q=80"
     },
     nine_arches: {
+      num: 7,
       name: "Nine Arches Viaduct Bridge",
       shortLoc: "Demodara, Ella",
       day: 4,
@@ -705,6 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=150&q=80"
     },
     mirissa: {
+      num: 8,
       name: "Coconut Tree Hill & Bay",
       shortLoc: "Mirissa Southern Coast",
       day: 4,
@@ -714,6 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=150&q=80"
     },
     galle_fort: {
+      num: 9,
       name: "Galle Fort Ramparts",
       shortLoc: "Galle Lighthouse Citadel",
       day: 5,
@@ -725,82 +735,114 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const primaryRouteCoords = [
-    [7.1808, 79.8841], // Airport
-    [7.9570, 80.7603], // Sigiriya
-    [7.8742, 80.6511], // Dambulla
-    [7.2936, 80.6413], // Kandy Tooth
-    [7.2711, 80.5960], // Peradeniya
-    [6.9404, 80.7486], // Nanu Oya Rail
+    [7.1808, 79.8841], // Bandaranaike Airport
+    [7.9570, 80.7603], // Sigiriya Lion Rock
+    [7.8742, 80.6511], // Dambulla Rock Cave
+    [7.2936, 80.6413], // Kandy Tooth Temple
+    [7.2711, 80.5960], // Peradeniya Botanical
+    [6.9404, 80.7486], // Nanu Oya Main Line Rail
     [6.8748, 81.0465], // Ella Little Adam's Peak
-    [6.8767, 81.0608], // Nine Arches
-    [5.9442, 80.4593], // Mirissa
-    [6.0275, 80.2170], // Galle
-    [7.1808, 79.8841]  // Return CMB Airport
+    [6.8767, 81.0608], // Nine Arches Bridge
+    [5.9442, 80.4593], // Mirissa Southern Coast
+    [6.0275, 80.2170], // Galle Dutch Fort
+    [7.1808, 79.8841]  // Return Colombo Airport
   ];
 
   const altRouteCoords = [
     [7.2936, 80.6413], // Kandy
-    [6.7681, 80.9570], // Haputale Mountain Pass
+    [6.7681, 80.9570], // Haputale Mountain Pass Reroute
     [6.8748, 81.0465]  // Ella
   ];
 
   function initItineraryDashboardMap() {
-    if (!itineraryMapContainer || typeof L === 'undefined') return;
+    if (!itineraryMapContainer) return;
+    if (typeof L === 'undefined') {
+      console.warn("Leaflet library not ready yet, retrying in 200ms...");
+      setTimeout(initItineraryDashboardMap, 200);
+      return;
+    }
 
     try {
+      // Create Leaflet Map with full keyboard, mouse pad, and trackpad zooming enabled
       itineraryMap = L.map('itineraryMap', {
-        center: [7.2936, 80.6413],
+        center: [7.4, 80.7],
         zoom: 8,
-        zoomControl: true,
-        scrollWheelZoom: false
+        minZoom: 6,
+        maxZoom: 17,
+        zoomControl: false, // Using our customized zoom in/out buttons
+        scrollWheelZoom: true, // Mousepad / Trackpad scroll zooming ENABLED
+        wheelDebounceTime: 40,
+        wheelPxPerZoomLevel: 60,
+        touchZoom: true, // Pinch to zoom on trackpads/touch screens
+        doubleClickZoom: true,
+        boxZoom: true,
+        dragging: true,
+        keyboard: true, // Keyboard zoom (+ / -) & arrows ENABLED
+        keyboardPanDelta: 80
       });
 
-      // CartoDB Voyager clean pastel travel tiles
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap',
-        maxZoom: 18,
-        subdomains: 'abcd'
+      // Primary High-Reliability OpenStreetMap Tiles
+      const osmTileLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 19,
+        crossOrigin: true
+      });
+      osmTileLayer.addTo(itineraryMap);
+
+      // Primary Route: Glowing halo casing underneath for extreme contrast
+      primaryHaloPolyline = L.polyline(primaryRouteCoords, {
+        color: '#FFFFFF',
+        weight: 9,
+        opacity: 0.95,
+        lineCap: 'round',
+        lineJoin: 'round'
       }).addTo(itineraryMap);
 
-      // Primary Scenic Polyline
+      // Primary Scenic Polyline (Deep Forest Green)
       primaryPolyline = L.polyline(primaryRouteCoords, {
         color: '#174D3A',
-        weight: 4.5,
-        opacity: 0.9,
-        smoothFactor: 1
+        weight: 5,
+        opacity: 1.0,
+        lineCap: 'round',
+        lineJoin: 'round'
       }).addTo(itineraryMap);
 
-      // Alternative Contingency Polyline
+      // Alternative Contingency Polyline (Muted Gold Dashed)
       altPolyline = L.polyline(altRouteCoords, {
         color: '#C69B52',
-        weight: 3.5,
-        opacity: 0.55,
-        dashArray: '6, 8',
-        smoothFactor: 1
+        weight: 4.5,
+        opacity: 0.85,
+        dashArray: '8, 8',
+        lineCap: 'round',
+        lineJoin: 'round'
       }).addTo(itineraryMap);
 
-      // Render Floating Callout Card Markers
+      // Add High-Visibility Numbered Waypoint Markers
       Object.keys(stopsData).forEach(key => {
         const stop = stopsData[key];
 
-        const customIcon = L.divIcon({
-          className: 'leaflet-floating-card-wrapper',
-          html: `
-            <div class="leaflet-floating-card" data-card-id="${key}">
-              <img src="${stop.thumb}" alt="${stop.name}" class="floating-thumb" />
-              <div class="floating-info">
-                <div class="floating-title">${stop.name}</div>
-                <div class="floating-loc">📍 ${stop.shortLoc}</div>
-                <div class="floating-rating">${stop.rating} • <span style="color: #174D3A; font-weight: 600;">${stop.crowd}</span></div>
-              </div>
-            </div>
-            <div class="custom-waypoint-pin" id="pin-${key}"></div>
-          `,
-          iconSize: [230, 68],
-          iconAnchor: [30, 68]
+        const customMarkerIcon = L.divIcon({
+          className: 'custom-waypoint-marker-wrap',
+          html: `<div class="custom-waypoint-marker" id="pin-${key}" title="${stop.name}">${stop.num}</div>`,
+          iconSize: [34, 42],
+          iconAnchor: [17, 42],
+          popupAnchor: [0, -38]
         });
 
-        const marker = L.marker(stop.coords, { icon: customIcon }).addTo(itineraryMap);
+        const marker = L.marker(stop.coords, { icon: customMarkerIcon }).addTo(itineraryMap);
+
+        // Rich Popup matching reference style
+        marker.bindPopup(`
+          <div class="map-card-popup">
+            <img src="${stop.thumb}" alt="${stop.name}" class="popup-thumb" />
+            <div class="popup-info">
+              <div class="popup-title">${stop.name}</div>
+              <div class="popup-loc">📍 ${stop.shortLoc}</div>
+              <div class="popup-rating">${stop.rating} • <span style="color: #174D3A; font-weight: 700;">${stop.crowd}</span></div>
+            </div>
+          </div>
+        `, { maxWidth: 300, offset: [0, -6] });
+
         marker.on('click', () => {
           selectStop(key);
         });
@@ -808,16 +850,94 @@ document.addEventListener('DOMContentLoaded', () => {
         activeMarkers[key] = marker;
       });
 
-      // Fit Initial Bounds
-      itineraryMap.fitBounds(primaryPolyline.getBounds(), { padding: [40, 40] });
+      // Fit Initial Bounds to full Sri Lanka route
+      itineraryMap.fitBounds(primaryPolyline.getBounds(), { padding: [50, 50] });
+
+      // Immediate InvalidateSize to prevent blank rendering
+      setTimeout(() => {
+        if (itineraryMap) itineraryMap.invalidateSize();
+      }, 200);
+
+      setTimeout(() => {
+        if (itineraryMap) itineraryMap.invalidateSize();
+      }, 800);
 
     } catch (e) {
       console.warn("Could not initialize Leaflet map:", e);
     }
   }
 
-  // Initialize Map
+  // Initialize Map immediately
   initItineraryDashboardMap();
+
+  // ResizeObserver / IntersectionObserver to ensure map refreshes immediately when scrolled into view
+  if (itineraryMapContainer && 'IntersectionObserver' in window) {
+    const mapObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && itineraryMap) {
+          itineraryMap.invalidateSize();
+        }
+      });
+    }, { threshold: 0.1 });
+    mapObserver.observe(itineraryMapContainer);
+  }
+
+  // Window resize & scroll invalidation
+  window.addEventListener('resize', () => {
+    if (itineraryMap) itineraryMap.invalidateSize();
+  });
+
+  document.querySelectorAll('a[href="#itinerary"]').forEach(link => {
+    link.addEventListener('click', () => {
+      setTimeout(() => {
+        if (itineraryMap) {
+          itineraryMap.invalidateSize();
+          if (primaryPolyline) itineraryMap.fitBounds(primaryPolyline.getBounds(), { padding: [50, 50] });
+        }
+      }, 350);
+    });
+  });
+
+  // Dedicated Zoom In / Zoom Out Controls
+  const btnZoomIn = document.getElementById('btnZoomIn');
+  const btnZoomOut = document.getElementById('btnZoomOut');
+  if (btnZoomIn) {
+    btnZoomIn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (itineraryMap) itineraryMap.zoomIn();
+    });
+  }
+  if (btnZoomOut) {
+    btnZoomOut.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (itineraryMap) itineraryMap.zoomOut();
+    });
+  }
+
+  // Global Keyboard Navigation for Map Zooming (+ / - and Arrow keys)
+  window.addEventListener('keydown', (e) => {
+    const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+
+    if (e.key === '+' || e.key === '=' || e.code === 'NumpadAdd') {
+      if (itineraryMap) {
+        e.preventDefault();
+        itineraryMap.zoomIn();
+      }
+    } else if (e.key === '-' || e.key === '_' || e.code === 'NumpadSubtract') {
+      if (itineraryMap) {
+        e.preventDefault();
+        itineraryMap.zoomOut();
+      }
+    } else if (e.key === '0' || e.key === 'Home') {
+      if (itineraryMap && primaryPolyline) {
+        e.preventDefault();
+        itineraryMap.fitBounds(primaryPolyline.getBounds(), { padding: [50, 50] });
+      }
+    }
+  });
 
   // Select Stop Function
   window.selectStop = function(stopId) {
@@ -833,13 +953,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Highlight pin on map
-    document.querySelectorAll('.custom-waypoint-pin').forEach(pin => pin.classList.remove('pin-active'));
+    document.querySelectorAll('.custom-waypoint-marker').forEach(pin => pin.classList.remove('pin-active'));
     const targetPin = document.getElementById(`pin-${stopId}`);
     if (targetPin) targetPin.classList.add('pin-active');
 
-    // Pan map to stop
+    // Pan map to stop and open popup
     if (itineraryMap) {
-      itineraryMap.flyTo(stop.coords, 10, { duration: 1.2 });
+      itineraryMap.flyTo(stop.coords, 10, { duration: 1.0 });
+      const marker = activeMarkers[stopId];
+      if (marker) {
+        setTimeout(() => marker.openPopup(), 400);
+      }
     }
   };
 
@@ -877,10 +1001,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btnAltRoute?.classList.add('active');
 
       if (altPolyline) {
-        altPolyline.setStyle({ color: '#C69B52', weight: 5, opacity: 1, dashArray: null });
+        altPolyline.setStyle({ color: '#C69B52', weight: 6, opacity: 1, dashArray: null });
       }
       if (primaryPolyline) {
-        primaryPolyline.setStyle({ opacity: 0.45 });
+        primaryPolyline.setStyle({ opacity: 0.35 });
       }
       if (mapTransitStat) {
         mapTransitStat.textContent = '⚡ Alt Reroute: Minivan via Haputale (+25 mins • 2,500 LKR)';
@@ -889,17 +1013,17 @@ document.addEventListener('DOMContentLoaded', () => {
         trainBookingBadge.textContent = '🚐 Vetted Co-op Minivan • Reserved';
       }
       if (itineraryMap && altPolyline) {
-        itineraryMap.flyToBounds(altPolyline.getBounds(), { padding: [60, 60], duration: 1.2 });
+        itineraryMap.flyToBounds(altPolyline.getBounds(), { padding: [70, 70], duration: 1.2 });
       }
     } else {
       btnAltRoute?.classList.remove('active');
       btnPrimaryRoute?.classList.add('active');
 
       if (primaryPolyline) {
-        primaryPolyline.setStyle({ color: '#174D3A', weight: 4.5, opacity: 0.9 });
+        primaryPolyline.setStyle({ color: '#174D3A', weight: 5, opacity: 1.0 });
       }
       if (altPolyline) {
-        altPolyline.setStyle({ color: '#C69B52', weight: 3.5, opacity: 0.55, dashArray: '6, 8' });
+        altPolyline.setStyle({ color: '#C69B52', weight: 4.5, opacity: 0.85, dashArray: '8, 8' });
       }
       if (mapTransitStat) {
         mapTransitStat.textContent = '🚗 Transit: ~3.5 hrs • 148 km';
@@ -908,7 +1032,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trainBookingBadge.textContent = '🚂 Train #1005 Podi Menike • Reserved';
       }
       if (itineraryMap && primaryPolyline) {
-        itineraryMap.flyToBounds(primaryPolyline.getBounds(), { padding: [40, 40], duration: 1.2 });
+        itineraryMap.fitBounds(primaryPolyline.getBounds(), { padding: [50, 50] });
       }
     }
   };
@@ -936,7 +1060,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dayBlocks.forEach(b => b.classList.remove('hidden'));
       if (mapBreakdownLabel) mapBreakdownLabel.textContent = 'All Days – Full Island Overview';
       if (itineraryMap && primaryPolyline) {
-        itineraryMap.flyToBounds(primaryPolyline.getBounds(), { padding: [40, 40], duration: 1.2 });
+        itineraryMap.fitBounds(primaryPolyline.getBounds(), { padding: [50, 50] });
       }
     } else {
       const dayNum = parseInt(day);
@@ -961,7 +1085,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (itineraryMap && dayCoords.length > 0) {
         const bounds = L.latLngBounds(dayCoords);
-        itineraryMap.flyToBounds(bounds, { padding: [80, 80], maxZoom: 11, duration: 1.2 });
+        itineraryMap.flyToBounds(bounds, { padding: [90, 90], maxZoom: 12, duration: 1.2 });
       }
     }
   }
