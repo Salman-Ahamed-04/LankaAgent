@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/assets/leaflet.css">
 
   <!-- Primary Stylesheet -->
-  <link rel="stylesheet" href="/styles.css?v=5.6">
+  <link rel="stylesheet" href="/styles.css?v=5.7">
 
   <!-- Immediate Theme Initializer to prevent flashing -->
   <script>
@@ -91,12 +91,6 @@
           <span class="cur-flag">🇱🇰</span>
           <span class="cur-text">1 USD ≈ <strong>310 LKR</strong></span>
         </div>
-
-        <!-- Google Gemini Status Pill -->
-        <button class="gemini-status-btn" id="geminiBtn" type="button" title="Configure Google Gemini API Connection">
-          <span class="sparkle-icon">✨</span>
-          <span id="geminiStatusText">Gemini Active</span>
-        </button>
 
         <!-- Dark / Light Mode Toggle Button -->
         <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Toggle Dark Mode" title="Toggle Dark / Light Mode">
@@ -1710,40 +1704,6 @@
     </div>
   </div>
 
-  <!-- Google Gemini API Key Modal -->
-  <div class="modal-backdrop" id="apiModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div>
-          <span class="modal-kicker">System Configuration</span>
-          <h3>Google Gemini API Connection</h3>
-        </div>
-        <button type="button" class="btn-close-modal" id="closeModalBtn" aria-label="Close dialog">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-body-desc">
-          SmartLanka leverages <strong>Google Gemini 3.5</strong> for dynamic natural language understanding, route analysis, and bilingual synthesis.
-          Get your free API key at <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a>.
-        </p>
-        <form id="geminiKeyForm" class="booking-dialog-form">
-          <div class="dialog-field">
-            <label for="apiKeyInput">Gemini API Key</label>
-            <input 
-              type="password" 
-              id="apiKeyInput" 
-              placeholder="Paste your API key (AIzaSy...)" 
-              required 
-            />
-          </div>
-          <button type="submit" class="btn-dialog-submit">Save & Activate Key</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="modal-safe-note">🔒 Key is securely saved to your local backend <code>.env</code> file.</span>
-      </div>
-    </div>
-  </div>
-
   <!-- Floating AI Concierge Quick Launcher -->
   <aside class="floating-bot-container" id="floatingBotContainer" aria-label="AI Travel Concierge Quick Launcher">
     <div class="floating-bot-bubble" id="floatingBotBubble">
@@ -1771,6 +1731,6 @@
 
   <!-- Local Leaflet Interactive Maps JS -->
   <script src="/assets/leaflet.js"></script>
-  <script src="/app.js?v=5.6"></script>
+  <script src="/app.js?v=5.7"></script>
 </body>
 </html>

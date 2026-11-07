@@ -10,6 +10,7 @@ from app.agent.tools.disruption_sentinel import check_route_disruptions
 from app.agent.tools.local_host_bridge import match_and_dispatch_local_hosts
 
 from dotenv import load_dotenv
+from app.key_resolver import load_gemini_key
 
 # Load environment variables from .env
 load_dotenv()
@@ -17,8 +18,8 @@ load_dotenv()
 MODEL_CANDIDATES = ["gemini-3.5-flash-lite", "gemini-3.5-flash"]
 
 def get_gemini_client():
-    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-    if not api_key or api_key.strip() == "":
+    api_key = load_gemini_key()
+    if not api_key:
         return None
     try:
         from google import genai

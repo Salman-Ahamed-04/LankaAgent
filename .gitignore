@@ -17,3 +17,8 @@ ENV/
 # Node modules & WhatsApp session
 node_modules/
 whatsapp_session/
+
+# API Keys & Secrets
+keys/*.txt
+keys/*.key
+!keys/README.md

@@ -13,6 +13,7 @@ from app.agent.graph import run_agent
 from app.agent.tools.fare_calculator import calculate_fair_fare, load_nodes
 from app.agent.tools.disruption_sentinel import check_route_disruptions, load_disruptions
 from app.agent.tools.local_host_bridge import match_and_dispatch_local_hosts, load_hosts
+from app.key_resolver import load_gemini_key
 
 app = FastAPI(
     title="SmartLanka API",
@@ -83,7 +84,7 @@ class GeminiKeyRequest(BaseModel):
 
 @app.get("/api/config/gemini")
 def get_gemini_status():
-    key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    key = load_gemini_key()
     if key and len(key.strip()) > 6:
         masked = key[:6] + "..." + key[-4:]
         return { "connected": True, "masked_key": masked, "model": "gemini-3.5-flash" }
@@ -97,12 +98,23 @@ def set_gemini_key(req: GeminiKeyRequest):
     
     os.environ["GEMINI_API_KEY"] = new_key
     
-    env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".env")
+    root_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    env_path = os.path.join(root_dir, ".env")
+    keys_dir = os.path.join(root_dir, "keys")
+    os.makedirs(keys_dir, exist_ok=True)
+    key_file_path = os.path.join(keys_dir, "gemini_api_key.txt")
+    
     try:
         with open(env_path, "w", encoding="utf-8") as f:
             f.write(f"GEMINI_API_KEY={new_key}\n")
     except Exception as e:
         print("Could not write to .env:", e)
+
+    try:
+        with open(key_file_path, "w", encoding="utf-8") as f:
+            f.write(f"{new_key}\n")
+    except Exception as e:
+        print("Could not write to keys/gemini_api_key.txt:", e)
 
     return { "status": "success", "connected": True, "masked_key": new_key[:6] + "..." + new_key[-4:] }
 
